@@ -33,6 +33,29 @@ uma chamada real de IA está comentado no código.
 python gerador_descricoes.py --nome "Caneca" --caracteristicas "300ml,ceramica" --publico "presente"
 ```
 
+## 4. `qualificador_leads_whatsapp.py`
+Simula a automação de qualificação de leads que a BLUE ROSE propõe pra
+imobiliárias/corretores: faz uma sequência de perguntas pelo WhatsApp
+(simulado) e entrega ao corretor um resumo classificado (QUENTE/MORNO/
+FRIO), em vez de ele ter que ler a conversa inteira. O ponto de integração
+real com a WhatsApp API está isolado numa função só.
+
+```
+python qualificador_leads_whatsapp.py --demo
+```
+
+## 5. `recuperador_pix_whatsapp.py`
+Simula a automação de recuperação de venda: quando um PIX fica pendente
+depois do checkout, manda lembrete automático pelo WhatsApp — e cancela o
+envio se o pagamento já tiver caído. Os dois pontos de integração real
+(consulta de pagamento e envio de WhatsApp) estão isolados em funções
+próprias.
+
+```
+python recuperador_pix_whatsapp.py --pago-em nunca
+python recuperador_pix_whatsapp.py --pago-em 1
+```
+
 ## Como usar em uma conversa de venda
 1. Rode o exemplo mais parecido com a dor do lead, na frente dele (ou grave
    uma tela rápida).
