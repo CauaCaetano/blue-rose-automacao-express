@@ -1,0 +1,680 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BLUE ROSE — sites e automação pra clínicas e negócios locais</title>
+<meta name="description" content="Site simples + automação de agendamento via WhatsApp pra clínicas, estúdios e consultórios sem site.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:,">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,680;1,9..144,560&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root{
+    --ink:#12213b;
+    --ink-soft:#3c4c6e;
+    --paper:#f2f3f8;
+    --card:#ffffff;
+    --card-tint:#eceef5;
+    --line:#d7dae6;
+    --rose:#c81d4b;
+    --rose-deep:#8f1338;
+    --rose-tint:#fbe7ed;
+    --focus:#3c4c6e;
+    --shadow: 0 1px 0 rgba(18,33,59,0.04);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --ink:#e7eaf4;
+      --ink-soft:#aab3ca;
+      --paper:#0c1220;
+      --card:#131b2c;
+      --card-tint:#182238;
+      --line:#28324a;
+      --rose:#ff5d86;
+      --rose-deep:#ff87a5;
+      --rose-tint:#2a1420;
+      --focus:#ff5d86;
+      --shadow: 0 1px 0 rgba(0,0,0,0.3);
+    }
+  }
+
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Archivo',ui-sans-serif,system-ui,sans-serif;
+    line-height:1.5;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces',ui-serif,Georgia,serif;
+    font-weight:680;
+    line-height:1.08;
+    text-wrap:balance;
+    margin:0;
+    color:var(--ink);
+  }
+  a{color:inherit;}
+  .mono{
+    font-family:'IBM Plex Mono',ui-monospace,monospace;
+    font-variant-numeric:tabular-nums;
+  }
+  .wrap{
+    max-width:760px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    letter-spacing:0.09em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    padding:22px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .topbar .wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:'Fraunces',serif;
+    font-weight:680;
+    font-size:19px;
+    letter-spacing:0.01em;
+  }
+  .brand-mark{
+    width:30px;height:30px;
+    flex:none;
+    display:block;
+  }
+  .topbar .tag{
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+  @media (max-width:560px){ .topbar .tag{display:none;} }
+
+  /* ---------- hero ---------- */
+  .hero{ padding:56px 0 44px; position:relative; overflow:hidden; }
+  .hero-flourish{
+    position:absolute;
+    top:-60px; right:-40px;
+    width:340px; height:340px;
+    opacity:0.06;
+    pointer-events:none;
+    z-index:0;
+  }
+  @media (max-width:720px){ .hero-flourish{ display:none; } }
+  .hero-grid{
+    position:relative;
+    z-index:1;
+    display:grid;
+    grid-template-columns:1.15fr 1fr;
+    gap:40px;
+    align-items:start;
+  }
+  @media (max-width:720px){ .hero-grid{grid-template-columns:1fr;} }
+  .hero h1{
+    font-size:clamp(30px,5vw,44px);
+    margin-top:10px;
+  }
+  .hero p.lede{
+    margin-top:16px;
+    font-size:17px;
+    color:var(--ink-soft);
+    max-width:46ch;
+  }
+  .cta-row{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:26px;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:13px 20px;
+    border-radius:3px;
+    font-family:'Archivo',sans-serif;
+    font-weight:600;
+    font-size:14.5px;
+    text-decoration:none;
+    border:1px solid transparent;
+    cursor:pointer;
+    transition:background-color .15s ease, border-color .15s ease, transform .1s ease;
+  }
+  .btn:focus-visible{ outline:2px solid var(--focus); outline-offset:2px; }
+  .btn:active{ transform:translateY(1px); }
+  .btn-primary{
+    background:var(--rose);
+    color:#fff;
+  }
+  .btn-primary:hover{ background:var(--rose-deep); }
+  .btn-ghost{
+    background:transparent;
+    border-color:var(--line);
+    color:var(--ink);
+  }
+  .btn-ghost:hover{ border-color:var(--ink-soft); }
+
+  /* ---------- about strip ---------- */
+  .about{ padding:6px 0 40px; }
+  .about-row{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    padding:18px 20px;
+    border:1px solid var(--line);
+    border-radius:6px;
+    background:var(--card);
+  }
+  .about-photo{
+    width:46px;height:46px;border-radius:50%;
+    flex:none;
+    background:var(--card-tint);
+    border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .about-photo svg{ width:24px;height:24px; }
+  .about-text{ font-size:13.5px; color:var(--ink-soft); }
+  .about-text strong{ color:var(--ink); font-weight:600; }
+  .about-text a{ color:var(--rose); text-decoration:underline; text-underline-offset:2px; }
+  @media (max-width:520px){ .about-row{ flex-direction:column; align-items:flex-start; } }
+
+  /* phone mock */
+  .phone{
+    border:1px solid var(--line);
+    border-radius:22px;
+    padding:10px;
+    background:var(--card);
+    box-shadow:var(--shadow);
+    max-width:280px;
+    margin:0 auto;
+  }
+  .phone-screen{
+    border-radius:14px;
+    background:var(--card-tint);
+    overflow:hidden;
+    border:1px solid var(--line);
+  }
+  .site-nav{
+    display:flex;
+    justify-content:space-between;
+    padding:12px 14px;
+    font-size:11px;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    border-bottom:1px solid var(--line);
+    font-family:'IBM Plex Mono',monospace;
+  }
+  .site-hero{
+    padding:26px 16px 20px;
+    text-align:center;
+  }
+  .site-hero .ph-photo{
+    height:74px;
+    border-radius:8px;
+    background:
+      repeating-linear-gradient(135deg, var(--rose-tint) 0 8px, transparent 8px 16px),
+      var(--card);
+    border:1px dashed var(--line);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:10.5px;
+    color:var(--ink-soft);
+    font-family:'IBM Plex Mono',monospace;
+    margin-bottom:14px;
+  }
+  .site-hero h4{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:16px;
+    margin:0 0 6px;
+  }
+  .site-hero p{
+    font-size:11.5px;
+    color:var(--ink-soft);
+    margin:0 0 14px;
+  }
+  .site-hero .mini-btn{
+    display:inline-block;
+    background:var(--rose);
+    color:#fff;
+    font-size:11px;
+    font-weight:600;
+    padding:8px 14px;
+    border-radius:3px;
+  }
+  .site-list{
+    padding:4px 16px 18px;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .site-list .row{
+    display:flex;
+    justify-content:space-between;
+    font-size:11.5px;
+    padding:8px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .site-list .row:last-child{border-bottom:none;}
+  .phone-caption{
+    text-align:center;
+    font-size:11.5px;
+    color:var(--ink-soft);
+    margin-top:12px;
+    font-family:'IBM Plex Mono',monospace;
+  }
+
+  /* ---------- pain section ---------- */
+  .pain{ padding:8px 0 48px; }
+  .pain h2{ font-size:26px; max-width:26ch; }
+  .pain-list{
+    margin-top:26px;
+    display:flex;
+    flex-direction:column;
+  }
+  .pain-item{
+    display:grid;
+    grid-template-columns:34px 1fr;
+    gap:16px;
+    padding:18px 0;
+    border-top:1px solid var(--line);
+  }
+  .pain-list .pain-item:last-child{ border-bottom:1px solid var(--line); }
+  .pain-item .mk{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:var(--rose);
+    padding-top:3px;
+  }
+  .pain-item h3{
+    font-family:'Archivo',sans-serif;
+    font-weight:600;
+    font-size:15.5px;
+  }
+  .pain-item p{
+    margin:6px 0 0;
+    font-size:14.5px;
+    color:var(--ink-soft);
+    max-width:52ch;
+  }
+
+  /* ---------- deliverables ---------- */
+  .deliver{ padding:12px 0 52px; }
+  .deliver > .wrap > .eyebrow{ margin-bottom:8px; }
+  .deliver h2{ font-size:26px; max-width:28ch; margin-bottom:30px;}
+  .deliver-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:22px;
+  }
+  @media (max-width:680px){ .deliver-grid{grid-template-columns:1fr;} }
+  .dcard{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:22px;
+    box-shadow:var(--shadow);
+    transition:border-color .15s ease;
+  }
+  .dcard:hover{ border-color:var(--ink-soft); }
+  .dcard h3{
+    font-family:'Fraunces',serif;
+    font-weight:620;
+    font-size:19px;
+    margin-bottom:8px;
+  }
+  .dcard .sub{
+    font-size:13.5px;
+    color:var(--ink-soft);
+    margin-bottom:18px;
+  }
+  /* chat mock */
+  .chat{
+    background:var(--card-tint);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:14px;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .bubble{
+    max-width:82%;
+    padding:9px 12px;
+    border-radius:12px;
+    font-size:13px;
+    line-height:1.4;
+  }
+  .bubble.them{
+    align-self:flex-start;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-bottom-left-radius:3px;
+  }
+  .bubble.us{
+    align-self:flex-end;
+    background:var(--rose);
+    color:#fff;
+    border-bottom-right-radius:3px;
+  }
+  .deliver-note{
+    margin-top:16px;
+    font-size:12.5px;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- process ---------- */
+  .process{ padding:12px 0 52px; }
+  .process h2{ font-size:26px; max-width:24ch; margin-bottom:28px;}
+  .steps{
+    display:flex;
+    flex-direction:column;
+  }
+  .step{
+    display:grid;
+    grid-template-columns:28px 1fr;
+    gap:16px;
+    padding:16px 0;
+    border-top:1px solid var(--line);
+  }
+  .steps .step:last-child{ border-bottom:1px solid var(--line); }
+  .step .n{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+  .step h3{
+    font-family:'Archivo',sans-serif;
+    font-weight:600;
+    font-size:15px;
+  }
+  .step p{
+    margin:4px 0 0;
+    font-size:14px;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- pricing ---------- */
+  .pricing{ padding:12px 0 52px; }
+  .pricing h2{ font-size:26px; margin-bottom:24px; }
+  .ptable{
+    border:1px solid var(--line);
+    border-radius:6px;
+    overflow:hidden;
+    background:var(--card);
+  }
+  .prow{
+    display:grid;
+    grid-template-columns:1.3fr 1fr 0.8fr;
+    gap:10px;
+    padding:16px 18px;
+    border-top:1px solid var(--line);
+    align-items:center;
+  }
+  .prow.head{
+    border-top:none;
+    background:var(--card-tint);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+  .prow .name{ font-weight:600; font-size:14.5px; }
+  .prow .desc{ font-size:12.5px; color:var(--ink-soft); margin-top:3px; }
+  .prow .value{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:14px;
+    text-align:right;
+    color:var(--ink);
+  }
+  .prow.combo{ background:var(--rose-tint); }
+  @media (max-width:560px){
+    .prow{ grid-template-columns:1fr; gap:4px; }
+    .prow .value{ text-align:left; }
+    .prow.head{display:none;}
+  }
+  .pricing-note{
+    margin-top:14px;
+    font-size:12.5px;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- footer / contact ---------- */
+  .contact{
+    background:var(--ink);
+    color:var(--paper);
+    padding:56px 0 40px;
+    margin-top:12px;
+  }
+  .contact h2{
+    color:var(--paper);
+    font-size:27px;
+    max-width:20ch;
+  }
+  .contact p{
+    color:var(--paper);
+    opacity:0.72;
+    margin-top:12px;
+    font-size:14.5px;
+    max-width:44ch;
+  }
+  .contact .cta-row{ margin-top:24px; }
+  .contact .btn-ghost{
+    border-color:var(--paper);
+    color:var(--paper);
+    opacity:0.85;
+  }
+  .foot-line{
+    margin-top:34px;
+    padding-top:18px;
+    border-top:1px solid var(--paper);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;
+    color:var(--paper);
+    opacity:0.6;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="rose-mark" viewBox="0 0 44 44">
+    <g>
+      <path d="M22,22 C13,20 10,9 22,2 C34,9 31,20 22,22 Z" fill="#4C6FE0" stroke="#1C2F52" stroke-width="0.7"/>
+      <path d="M22,22 C13,20 10,9 22,2 C34,9 31,20 22,22 Z" fill="#4C6FE0" stroke="#1C2F52" stroke-width="0.7" transform="rotate(60 22 22)"/>
+      <path d="M22,22 C13,20 10,9 22,2 C34,9 31,20 22,22 Z" fill="#4C6FE0" stroke="#1C2F52" stroke-width="0.7" transform="rotate(120 22 22)"/>
+      <path d="M22,22 C13,20 10,9 22,2 C34,9 31,20 22,22 Z" fill="#4C6FE0" stroke="#1C2F52" stroke-width="0.7" transform="rotate(180 22 22)"/>
+      <path d="M22,22 C13,20 10,9 22,2 C34,9 31,20 22,22 Z" fill="#4C6FE0" stroke="#1C2F52" stroke-width="0.7" transform="rotate(240 22 22)"/>
+      <path d="M22,22 C13,20 10,9 22,2 C34,9 31,20 22,22 Z" fill="#4C6FE0" stroke="#1C2F52" stroke-width="0.7" transform="rotate(300 22 22)"/>
+      <path d="M22,22 C17,21 15,14 22,9 C29,14 27,21 22,22 Z" fill="#24398F" transform="rotate(30 22 22)"/>
+      <path d="M22,22 C17,21 15,14 22,9 C29,14 27,21 22,22 Z" fill="#24398F" transform="rotate(150 22 22)"/>
+      <path d="M22,22 C17,21 15,14 22,9 C29,14 27,21 22,22 Z" fill="#24398F" transform="rotate(270 22 22)"/>
+      <circle cx="22" cy="22" r="2.6" fill="#D6335F" stroke="#1C2F52" stroke-width="0.4"/>
+    </g>
+  </symbol>
+</svg>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="brand"><svg class="brand-mark" viewBox="0 0 44 44" aria-hidden="true"><use href="#rose-mark"/></svg>BLUE ROSE</div>
+    <div class="tag">sites e automação de atendimento para negócios locais</div>
+  </div>
+</div>
+
+<div class="hero">
+  <svg class="hero-flourish" viewBox="0 0 44 44" aria-hidden="true"><use href="#rose-mark"/></svg>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Pra clínicas, estúdios e consultórios sem site</div>
+      <h1>Quem te procura no Google não te acha — e não espera resposta no WhatsApp.</h1>
+      <p class="lede">Monto um site simples com seus horários e serviços, e uma automação que responde as dúvidas mais comuns (horário, valor, disponibilidade) e já direciona pra marcar — sem trocar de número nem mexer no que já funciona.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://wa.me/5516991203700?text=Oi%2C%20Caua!%20Vi%20a%20p%C3%A1gina%20da%20Blue%20Rose%20e%20quero%20entender%20melhor." target="_blank" rel="noopener">Chamar no WhatsApp</a>
+        <a class="btn btn-ghost" href="#precos">Ver preços</a>
+      </div>
+    </div>
+    <div>
+      <div class="phone">
+        <div class="phone-screen">
+          <div class="site-nav"><span>Início</span><span>Serviços</span><span>Agendar</span></div>
+          <div class="site-hero">
+            <div class="ph-photo">[foto do espaço]</div>
+            <h4>Clínica Exemplo</h4>
+            <p>Estética facial &amp; corporal · Seg–Sex, 9h–19h</p>
+            <span class="mini-btn">Agendar horário</span>
+          </div>
+          <div class="site-list">
+            <div class="row"><span>Limpeza de pele</span><span class="mono">R$120</span></div>
+            <div class="row"><span>Massagem relaxante</span><span class="mono">R$150</span></div>
+            <div class="row"><span>Design de sobrancelha</span><span class="mono">R$60</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="phone-caption">exemplo ilustrativo de estrutura — o seu vem com seus serviços e preços reais</div>
+    </div>
+  </div>
+</div>
+
+<div class="about">
+  <div class="wrap">
+    <div class="about-row">
+      <div class="about-photo"><svg viewBox="0 0 44 44" aria-hidden="true"><use href="#rose-mark"/></svg></div>
+      <div class="about-text"><strong>Quem monta:</strong> Cauã, desenvolvedor freelancer — cuido do site e da automação do início ao fim, sem agência no meio. Código e outros projetos: <a href="https://github.com/CauaCaetano" target="_blank" rel="noopener">github.com/CauaCaetano</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="pain">
+  <div class="wrap">
+    <div class="eyebrow">O que isso custa hoje</div>
+    <h2 style="margin-top:8px;">Três coisas que provavelmente já estão acontecendo</h2>
+    <div class="pain-list">
+      <div class="pain-item">
+        <div class="mk">01</div>
+        <div><h3>Cliente pesquisa, não te acha, agenda com o concorrente</h3><p>Quem procura "clínica de estética" ou "personal" na sua cidade decide antes mesmo de chamar no WhatsApp — só que decide olhando quem aparece.</p></div>
+      </div>
+      <div class="pain-item">
+        <div class="mk">02</div>
+        <div><h3>A mesma pergunta, todo dia, no seu próprio número</h3><p>Horário, valor, se tem vaga hoje — respondidas manualmente, uma a uma, entre um atendimento e outro.</p></div>
+      </div>
+      <div class="pain-item">
+        <div class="mk">03</div>
+        <div><h3>Agenda manual = choque de horário</h3><p>Sem confirmação automática, é fácil marcar dois clientes no mesmo horário ou esquecer de responder fora do expediente.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="deliver">
+  <div class="wrap">
+    <div class="eyebrow">O que eu monto</div>
+    <h2>Duas peças que resolvem isso — separadas ou juntas</h2>
+    <div class="deliver-grid">
+      <div class="dcard">
+        <h3>Site simples</h3>
+        <div class="sub">Uma página com seus horários, serviços e um botão direto pro WhatsApp — pra quem te encontra no Google já poder marcar.</div>
+        <div class="phone" style="max-width:100%;">
+          <div class="phone-screen">
+            <div class="site-nav"><span>Início</span><span>Serviços</span><span>Agendar</span></div>
+            <div class="site-hero">
+              <div class="ph-photo" style="height:56px;">[foto do espaço]</div>
+              <h4 style="font-size:14px;">Seu negócio aqui</h4>
+              <p>Endereço · horário · contato</p>
+              <span class="mini-btn">Falar no WhatsApp</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="dcard">
+        <h3>Automação de WhatsApp</h3>
+        <div class="sub">Responde as dúvidas mais comuns na hora e já direciona pra marcar — mesmo fora do expediente.</div>
+        <div class="chat">
+          <div class="bubble them">Oi, vocês atendem sábado?</div>
+          <div class="bubble us">Oi! Atendemos seg–sex, 9h–19h. Sábado sob consulta 😊 Quer ver os horários livres dessa semana?</div>
+          <div class="bubble them">Quero sim</div>
+          <div class="bubble us">Show, segue o link pra escolher o melhor horário. Qualquer dúvida é só chamar!</div>
+        </div>
+      </div>
+    </div>
+    <div class="deliver-note">Exemplos ilustrativos do formato de entrega — o site e as respostas da automação são escritos com os seus serviços, preços e horários reais.</div>
+  </div>
+</div>
+
+<div class="process">
+  <div class="wrap">
+    <div class="eyebrow">Como funciona</div>
+    <h2>Do primeiro contato ao ar, em poucos dias</h2>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><div><h3>Conversa rápida</h3><p>Você me conta os horários, serviços e como funciona seu atendimento hoje.</p></div></div>
+      <div class="step"><div class="n">2</div><div><h3>Orçamento fechado</h3><p>Valor combinado antes de começar — sem cobrança por hora, sem surpresa depois.</p></div></div>
+      <div class="step"><div class="n">3</div><div><h3>Construção</h3><p>Monto o site e/ou a automação com o conteúdo real do seu negócio.</p></div></div>
+      <div class="step"><div class="n">4</div><div><h3>Entrega e ajuste</h3><p>Você testa, eu ajusto o que precisar numa rodada leve incluída no preço.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="pricing" id="precos">
+  <div class="wrap">
+    <div class="eyebrow">Investimento</div>
+    <h2>Preço justo pra quem tá começando</h2>
+    <div class="ptable">
+      <div class="prow head"><div>Pacote</div><div>Prazo</div><div style="text-align:right;">Valor</div></div>
+      <div class="prow">
+        <div><div class="name">Site simples</div><div class="desc">1 página · horários, serviços, botão de WhatsApp</div></div>
+        <div class="mono">3–4 dias úteis</div>
+        <div class="value">R$300–450</div>
+      </div>
+      <div class="prow">
+        <div><div class="name">Automação de WhatsApp</div><div class="desc">respostas automáticas + direcionamento pra agendar</div></div>
+        <div class="mono">2–3 dias úteis</div>
+        <div class="value">R$250–400</div>
+      </div>
+      <div class="prow combo">
+        <div><div class="name">Site + Automação</div><div class="desc">as duas peças integradas, com desconto por fazer junto</div></div>
+        <div class="mono">4–6 dias úteis</div>
+        <div class="value">R$500–750</div>
+      </div>
+    </div>
+    <div class="pricing-note">Sem mensalidade fixa. Faixa final depende do número de serviços/páginas — fechado com você antes de começar.</div>
+  </div>
+</div>
+
+<div class="contact">
+  <div class="wrap">
+    <h2>Me conta seus horários e serviços — eu volto com um orçamento certo.</h2>
+    <p>Sem compromisso: você decide depois de ver o valor fechado.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://wa.me/5516991203700?text=Oi%2C%20Caua!%20Vi%20a%20p%C3%A1gina%20da%20Blue%20Rose%20e%20quero%20entender%20melhor." target="_blank" rel="noopener">Chamar no WhatsApp</a>
+      <a class="btn btn-ghost" href="mailto:cauac4etano@gmail.com">Mandar e-mail</a>
+    </div>
+    <div class="foot-line">
+      <span>BLUE ROSE — automação, sites e atendimento</span>
+      <span>cauac4etano@gmail.com</span>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
