@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BLUE ROSE — exemplos completos de site</title>
+<meta name="description" content="Sites completos de exemplo pra clínicas, personal trainers, salões e consultórios — feitos pela BLUE ROSE.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:,">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,680;1,9..144,560&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+  :root{
+    --ink:#12213b; --ink-soft:#3c4c6e; --paper:#f2f3f8; --card:#ffffff;
+    --card-tint:#eceef5; --line:#d7dae6; --rose:#c81d4b; --rose-deep:#8f1338;
+    --rose-tint:#fbe7ed; --focus:#3c4c6e;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --ink:#e7eaf4; --ink-soft:#aab3ca; --paper:#0c1220; --card:#131b2c;
+      --card-tint:#182238; --line:#28324a; --rose:#ff5d86; --rose-deep:#ff87a5; --rose-tint:#2a1420; --focus:#ff5d86; }
+  }
+  *{box-sizing:border-box;}
+  body{ margin:0; background:var(--paper); color:var(--ink); font-family:'Archivo',ui-sans-serif,system-ui,sans-serif; line-height:1.5; }
+  h1,h2,h3{ font-family:'Fraunces',ui-serif,Georgia,serif; font-weight:680; line-height:1.1; text-wrap:balance; margin:0; color:var(--ink); }
+  a{ color:inherit; }
+  .wrap{ max-width:900px; margin:0 auto; padding:0 24px; }
+  .eyebrow{ font-family:'IBM Plex Mono',monospace; font-size:12.5px; letter-spacing:.09em; text-transform:uppercase; color:var(--ink-soft); }
+  .topbar{ padding:22px 0; border-bottom:1px solid var(--line); }
+  .topbar .wrap{ display:flex; align-items:center; justify-content:space-between; gap:12px; }
+  .brand{ display:flex; align-items:center; gap:10px; font-family:'Fraunces',serif; font-weight:680; font-size:19px; }
+  .brand-mark{ width:28px;height:28px; flex:none; }
+  .topbar nav{ font-family:'IBM Plex Mono',monospace; font-size:12.5px; text-transform:uppercase; letter-spacing:.04em; }
+  .topbar nav a{ text-decoration:none; color:var(--ink-soft); }
+  .topbar nav a:hover{ color:var(--ink); }
+  .head{ padding:52px 0 8px; }
+  .head h1{ font-size:clamp(28px,4.6vw,38px); margin-top:10px; }
+  .head p{ margin-top:14px; font-size:16px; color:var(--ink-soft); max-width:56ch; }
+  .grid{ padding:34px 0 60px; display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+  @media (max-width:680px){ .grid{ grid-template-columns:1fr; } }
+  .card{
+    border:1px solid var(--line); border-radius:8px; overflow:hidden; background:var(--card);
+    text-decoration:none; display:block; transition:border-color .15s ease, transform .15s ease;
+  }
+  .card:hover{ border-color:var(--accent); transform:translateY(-2px); }
+  .card-preview{
+    height:120px;
+    background:linear-gradient(135deg, var(--accent) 0%, var(--accent) 40%, var(--card-tint) 40%);
+    position:relative;
+  }
+  .card-preview .mono-badge{
+    position:absolute; left:18px; top:18px;
+    width:38px;height:38px;border-radius:50%;
+    background:#fff; color:var(--accent);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Fraunces',serif; font-weight:680; font-size:14px;
+  }
+  .card-body{ padding:18px 20px 22px; }
+  .card-body .name{ font-family:'Fraunces',serif; font-weight:640; font-size:17px; color:var(--ink); }
+  .card-body .tag{ font-size:12.5px; color:var(--ink-soft); margin-top:2px; }
+  .card-body .cta{
+    margin-top:14px; display:inline-flex; align-items:center; gap:6px;
+    font-family:'IBM Plex Mono',monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:.04em;
+    color:var(--accent);
+  }
+  .note{ font-size:12.5px; color:var(--ink-soft); padding-bottom:10px; }
+  .contact{ background:var(--ink); color:var(--paper); padding:50px 0 36px; }
+  .contact h2{ color:var(--paper); font-size:24px; max-width:22ch; }
+  .contact p{ color:var(--paper); opacity:.72; margin-top:10px; font-size:14px; max-width:44ch; }
+  .btn{ display:inline-flex; align-items:center; gap:8px; padding:12px 20px; border-radius:3px; font-weight:600; font-size:14px; text-decoration:none; background:var(--rose); color:#fff; margin-top:20px; }
+  .btn:hover{ background:var(--rose-deep); }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="rose-mark" viewBox="0 0 44 44">
+    <g>
+      <path d="M22,22 C13,20 10,9 22,2 C34,9 31,20 22,22 Z" fill="#4C6FE0" stroke="#1C2F52" stroke-width="0.7"/>
+      <path d="M22,22 C13,20 10,9 22,2 C34,9 31,20 22,22 Z" fill="#4C6FE0" stroke="#1C2F52" stroke-width="0.7" transform="rotate(60 22 22)"/>
+      <path d="M22,22 C13,20 10,9 22,2 C34,9 31,20 22,22 Z" fill="#4C6FE0" stroke="#1C2F52" stroke-width="0.7" transform="rotate(120 22 22)"/>
+      <path d="M22,22 C13,20 10,9 22,2 C34,9 31,20 22,22 Z" fill="#4C6FE0" stroke="#1C2F52" stroke-width="0.7" transform="rotate(180 22 22)"/>
+      <path d="M22,22 C13,20 10,9 22,2 C34,9 31,20 22,22 Z" fill="#4C6FE0" stroke="#1C2F52" stroke-width="0.7" transform="rotate(240 22 22)"/>
+      <path d="M22,22 C13,20 10,9 22,2 C34,9 31,20 22,22 Z" fill="#4C6FE0" stroke="#1C2F52" stroke-width="0.7" transform="rotate(300 22 22)"/>
+      <path d="M22,22 C17,21 15,14 22,9 C29,14 27,21 22,22 Z" fill="#24398F" transform="rotate(30 22 22)"/>
+      <path d="M22,22 C17,21 15,14 22,9 C29,14 27,21 22,22 Z" fill="#24398F" transform="rotate(150 22 22)"/>
+      <path d="M22,22 C17,21 15,14 22,9 C29,14 27,21 22,22 Z" fill="#24398F" transform="rotate(270 22 22)"/>
+      <circle cx="22" cy="22" r="2.6" fill="#D6335F" stroke="#1C2F52" stroke-width="0.4"/>
+    </g>
+  </symbol>
+</svg>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="brand"><svg class="brand-mark" viewBox="0 0 44 44" aria-hidden="true"><use href="#rose-mark"/></svg>BLUE ROSE</div>
+    <nav><a href="clinicas.html">← Voltar</a></nav>
+  </div>
+</div>
+
+<div class="head">
+  <div class="wrap">
+    <div class="eyebrow">Exemplos completos</div>
+    <h1>Sites simples, completos de verdade</h1>
+    <p>Cada exemplo abaixo é um site de uma página inteiro — não só um recorte. Nome, logo e preços são fictícios; a estrutura (hero, serviços, diferenciais, contato) é a mesma que eu entrego pro seu negócio, com sua marca e seus dados reais.</p>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="grid">
+    <a class="card" href="demo-estetica.html" target="_blank" rel="noopener" style="--accent:#c81d4b;">
+      <div class="card-preview"><div class="mono-badge">BF</div></div>
+      <div class="card-body">
+        <div class="name">Clínica Bella Face</div>
+        <div class="tag">Estética facial &amp; corporal</div>
+        <div class="cta">Ver site completo →</div>
+      </div>
+    </a>
+    <a class="card" href="demo-personal.html" target="_blank" rel="noopener" style="--accent:#2f7d52;">
+      <div class="card-preview"><div class="mono-badge">FP</div></div>
+      <div class="card-body">
+        <div class="name">Studio Fit Pro</div>
+        <div class="tag">Personal trainer</div>
+        <div class="cta">Ver site completo →</div>
+      </div>
+    </a>
+    <a class="card" href="demo-salao.html" target="_blank" rel="noopener" style="--accent:#b8792b;">
+      <div class="card-preview"><div class="mono-badge">EB</div></div>
+      <div class="card-body">
+        <div class="name">Espaço Bela</div>
+        <div class="tag">Salão &amp; barbearia</div>
+        <div class="cta">Ver site completo →</div>
+      </div>
+    </a>
+    <a class="card" href="demo-fisio.html" target="_blank" rel="noopener" style="--accent:#1f7a8c;">
+      <div class="card-preview"><div class="mono-badge">CV</div></div>
+      <div class="card-body">
+        <div class="name">Consultório Vitta</div>
+        <div class="tag">Fisioterapia &amp; saúde</div>
+        <div class="cta">Ver site completo →</div>
+      </div>
+    </a>
+  </div>
+  <div class="note">Nenhum dos negócios acima é real — são exemplos criados pra mostrar formato e qualidade de entrega.</div>
+</div>
+
+<div class="contact">
+  <div class="wrap">
+    <h2>Não achou seu nicho na lista?</h2>
+    <p>Me conta que tipo de negócio é o seu que eu adapto a estrutura — a lógica é a mesma pra praticamente qualquer serviço local.</p>
+    <a class="btn" href="https://wa.me/5516991203700?text=Oi%2C%20Caua!%20Vi%20os%20exemplos%20de%20site%20e%20quero%20saber%20mais." target="_blank" rel="noopener">Chamar no WhatsApp</a>
+  </div>
+</div>
+
+</body>
+</html>

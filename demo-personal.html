@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Studio Fit Pro — exemplo de site</title>
+<meta name="robots" content="noindex">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:,">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,680;1,9..144,560&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+  :root{
+    --ink:#1c2620; --ink-soft:#5c6d63; --paper:#f5f8f5; --card:#ffffff;
+    --card-tint:#e9f1ea; --line:#d9e4da; --accent:#2f7d52; --accent-deep:#1f5a3a;
+    --accent-tint:#e2f2e7; --focus:#1f5a3a;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --ink:#e9f1ea; --ink-soft:#a9bcae; --paper:#111713; --card:#182019;
+      --card-tint:#1e2a21; --line:#2b3830; --accent:#4fbb80; --accent-deep:#7fd7a4; --accent-tint:#1c3226; --focus:#4fbb80; }
+  }
+  *{box-sizing:border-box;}
+  body{ margin:0; background:var(--paper); color:var(--ink); font-family:'Archivo',ui-sans-serif,system-ui,sans-serif; line-height:1.55; }
+  h1,h2,h3{ font-family:'Fraunces',ui-serif,Georgia,serif; font-weight:660; line-height:1.1; text-wrap:balance; margin:0; color:var(--ink); }
+  a{ color:inherit; }
+  .wrap{ max-width:920px; margin:0 auto; padding:0 24px; }
+  .demo-bar{ background:var(--ink); color:var(--paper); font-family:'IBM Plex Mono',monospace; font-size:12px; padding:10px 24px; text-align:center; }
+  .demo-bar a{ color:var(--accent-deep); text-decoration:underline; }
+  .site-header{ padding:22px 0; border-bottom:1px solid var(--line); }
+  .site-header .wrap{ display:flex; align-items:center; justify-content:space-between; }
+  .brand{ font-family:'Fraunces',serif; font-weight:660; font-size:19px; display:flex; align-items:center; gap:10px; }
+  .brand-dot{ width:12px;height:12px;border-radius:50%; background:var(--accent); }
+  nav{ display:flex; gap:20px; font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.04em; text-transform:uppercase; }
+  nav a{ text-decoration:none; color:var(--ink-soft); }
+  nav a:hover{ color:var(--ink); }
+  @media (max-width:560px){ nav{ display:none; } }
+  .hero{ padding:60px 0 48px; }
+  .hero-grid{ display:grid; grid-template-columns:1.1fr 1fr; gap:36px; align-items:center; }
+  @media (max-width:720px){ .hero-grid{ grid-template-columns:1fr; } }
+  .eyebrow{ font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.09em; text-transform:uppercase; color:var(--accent-deep); }
+  .hero h1{ font-size:clamp(28px,4.6vw,42px); margin-top:10px; }
+  .hero p{ margin-top:14px; font-size:16px; color:var(--ink-soft); max-width:46ch; }
+  .btn{ display:inline-flex; align-items:center; gap:8px; padding:13px 22px; border-radius:3px; font-weight:600; font-size:14.5px; text-decoration:none; margin-top:22px; background:var(--accent); color:#fff; }
+  .btn:hover{ background:var(--accent-deep); }
+  .photo-block{ aspect-ratio:4/3; border-radius:10px; background:repeating-linear-gradient(135deg, var(--accent-tint) 0 10px, var(--card-tint) 10px 20px); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--ink-soft); text-align:center; padding:20px; }
+  section{ padding:44px 0; }
+  .services{ background:var(--card-tint); }
+  .services h2{ font-size:26px; margin-bottom:26px; }
+  .svc-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+  @media (max-width:600px){ .svc-grid{ grid-template-columns:1fr; } }
+  .svc-card{ background:var(--card); border:1px solid var(--line); border-radius:8px; padding:18px; }
+  .svc-card .name{ font-weight:600; font-size:15px; }
+  .svc-card .price{ font-family:'IBM Plex Mono',monospace; color:var(--accent-deep); font-size:14px; margin-top:6px; }
+  .props{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  @media (max-width:680px){ .props{ grid-template-columns:1fr; } }
+  .prop{ border-top:2px solid var(--accent); padding-top:12px; }
+  .prop h3{ font-size:15px; font-family:'Archivo',sans-serif; font-weight:600; }
+  .prop p{ font-size:13.5px; color:var(--ink-soft); margin:6px 0 0; }
+  .info{ background:var(--ink); color:var(--paper); }
+  .info h2{ color:var(--paper); font-size:24px; }
+  .info-grid{ display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:20px; }
+  @media (max-width:600px){ .info-grid{ grid-template-columns:1fr; } }
+  .info-grid div{ font-size:14px; opacity:.85; }
+  .info-grid .lbl{ font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.06em; text-transform:uppercase; opacity:.6; margin-bottom:6px; }
+  .info .btn{ background:var(--accent); }
+  footer{ padding:20px 0 40px; font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink-soft); text-align:center; }
+  footer a{ color:var(--accent-deep); }
+</style>
+</head>
+<body>
+<div class="demo-bar">Exemplo de site feito pela BLUE ROSE — Studio Fit Pro não é um negócio real. <a href="exemplos.html">Ver outros exemplos</a> · <a href="clinicas.html">Voltar</a></div>
+
+<header class="site-header">
+  <div class="wrap">
+    <div class="brand"><span class="brand-dot"></span>Fit Pro</div>
+    <nav><a href="#servicos">Planos</a><a href="#sobre">Sobre</a><a href="#contato">Contato</a></nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Personal trainer</div>
+      <h1>Treino personalizado pra você sair da rotina e ver resultado.</h1>
+      <p>Acompanhamento individual, plano de treino sob medida e ambiente motivador — sem enrolação.</p>
+      <a class="btn" href="#contato">Marcar avaliação no WhatsApp</a>
+    </div>
+    <div class="photo-block">[foto do espaço/treino]</div>
+  </div>
+</div>
+
+<section class="services" id="servicos">
+  <div class="wrap">
+    <h2>Planos</h2>
+    <div class="svc-grid">
+      <div class="svc-card"><div class="name">Avaliação física</div><div class="price">Grátis</div></div>
+      <div class="svc-card"><div class="name">Plano mensal</div><div class="price">R$250</div></div>
+      <div class="svc-card"><div class="name">Pacote trimestral</div><div class="price">R$650</div></div>
+      <div class="svc-card"><div class="name">Treino em dupla</div><div class="price">R$180</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="sobre">
+  <div class="wrap">
+    <div class="props">
+      <div class="prop"><h3>Acompanhamento individual</h3><p>Treino ajustado ao seu ritmo e objetivo, revisado periodicamente.</p></div>
+      <div class="prop"><h3>Planilha personalizada</h3><p>Nada de treino genérico copiado de internet.</p></div>
+      <div class="prop"><h3>Ambiente motivador</h3><p>Espaço pensado pra você manter a consistência.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="info" id="contato">
+  <div class="wrap">
+    <h2>Marque sua avaliação</h2>
+    <div class="info-grid">
+      <div><div class="lbl">Endereço</div>Av. Example, 456 — Jardim Central</div>
+      <div><div class="lbl">Horário</div>Seg–Sáb 6h–21h</div>
+    </div>
+    <a class="btn" href="https://wa.me/5516991203700" target="_blank" rel="noopener">Chamar no WhatsApp</a>
+  </div>
+</section>
+
+<footer>Site de exemplo — <a href="clinicas.html">BLUE ROSE, sites e automação pra negócios locais</a></footer>
+</body>
+</html>
