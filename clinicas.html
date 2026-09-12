@@ -244,16 +244,9 @@
   .site-hero .ph-photo{
     height:74px;
     border-radius:8px;
-    background:
-      repeating-linear-gradient(135deg, var(--rose-tint) 0 8px, transparent 8px 16px),
-      var(--card);
-    border:1px dashed var(--line);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:10.5px;
-    color:var(--ink-soft);
-    font-family:'IBM Plex Mono',monospace;
+    background-size:cover;
+    background-position:center;
+    border:1px solid var(--line);
     margin-bottom:14px;
   }
   .site-hero h4{
@@ -659,7 +652,7 @@
         <div class="phone-screen">
           <div class="site-nav"><span>Início</span><span>Serviços</span><span>Agendar</span></div>
           <div class="site-hero">
-            <div class="ph-photo">[foto do espaço]</div>
+            <div class="ph-photo" style="background-image:url('img/clinicas-hero-space.jpg');"></div>
             <h4>Clínica Exemplo</h4>
             <p>Estética facial &amp; corporal · Seg–Sex, 9h–19h</p>
             <span class="mini-btn">Agendar horário</span>
@@ -776,7 +769,7 @@
           <div class="phone-screen">
             <div class="site-nav"><span>Início</span><span>Serviços</span><span>Agendar</span></div>
             <div class="site-hero">
-              <div class="ph-photo" style="height:56px;">[foto do espaço]</div>
+              <div class="ph-photo" style="height:56px; background-image:url('img/clinicas-hero-space.jpg');"></div>
               <h4 style="font-size:14px;">Seu negócio aqui</h4>
               <p>Endereço · horário · contato</p>
               <span class="mini-btn">Falar no WhatsApp</span>
