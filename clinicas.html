@@ -40,7 +40,8 @@
   }
 
   *{box-sizing:border-box;}
-  html{-webkit-text-size-adjust:100%;}
+  html{-webkit-text-size-adjust:100%; scroll-behavior:smooth; scroll-padding-top:80px;}
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
   body{
     margin:0;
     background:var(--paper);
@@ -104,6 +105,22 @@
     color:var(--ink-soft);
   }
   @media (max-width:560px){ .topbar .tag{display:none;} }
+  .topnav{
+    display:flex;
+    gap:22px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+  }
+  .topnav a{
+    text-decoration:none;
+    color:var(--ink-soft);
+    padding-bottom:2px;
+    border-bottom:1px solid transparent;
+    transition:color .15s ease, border-color .15s ease;
+  }
+  .topnav a:hover{ color:var(--ink); border-color:var(--rose); }
 
   /* ---------- hero ---------- */
   .hero{ padding:56px 0 44px; position:relative; overflow:hidden; }
@@ -279,6 +296,77 @@
     color:var(--ink-soft);
     margin-top:12px;
     font-family:'IBM Plex Mono',monospace;
+  }
+
+  /* ---------- examples ---------- */
+  .examples{ padding:12px 0 52px; }
+  .examples h2{ font-size:26px; max-width:26ch; margin-bottom:8px; }
+  .examples .sub-lede{
+    font-size:14.5px;
+    color:var(--ink-soft);
+    max-width:56ch;
+    margin-bottom:28px;
+  }
+  .examples-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+  }
+  @media (max-width:680px){ .examples-grid{ grid-template-columns:1fr; } }
+  .ex-card{
+    border:1px solid var(--line);
+    border-radius:8px;
+    background:var(--card);
+    padding:20px;
+    transition:border-color .15s ease, transform .15s ease;
+  }
+  .ex-card:hover{ border-color:var(--accent); transform:translateY(-2px); }
+  .ex-head{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:14px;
+  }
+  .ex-logo{
+    width:38px;height:38px;border-radius:50%;
+    flex:none;
+    background:var(--accent);
+    color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Fraunces',serif;
+    font-weight:680;
+    font-size:14px;
+  }
+  .ex-name{ font-family:'Fraunces',serif; font-weight:640; font-size:16.5px; }
+  .ex-tag{ font-size:11.5px; color:var(--ink-soft); margin-top:1px; }
+  .ex-services{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    margin-bottom:16px;
+    padding-top:12px;
+    border-top:1px solid var(--line);
+  }
+  .ex-services .row{
+    display:flex;
+    justify-content:space-between;
+    font-size:12.5px;
+    color:var(--ink-soft);
+  }
+  .ex-services .row span:last-child{ color:var(--ink); }
+  .ex-cta{
+    display:inline-block;
+    background:var(--accent);
+    color:#fff;
+    font-size:11.5px;
+    font-weight:600;
+    padding:8px 14px;
+    border-radius:3px;
+  }
+  .examples-note{
+    margin-top:20px;
+    font-size:12.5px;
+    color:var(--ink-soft);
   }
 
   /* ---------- pain section ---------- */
@@ -519,7 +607,11 @@
 <div class="topbar">
   <div class="wrap">
     <div class="brand"><svg class="brand-mark" viewBox="0 0 44 44" aria-hidden="true"><use href="#rose-mark"/></svg>BLUE ROSE</div>
-    <div class="tag">sites e automação de atendimento para negócios locais</div>
+    <nav class="topnav">
+      <a href="#exemplos">Exemplos</a>
+      <a href="#precos">Preços</a>
+      <a href="#fale">Contato</a>
+    </nav>
   </div>
 </div>
 
@@ -561,8 +653,63 @@
   <div class="wrap">
     <div class="about-row">
       <div class="about-photo"><svg viewBox="0 0 44 44" aria-hidden="true"><use href="#rose-mark"/></svg></div>
-      <div class="about-text"><strong>Quem monta:</strong> Cauã, desenvolvedor freelancer — cuido do site e da automação do início ao fim, sem agência no meio. Código e outros projetos: <a href="https://github.com/CauaCaetano" target="_blank" rel="noopener">github.com/CauaCaetano</a></div>
+      <div class="about-text"><strong>Quem monta:</strong> Cauã, desenvolvedor freelancer — cuido do site e da automação do início ao fim, sem agência no meio.</div>
     </div>
+  </div>
+</div>
+
+<div class="examples" id="exemplos">
+  <div class="wrap">
+    <div class="eyebrow">Exemplos</div>
+    <h2 style="margin-top:8px;">Algumas ideias de como fica pro seu nicho</h2>
+    <div class="sub-lede">Nomes, logos e preços fictícios — só pra mostrar formato e tom visual. O seu vem com sua marca, seus serviços e seus preços reais.</div>
+    <div class="examples-grid">
+      <div class="ex-card" style="--accent:#c81d4b;">
+        <div class="ex-head">
+          <div class="ex-logo">BF</div>
+          <div><div class="ex-name">Clínica Bella Face</div><div class="ex-tag">Estética facial &amp; corporal</div></div>
+        </div>
+        <div class="ex-services">
+          <div class="row"><span>Limpeza de pele</span><span>R$120</span></div>
+          <div class="row"><span>Peeling</span><span>R$180</span></div>
+        </div>
+        <span class="ex-cta">Agendar horário</span>
+      </div>
+      <div class="ex-card" style="--accent:#2f7d52;">
+        <div class="ex-head">
+          <div class="ex-logo">FP</div>
+          <div><div class="ex-name">Studio Fit Pro</div><div class="ex-tag">Personal trainer</div></div>
+        </div>
+        <div class="ex-services">
+          <div class="row"><span>Avaliação física</span><span>Grátis</span></div>
+          <div class="row"><span>Plano mensal</span><span>R$250</span></div>
+        </div>
+        <span class="ex-cta">Marcar aula</span>
+      </div>
+      <div class="ex-card" style="--accent:#b8792b;">
+        <div class="ex-head">
+          <div class="ex-logo">EB</div>
+          <div><div class="ex-name">Espaço Bela</div><div class="ex-tag">Salão &amp; barbearia</div></div>
+        </div>
+        <div class="ex-services">
+          <div class="row"><span>Corte + barba</span><span>R$70</span></div>
+          <div class="row"><span>Coloração</span><span>R$150</span></div>
+        </div>
+        <span class="ex-cta">Ver horários</span>
+      </div>
+      <div class="ex-card" style="--accent:#1f7a8c;">
+        <div class="ex-head">
+          <div class="ex-logo">CV</div>
+          <div><div class="ex-name">Consultório Vitta</div><div class="ex-tag">Fisioterapia &amp; saúde</div></div>
+        </div>
+        <div class="ex-services">
+          <div class="row"><span>Primeira consulta</span><span>R$180</span></div>
+          <div class="row"><span>Sessão de retorno</span><span>R$120</span></div>
+        </div>
+        <span class="ex-cta">Falar no WhatsApp</span>
+      </div>
+    </div>
+    <div class="examples-note">Gostou de algum formato? É só me falar o nicho do seu negócio que eu adapto a estrutura.</div>
   </div>
 </div>
 
@@ -661,7 +808,7 @@
   </div>
 </div>
 
-<div class="contact">
+<div class="contact" id="fale">
   <div class="wrap">
     <h2>Me conta seus horários e serviços — eu volto com um orçamento certo.</h2>
     <p>Sem compromisso: você decide depois de ver o valor fechado.</p>
