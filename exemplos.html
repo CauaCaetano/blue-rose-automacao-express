@@ -27,7 +27,7 @@
   .topbar{ padding:22px 0; border-bottom:1px solid var(--line); }
   .topbar .wrap{ display:flex; align-items:center; justify-content:space-between; gap:12px; }
   .brand{ display:flex; align-items:center; gap:10px; font-family:'Fraunces',serif; font-weight:680; font-size:19px; }
-  .brand-mark{ width:28px;height:28px; flex:none; }
+  .brand-mark{ width:28px;height:28px; flex:none; border-radius:50%; object-fit:cover; background:#fff; }
   .topbar nav{ font-family:'IBM Plex Mono',monospace; font-size:12.5px; text-transform:uppercase; letter-spacing:.04em; }
   .topbar nav a{ text-decoration:none; color:var(--ink-soft); }
   .topbar nav a:hover{ color:var(--ink); }
@@ -122,7 +122,7 @@
 
 <div class="topbar">
   <div class="wrap">
-    <div class="brand"><svg class="brand-mark" viewBox="0 0 44 44" aria-hidden="true"><use href="#rose-mark"/></svg>BLUE ROSE</div>
+    <div class="brand"><img class="brand-mark" src="img/blue-rose-logo.jpg" alt="BLUE ROSE">BLUE ROSE</div>
     <nav><a href="clinicas.html">← Voltar</a></nav>
   </div>
 </div>
