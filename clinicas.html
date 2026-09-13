@@ -547,6 +547,29 @@
     color:var(--ink-soft);
   }
 
+  /* ---------- proof (screenshots reais) ---------- */
+  .proof{ padding:12px 0 52px; }
+  .proof > .wrap > .eyebrow{ margin-bottom:8px; }
+  .proof h2{ font-size:26px; max-width:32ch; margin-bottom:30px; }
+  .proof-grid{ display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+  @media (max-width:680px){ .proof-grid{ grid-template-columns:1fr; } }
+  .proof-card{ background:var(--card); border:1px solid var(--line); border-radius:8px; overflow:hidden; box-shadow:var(--shadow); }
+  .proof-card img{ width:100%; display:block; border-bottom:1px solid var(--line); }
+  .proof-cap{ padding:16px 18px; font-size:13.5px; color:var(--ink-soft); }
+  .proof-cap strong{ color:var(--ink); }
+  .proof-note{ margin-top:18px; font-size:12.5px; color:var(--ink-soft); }
+  .proof-note a{ text-decoration:underline; color:var(--ink-soft); }
+
+  /* ---------- faq ---------- */
+  .faq{ padding:12px 0 56px; }
+  .faq > .wrap > .eyebrow{ text-align:center; }
+  .faq h2{ font-size:26px; text-align:center; margin:8px auto 30px; }
+  .faq-list{ max-width:720px; margin:0 auto; }
+  .faq-item{ padding:20px 0; border-top:1px solid var(--line); }
+  .faq-item:last-child{ border-bottom:1px solid var(--line); }
+  .faq-item h3{ font-family:'Archivo',sans-serif; font-weight:600; font-size:15px; }
+  .faq-item p{ margin-top:8px; font-size:13.5px; color:var(--ink-soft); }
+
   /* ---------- footer / contact ---------- */
   .contact{
     background:var(--ink);
@@ -804,6 +827,24 @@
   </div>
 </div>
 
+<div class="proof">
+  <div class="wrap">
+    <div class="eyebrow">Veja funcionando</div>
+    <h2>Não é só bonito — funciona de verdade</h2>
+    <div class="proof-grid">
+      <div class="proof-card">
+        <img src="img/screenshot-calculadora.png" alt="Calculadora de orçamento somando serviços marcados em tempo real, total R$270">
+        <div class="proof-cap"><strong>Calculadora de orçamento</strong> — o cliente marca o que quer e já vê o total na hora, sem precisar te perguntar o preço.</div>
+      </div>
+      <div class="proof-card">
+        <img src="img/screenshot-agendador.png" alt="Agendador mostrando os próximos dias úteis reais e um horário selecionado">
+        <div class="proof-cap"><strong>Agendamento com data real</strong> — mostra os próximos dias úteis de verdade e já manda tudo pronto pro seu WhatsApp.</div>
+      </div>
+    </div>
+    <div class="proof-note">Prints reais do exemplo Prisma Odontologia — <a href="demo-odonto-index.html">veja funcionando ao vivo →</a></div>
+  </div>
+</div>
+
 <div class="process">
   <div class="wrap">
     <div class="eyebrow">Como funciona</div>
@@ -845,6 +886,35 @@
       </div>
     </div>
     <div class="pricing-note">Sem mensalidade fixa. Faixa final depende do número de serviços/páginas — fechado com você antes de começar.</div>
+  </div>
+</div>
+
+<div class="faq">
+  <div class="wrap">
+    <div class="eyebrow">Perguntas frequentes</div>
+    <h2>Antes de você chamar no WhatsApp</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <h3>Preciso entender de tecnologia pra manter o site?</h3>
+        <p>Não. Depois de pronto, se quiser trocar preço, horário ou serviço, é só me chamar — você não precisa mexer em código nem em nenhum painel sozinho.</p>
+      </div>
+      <div class="faq-item">
+        <h3>O site fica no meu nome?</h3>
+        <p>Sim, o conteúdo e a estrutura são seus. Se quiser um domínio próprio (seunegocio.com.br) no lugar do link padrão, dá pra combinar à parte.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Preciso trocar de número de WhatsApp?</h3>
+        <p>Não. A automação funciona com o número que você já usa no negócio hoje — não precisa criar linha nova nem mexer no que já está funcionando.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Posso pedir alterações depois de pronto?</h3>
+        <p>Uma rodada de ajustes leve já está incluída no preço, logo após a entrega. Depois disso, mudanças maiores têm um valor à parte, sempre combinado antes de eu mexer em qualquer coisa.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Como funciona o pagamento?</h3>
+        <p>Metade pra começar, metade na entrega. Sem mensalidade — você paga uma vez e o site é seu.</p>
+      </div>
+    </div>
   </div>
 </div>
 
