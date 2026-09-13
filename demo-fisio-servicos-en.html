@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Services &amp; prices — Consultório Vitta</title>
+<meta name="robots" content="noindex">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/jpeg" href="img/blue-rose-logo.jpg">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,680;1,9..144,560&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+  :root{
+    --ink:#17262a; --ink-soft:#57717a; --paper:#f3f8f9; --card:#ffffff;
+    --card-tint:#e5f1f3; --line:#d5e6e9; --accent:#1f7a8c; --accent-deep:#13525f;
+    --accent-tint:#dcf0f3; --accent-2:#7fc3d1; --focus:#13525f; --wa:#25d366; --gold:#c9973f;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --ink:#e6f2f4; --ink-soft:#9fbac0; --paper:#0e1719; --card:#152224;
+      --card-tint:#1a2b2e; --line:#283d41; --accent:#4fb3c7; --accent-deep:#7cc9d8; --accent-tint:#173338; --accent-2:#2a5b66; --focus:#4fb3c7; --gold:#e0b567; }
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth; scroll-padding-top:90px;}
+  body{ margin:0; background:var(--paper); color:var(--ink); font-family:'Archivo',ui-sans-serif,system-ui,sans-serif; line-height:1.55; }
+  h1,h2,h3{ font-family:'Fraunces',ui-serif,Georgia,serif; font-weight:660; line-height:1.1; text-wrap:balance; margin:0; color:var(--ink); }
+  a{ color:inherit; }
+  .mono{ font-family:'IBM Plex Mono',ui-monospace,monospace; font-variant-numeric:tabular-nums; }
+  .wrap{ max-width:1120px; margin:0 auto; padding:0 24px; }
+  .demo-bar{ background:var(--ink); color:var(--paper); font-family:'IBM Plex Mono',monospace; font-size:12px; padding:10px 24px; text-align:center; }
+  .demo-bar a{ color:var(--accent-2); text-decoration:underline; }
+  .site-header{ padding:18px 0; border-bottom:1px solid var(--line); position:sticky; top:0; background:var(--paper); z-index:30; }
+  .site-header .wrap{ display:flex; align-items:center; justify-content:space-between; gap:16px; }
+  .brand{ display:flex; align-items:center; gap:11px; }
+  .brand-icon{ width:36px; height:36px; flex:none; }
+  .brand-text{ display:flex; flex-direction:column; line-height:1.15; }
+  .brand-name{ font-family:'Fraunces',serif; font-weight:680; font-size:18px; }
+  .brand-tag{ font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.1em; color:var(--ink-soft); text-transform:uppercase; }
+  nav.pagenav{ display:flex; gap:26px; font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:.05em; text-transform:uppercase; }
+  nav.pagenav a{ text-decoration:none; color:var(--ink-soft); padding-bottom:3px; border-bottom:2px solid transparent; transition:.15s; }
+  nav.pagenav a:hover, nav.pagenav a.active{ color:var(--ink); border-color:var(--accent); }
+  @media (max-width:640px){ nav.pagenav{ display:none; } }
+  .btn{ display:inline-flex; align-items:center; gap:8px; padding:12px 22px; border-radius:999px; font-weight:600; font-size:14px; text-decoration:none; background:var(--accent); color:#fff; border:none; cursor:pointer; transition:background .15s; }
+  .btn:hover{ background:var(--accent-deep); }
+  .btn:disabled{ background:var(--line); color:var(--ink-soft); cursor:not-allowed; }
+  .btn-ghost{ background:transparent; border:1.5px solid var(--line); color:var(--ink); }
+  .btn-ghost:hover{ border-color:var(--accent); color:var(--accent-deep); }
+  .btn-sm{ padding:9px 16px; font-size:12.5px; }
+
+  .page-hero{ padding:48px 0 30px; }
+  .eyebrow{ font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.09em; text-transform:uppercase; color:var(--accent-deep); }
+  .page-hero h1{ font-size:clamp(28px,4vw,40px); margin-top:12px; }
+  .page-hero p{ margin-top:14px; font-size:15.5px; color:var(--ink-soft); max-width:60ch; }
+
+  section{ padding:20px 0; }
+  .cat-block{ padding:36px 0; border-top:1px solid var(--line); scroll-margin-top:90px; }
+  .cat-head{ display:flex; align-items:center; gap:14px; margin-bottom:22px; }
+  .cat-head svg{ width:32px; height:32px; }
+  .cat-head h2{ font-size:22px; }
+  .cat-head .count{ font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--ink-soft); margin-left:auto; }
+
+  .svc-list{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  @media (max-width:700px){ .svc-list{ grid-template-columns:1fr; } }
+  .svc-row{ display:flex; align-items:center; gap:14px; padding:14px 16px; background:var(--card); border:1px solid var(--line); border-radius:10px; }
+  .svc-row input[type=checkbox]{ width:19px; height:19px; accent-color:var(--accent); flex:none; cursor:pointer; }
+  .svc-row label{ flex:1; cursor:pointer; }
+  .svc-row .name{ font-size:14px; font-weight:500; }
+  .svc-row .desc{ font-size:11.5px; color:var(--ink-soft); margin-top:2px; }
+  .svc-row .price{ font-family:'IBM Plex Mono',monospace; font-size:13.5px; color:var(--accent-deep); font-weight:600; white-space:nowrap; }
+
+  .calc-layout{ display:grid; grid-template-columns:1fr 320px; gap:40px; align-items:start; }
+  @media (max-width:960px){ .calc-layout{ grid-template-columns:1fr; } }
+  .calc-box{ position:sticky; top:96px; background:var(--card); border:1px solid var(--line); border-radius:16px; padding:24px; box-shadow:0 20px 40px -24px rgba(23,38,42,.25); }
+  .calc-box h3{ font-size:17px; }
+  .calc-box .sub{ font-size:12.5px; color:var(--ink-soft); margin-top:6px; }
+  .calc-list{ margin-top:16px; display:flex; flex-direction:column; gap:8px; max-height:220px; overflow-y:auto; padding-right:4px; }
+  .calc-empty{ font-size:12.5px; color:var(--ink-soft); font-style:italic; padding:10px 0; }
+  .calc-item{ display:flex; justify-content:space-between; font-size:12.5px; gap:8px; }
+  .calc-item .n{ color:var(--ink-soft); }
+  .calc-item .p{ font-family:'IBM Plex Mono',monospace; white-space:nowrap; }
+  .calc-total{ margin-top:16px; padding-top:16px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:baseline; }
+  .calc-total .lbl{ font-size:13px; color:var(--ink-soft); }
+  .calc-total .val{ font-family:'IBM Plex Mono',monospace; font-size:22px; font-weight:600; color:var(--accent-deep); }
+  .calc-note{ font-size:11px; color:var(--ink-soft); margin-top:10px; }
+  .calc-box .btn{ width:100%; justify-content:center; margin-top:16px; }
+
+  .pkg-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  @media (max-width:820px){ .pkg-grid{ grid-template-columns:1fr; } }
+  .pkg-card{ background:var(--card); border:1px solid var(--line); border-radius:16px; overflow:hidden; display:flex; flex-direction:column; }
+  .pkg-card.featured{ border-color:var(--accent); box-shadow:0 20px 40px -26px rgba(31,122,140,.4); }
+  .pkg-head{ padding:20px 22px; border-bottom:1px solid var(--line); background:var(--card-tint); }
+  .pkg-head .tag{ font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent-deep); }
+  .pkg-head h3{ font-size:18px; margin-top:6px; }
+  .pkg-body{ padding:20px 22px; flex:1; display:flex; flex-direction:column; }
+  .pkg-body ul{ list-style:none; margin:0 0 18px; padding:0; display:flex; flex-direction:column; gap:9px; }
+  .pkg-body li{ font-size:13px; display:flex; gap:8px; align-items:flex-start; }
+  .pkg-body li svg{ width:16px; height:16px; flex:none; margin-top:2px; }
+  .pkg-price{ margin-top:auto; }
+  .pkg-price .old{ font-size:12px; color:var(--ink-soft); text-decoration:line-through; }
+  .pkg-price .now{ font-family:'IBM Plex Mono',monospace; font-size:24px; font-weight:600; color:var(--accent-deep); }
+  .pkg-body .btn{ width:100%; justify-content:center; margin-top:16px; }
+
+  footer.site-footer{ border-top:1px solid var(--line); padding:44px 0 30px; margin-top:20px; }
+  .foot-grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:30px; }
+  @media (max-width:640px){ .foot-grid{ grid-template-columns:1fr; } }
+  .foot-col .lbl{ font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:10px; }
+  .foot-col .line{ font-size:13.5px; margin-bottom:6px; }
+  .foot-bottom{ margin-top:30px; padding-top:20px; border-top:1px solid var(--line); font-size:12px; color:var(--ink-soft); text-align:center; }
+  .foot-bottom a{ text-decoration:underline; }
+  .wa-float{ position:fixed; right:20px; bottom:20px; width:54px; height:54px; border-radius:50%; background:var(--wa); display:flex; align-items:center; justify-content:center; box-shadow:0 6px 18px rgba(0,0,0,.22); z-index:40; }
+  .wa-float svg{ width:26px; height:26px; }
+</style>
+</head>
+<body>
+
+<div class="demo-bar">Example site created by <strong>BLUE ROSE</strong> — names, prices and testimonials are illustrative. <a href="clinicas-en.html">See portfolio →</a></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="ic-mark" viewBox="0 0 40 40">
+    <g fill="var(--accent)">
+      <rect x="16" y="5" width="8" height="30" rx="3"/>
+      <rect x="5" y="16" width="30" height="8" rx="3"/>
+    </g>
+  </symbol>
+  <symbol id="ic-eval" viewBox="0 0 40 40">
+    <rect x="10" y="6" width="20" height="28" rx="3" fill="none" stroke="var(--accent)" stroke-width="2.4"/>
+    <rect x="15" y="3" width="10" height="6" rx="2" fill="var(--accent)"/>
+    <path d="M14,18 L18,22 L27,13" fill="none" stroke="var(--accent)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="14" y1="27" x2="26" y2="27" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="ic-posture" viewBox="0 0 40 40">
+    <circle cx="20" cy="8" r="4.5" fill="var(--accent)"/>
+    <line x1="20" y1="13" x2="20" y2="28" stroke="var(--accent)" stroke-width="2.6" stroke-linecap="round"/>
+    <line x1="20" y1="17" x2="12" y2="22" stroke="var(--accent)" stroke-width="2.6" stroke-linecap="round"/>
+    <line x1="20" y1="17" x2="28" y2="22" stroke="var(--accent)" stroke-width="2.6" stroke-linecap="round"/>
+    <line x1="20" y1="28" x2="14" y2="35" stroke="var(--accent)" stroke-width="2.6" stroke-linecap="round"/>
+    <line x1="20" y1="28" x2="26" y2="35" stroke="var(--accent)" stroke-width="2.6" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="ic-pilates" viewBox="0 0 40 40">
+    <path d="M9,30 C9,16 31,24 31,10" fill="none" stroke="var(--accent)" stroke-width="2.8" stroke-linecap="round"/>
+    <circle cx="9" cy="30" r="3" fill="var(--accent)"/>
+    <circle cx="31" cy="10" r="3" fill="var(--accent)"/>
+  </symbol>
+  <symbol id="ic-check" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="10" fill="var(--accent-tint)"/>
+    <path d="M7,12.5 L10.5,16 L17,8.5" fill="none" stroke="var(--accent-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+</svg>
+
+<header class="site-header">
+  <div class="wrap">
+    <div class="brand">
+      <svg class="brand-icon" viewBox="0 0 40 40"><use href="#ic-mark"/></svg>
+      <div class="brand-text"><span class="brand-name">Vitta</span><span class="brand-tag">Physical Therapy &amp; Health</span></div>
+    </div>
+    <nav class="pagenav">
+      <a href="demo-fisio-index-en.html">Home</a>
+      <a href="demo-fisio-servicos-en.html" class="active">Services</a>
+      <a href="demo-fisio-galeria-en.html">Gallery</a>
+      <a href="demo-fisio-contato-en.html">Contact</a>
+    </nav>
+    <a class="btn btn-sm" href="demo-fisio-contato-en.html">Book an appointment</a>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="wrap">
+    <div class="eyebrow">Services &amp; prices</div>
+    <h1>Pick your services and build your quote on the spot</h1>
+    <p>Check the services you're interested in below — the calculator on the side adds it all up in real time. It's only an estimate: the final price is always confirmed after an assessment.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap calc-layout">
+    <div>
+
+      <div class="cat-block" id="assessment" style="border-top:none;padding-top:0;">
+        <div class="cat-head"><svg viewBox="0 0 40 40"><use href="#ic-eval"/></svg><h2>Assessment &amp; Diagnostics</h2><span class="count">4 items</span></div>
+        <div class="svc-list">
+          <div class="svc-row"><input type="checkbox" class="svc-check" data-name="First visit" data-price="36"><label class="name">First visit<div class="desc">Complete assessment of your condition and goal</div></label><span class="price">$36</span></div>
+          <div class="svc-row"><input type="checkbox" class="svc-check" data-name="Posture assessment" data-price="30"><label class="name">Posture assessment<div class="desc">Detailed analysis to identify imbalances</div></label><span class="price">$30</span></div>
+          <div class="svc-row"><input type="checkbox" class="svc-check" data-name="Follow-up reassessment" data-price="14"><label class="name">Follow-up reassessment<div class="desc">Tracks your treatment progress</div></label><span class="price">$14</span></div>
+          <div class="svc-row"><input type="checkbox" class="svc-check" data-name="Functional movement assessment" data-price="32"><label class="name">Functional movement assessment<div class="desc">Analyzes movement patterns and injury risk</div></label><span class="price">$32</span></div>
+        </div>
+      </div>
+
+      <div class="cat-block" id="therapy">
+        <div class="cat-head"><svg viewBox="0 0 40 40"><use href="#ic-mark"/></svg><h2>Physical Therapy</h2><span class="count">5 items</span></div>
+        <div class="svc-list">
+          <div class="svc-row"><input type="checkbox" class="svc-check" data-name="Follow-up session" data-price="24"><label class="name">Follow-up session<div class="desc">Ongoing treatment, with adjustments</div></label><span class="price">$24</span></div>
+          <div class="svc-row"><input type="checkbox" class="svc-check" data-name="Manual therapy (drop-in session)" data-price="28"><label class="name">Manual therapy<div class="desc">Hands-on techniques focused on pain relief</div></label><span class="price">$28</span></div>
+          <div class="svc-row"><input type="checkbox" class="svc-check" data-name="5-session follow-up package" data-price="110"><label class="name">5-session package<div class="desc">Reduced rate for continuous treatment</div></label><span class="price">$110</span></div>
+          <div class="svc-row"><input type="checkbox" class="svc-check" data-name="10-session follow-up package" data-price="200"><label class="name">10-session package<div class="desc">Best value for longer treatment</div></label><span class="price">$200</span></div>
+          <div class="svc-row"><input type="checkbox" class="svc-check" data-name="Electrotherapy / TENS (drop-in session)" data-price="18"><label class="name">Electrotherapy / TENS<div class="desc">Electrical stimulation for pain relief</div></label><span class="price">$18</span></div>
+        </div>
+      </div>
+
+      <div class="cat-block" id="posture">
+        <div class="cat-head"><svg viewBox="0 0 40 40"><use href="#ic-posture"/></svg><h2>Posture &amp; Global Reeducation</h2><span class="count">4 items</span></div>
+        <div class="svc-list">
+          <div class="svc-row"><input type="checkbox" class="svc-check" data-name="Global postural reeducation session" data-price="26"><label class="name">Global reeducation session<div class="desc">Stretches muscle chains</div></label><span class="price">$26</span></div>
+          <div class="svc-row"><input type="checkbox" class="svc-check" data-name="Global reeducation package (5 sessions)" data-price="120"><label class="name">Reeducation package (5 sessions)<div class="desc">Reduced rate for the complete treatment</div></label><span class="price">$120</span></div>
+          <div class="svc-row"><input type="checkbox" class="svc-check" data-name="Posture reassessment" data-price="18"><label class="name">Posture reassessment<div class="desc">Tracks posture progress</div></label><span class="price">$18</span></div>
+          <div class="svc-row"><input type="checkbox" class="svc-check" data-name="Group global reeducation session (per person)" data-price="18"><label class="name">Group reeducation<div class="desc">Small-group session, price per person</div></label><span class="price">$18</span></div>
+        </div>
+      </div>
+
+      <div class="cat-block" id="pilates">
+        <div class="cat-head"><svg viewBox="0 0 40 40"><use href="#ic-pilates"/></svg><h2>Therapeutic Pilates</h2><span class="count">4 items</span></div>
+        <div class="svc-list">
+          <div class="svc-row"><input type="checkbox" class="svc-check" data-name="One-on-one class" data-price="22"><label class="name">One-on-one class<div class="desc">Therapeutic focus, safe strengthening</div></label><span class="price">$22</span></div>
+          <div class="svc-row"><input type="checkbox" class="svc-check" data-name="Duo class (per person)" data-price="16"><label class="name">Duo class<div class="desc">Price per person, same quality of attention</div></label><span class="price">$16</span></div>
+          <div class="svc-row"><input type="checkbox" class="svc-check" data-name="Monthly package (8 classes)" data-price="156"><label class="name">Monthly package (8 classes)<div class="desc">Best value for regular practice</div></label><span class="price">$156</span></div>
+          <div class="svc-row"><input type="checkbox" class="svc-check" data-name="Pilates assessment" data-price="16"><label class="name">Pilates assessment<div class="desc">Defines safe exercises for your condition</div></label><span class="price">$16</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <aside class="calc-box">
+      <h3>Your quote</h3>
+      <div class="sub">Check items in the list</div>
+      <div class="calc-list" id="calcList">
+        <div class="calc-empty">No items selected yet</div>
+      </div>
+      <div class="calc-total"><span class="lbl">Estimated total</span><span class="val mono" id="calcTotal">$0</span></div>
+      <div class="calc-note">Reference prices. Final quote is confirmed after an assessment.</div>
+      <a class="btn" id="calcWaBtn" href="https://wa.me/5516991203700" target="_blank" rel="noopener">Send via WhatsApp</a>
+    </aside>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head" style="text-align:center;margin-bottom:32px;">
+      <div class="eyebrow">Packages</div>
+      <h2 style="margin-top:8px;font-size:26px;">Bundles with a discount</h2>
+    </div>
+    <div class="pkg-grid">
+      <div class="pkg-card">
+        <div class="pkg-head"><span class="tag">Starting treatment</span><h3>Treatment Kickoff Package</h3></div>
+        <div class="pkg-body">
+          <ul>
+            <li><svg viewBox="0 0 24 24"><use href="#ic-check"/></svg> First visit + posture assessment</li>
+            <li><svg viewBox="0 0 24 24"><use href="#ic-check"/></svg> Personalized treatment plan</li>
+            <li><svg viewBox="0 0 24 24"><use href="#ic-check"/></svg> 3 follow-up sessions</li>
+          </ul>
+          <div class="pkg-price"><div class="old mono">from $138</div><div class="now mono">$108</div></div>
+          <a class="btn" href="demo-fisio-contato-en.html">I want this package</a>
+        </div>
+      </div>
+      <div class="pkg-card featured">
+        <div class="pkg-head"><span class="tag">Most popular</span><h3>Continuity Package</h3></div>
+        <div class="pkg-body">
+          <ul>
+            <li><svg viewBox="0 0 24 24"><use href="#ic-check"/></svg> 10-session follow-up package</li>
+            <li><svg viewBox="0 0 24 24"><use href="#ic-check"/></svg> 1 posture reassessment included</li>
+            <li><svg viewBox="0 0 24 24"><use href="#ic-check"/></svg> Continuous follow-up</li>
+          </ul>
+          <div class="pkg-price"><div class="old mono">from $258</div><div class="now mono">$200</div></div>
+          <a class="btn" href="demo-fisio-contato-en.html">I want this package</a>
+        </div>
+      </div>
+      <div class="pkg-card">
+        <div class="pkg-head"><span class="tag">Pilates</span><h3>Monthly Pilates Package</h3></div>
+        <div class="pkg-body">
+          <ul>
+            <li><svg viewBox="0 0 24 24"><use href="#ic-check"/></svg> 8 therapeutic Pilates classes</li>
+            <li><svg viewBox="0 0 24 24"><use href="#ic-check"/></svg> 1 posture assessment included</li>
+            <li><svg viewBox="0 0 24 24"><use href="#ic-check"/></svg> Plan adjustments throughout the month</li>
+          </ul>
+          <div class="pkg-price"><div class="old mono">from $186</div><div class="now mono">$156</div></div>
+          <a class="btn" href="demo-fisio-contato-en.html">I want this package</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <div class="brand" style="margin-bottom:10px;"><svg class="brand-icon" viewBox="0 0 40 40"><use href="#ic-mark"/></svg><span class="brand-name">Vitta</span></div>
+        <div class="line" style="color:var(--ink-soft);max-width:34ch;">Example services page with an interactive budget calculator.</div>
+      </div>
+      <div class="foot-col"><div class="lbl">Navigation</div><div class="line"><a href="demo-fisio-index-en.html">Home</a></div><div class="line"><a href="demo-fisio-galeria-en.html">Gallery</a></div><div class="line"><a href="demo-fisio-contato-en.html">Contact</a></div></div>
+      <div class="foot-col"><div class="lbl">Hours</div><div class="line">Mon–Fri · 8am–6pm</div><div class="line">321 Wellness Street — New District</div><div class="line">(16) 99120-3700</div></div>
+    </div>
+    <div class="foot-bottom">Example site — <a href="clinicas-en.html">BLUE ROSE, websites and automation for local businesses</a></div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/5516991203700" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-11.8 7.8L4 21l1.8-5A8.5 8.5 0 1 1 21 11.5Z"/><path d="M8.5 9.5c.3 2.7 2.3 4.7 5 5"/></svg>
+</a>
+
+<script>
+(function(){
+  var checks = document.querySelectorAll('.svc-check');
+  var list = document.getElementById('calcList');
+  var totalEl = document.getElementById('calcTotal');
+  var waBtn = document.getElementById('calcWaBtn');
+
+  function fmt(n){ return '$' + n.toLocaleString('en-US'); }
+
+  function render(){
+    var selected = Array.prototype.filter.call(checks, function(c){ return c.checked; });
+    if(selected.length === 0){
+      list.innerHTML = '<div class="calc-empty">No items selected yet</div>';
+      totalEl.textContent = '$0';
+      waBtn.href = 'https://wa.me/5516991203700';
+      return;
+    }
+    var total = 0;
+    var lines = [];
+    var waLines = [];
+    selected.forEach(function(c){
+      var price = parseInt(c.getAttribute('data-price'), 10);
+      var name = c.getAttribute('data-name');
+      total += price;
+      lines.push('<div class="calc-item"><span class="n">' + name + '</span><span class="p">' + fmt(price) + '</span></div>');
+      waLines.push('- ' + name + ' (' + fmt(price) + ')');
+    });
+    list.innerHTML = lines.join('');
+    totalEl.textContent = fmt(total);
+    var msg = 'Hi! I ran a budget estimate on the website:\n' + waLines.join('\n') + '\nEstimated total: ' + fmt(total);
+    waBtn.href = 'https://wa.me/5516991203700?text=' + encodeURIComponent(msg);
+  }
+
+  checks.forEach(function(c){ c.addEventListener('change', render); });
+  document.querySelectorAll('.svc-row label').forEach(function(lbl){
+    lbl.addEventListener('click', function(e){
+      if(e.target.tagName.toLowerCase() === 'label'){
+        var row = lbl.closest('.svc-row');
+        var box = row.querySelector('.svc-check');
+        box.checked = !box.checked;
+        render();
+      }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
