@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BLUE ROSE — full example sites</title>
+<meta name="description" content="Full example sites for clinics, personal trainers, salons and more — built by BLUE ROSE.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BLUE ROSE">
+<meta property="og:title" content="BLUE ROSE — full example sites">
+<meta property="og:description" content="See full example simple websites and multi-page websites with automation — for clinics, personal trainers, salons, clinics and more.">
+<meta property="og:image" content="https://cauacaetano.github.io/blue-rose-automacao-express/img/og-banner.png">
+<meta property="og:url" content="https://cauacaetano.github.io/blue-rose-automacao-express/exemplos-en.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/jpeg" href="img/blue-rose-logo.jpg">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,680;1,9..144,560&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+  :root{
+    --ink:#12213b; --ink-soft:#3c4c6e; --paper:#f2f3f8; --card:#ffffff;
+    --card-tint:#eceef5; --line:#d7dae6; --rose:#c81d4b; --rose-deep:#8f1338;
+    --rose-tint:#fbe7ed; --focus:#3c4c6e;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --ink:#e7eaf4; --ink-soft:#aab3ca; --paper:#0c1220; --card:#131b2c;
+      --card-tint:#182238; --line:#28324a; --rose:#ff5d86; --rose-deep:#ff87a5; --rose-tint:#2a1420; --focus:#ff5d86; }
+  }
+  *{box-sizing:border-box;}
+  body{ margin:0; background:var(--paper); color:var(--ink); font-family:'Archivo',ui-sans-serif,system-ui,sans-serif; line-height:1.5; }
+  h1,h2,h3{ font-family:'Fraunces',ui-serif,Georgia,serif; font-weight:680; line-height:1.1; text-wrap:balance; margin:0; color:var(--ink); }
+  a{ color:inherit; }
+  .wrap{ max-width:900px; margin:0 auto; padding:0 24px; }
+  .eyebrow{ font-family:'IBM Plex Mono',monospace; font-size:12.5px; letter-spacing:.09em; text-transform:uppercase; color:var(--ink-soft); }
+  .topbar{ padding:22px 0; border-bottom:1px solid var(--line); }
+  .topbar .wrap{ display:flex; align-items:center; justify-content:space-between; gap:12px; }
+  .brand{ display:flex; align-items:center; gap:10px; font-family:'Fraunces',serif; font-weight:680; font-size:19px; }
+  .brand-mark{ width:28px;height:28px; flex:none; border-radius:50%; object-fit:cover; background:#fff; }
+  .topbar nav{ font-family:'IBM Plex Mono',monospace; font-size:12.5px; text-transform:uppercase; letter-spacing:.04em; display:flex; gap:16px; align-items:center; }
+  .topbar nav a{ text-decoration:none; color:var(--ink-soft); }
+  .topbar nav a:hover{ color:var(--ink); }
+  .topbar nav .lang{ padding:4px 9px; border:1px solid var(--line); border-radius:999px; font-size:11px; }
+  .topbar nav .lang:hover{ border-color:var(--rose); }
+  .head{ padding:52px 0 8px; }
+  .head h1{ font-size:clamp(28px,4.6vw,38px); margin-top:10px; }
+  .head p{ margin-top:14px; font-size:16px; color:var(--ink-soft); max-width:56ch; }
+  .head .note-lang{ margin-top:12px; font-size:13px; color:var(--ink-soft); background:var(--card-tint); border:1px solid var(--line); border-radius:6px; padding:10px 14px; max-width:60ch; }
+  .grid{ padding:34px 0 60px; display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+  @media (max-width:680px){ .grid{ grid-template-columns:1fr; } }
+  .card{
+    border:1px solid var(--line); border-radius:8px; overflow:hidden; background:var(--card);
+    text-decoration:none; display:block; transition:border-color .15s ease, transform .15s ease;
+  }
+  .card:hover{ border-color:var(--accent); transform:translateY(-2px); }
+  .card-preview{
+    height:120px;
+    background:linear-gradient(135deg, var(--accent) 0%, var(--accent) 40%, var(--card-tint) 40%);
+    position:relative;
+  }
+  .card-preview .mono-badge{
+    position:absolute; left:18px; top:18px;
+    width:42px;height:42px;border-radius:50%;
+    background:#fff;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .card-preview .mono-badge svg{ width:24px; height:24px; }
+  .card-body{ padding:18px 20px 22px; }
+  .card-body .name{ font-family:'Fraunces',serif; font-weight:640; font-size:17px; color:var(--ink); }
+  .card-body .tag{ font-size:12.5px; color:var(--ink-soft); margin-top:2px; }
+  .card-body .cta{
+    margin-top:14px; display:inline-flex; align-items:center; gap:6px;
+    font-family:'IBM Plex Mono',monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:.04em;
+    color:var(--accent);
+  }
+  .cat-label{ font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:14px; }
+  .cat-label.sep{ margin-top:44px; padding-top:28px; border-top:1px solid var(--line); }
+  .note{ font-size:12.5px; color:var(--ink-soft); padding-bottom:10px; }
+  .contact{ background:var(--ink); color:var(--paper); padding:50px 0 36px; }
+  .contact h2{ color:var(--paper); font-size:24px; max-width:22ch; }
+  .contact p{ color:var(--paper); opacity:.72; margin-top:10px; font-size:14px; max-width:44ch; }
+  .btn{ display:inline-flex; align-items:center; gap:8px; padding:12px 20px; border-radius:3px; font-weight:600; font-size:14px; text-decoration:none; background:var(--rose); color:#fff; margin-top:20px; }
+  .btn:hover{ background:var(--rose-deep); }
+  .btn-ghost{ background:transparent; border:1px solid rgba(255,255,255,.4); color:#fff; margin-left:10px; }
+  .btn-ghost:hover{ background:rgba(255,255,255,.08); }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="ic-estetica" viewBox="0 0 40 40">
+    <g fill="#c81d4b">
+      <path d="M20,20 C12,18 9,8 20,2 C31,8 28,18 20,20 Z"/>
+      <path d="M20,20 C12,18 9,8 20,2 C31,8 28,18 20,20 Z" transform="rotate(120 20 20)"/>
+      <path d="M20,20 C12,18 9,8 20,2 C31,8 28,18 20,20 Z" transform="rotate(240 20 20)"/>
+    </g>
+    <circle cx="20" cy="20" r="3" fill="#8f1338"/>
+  </symbol>
+  <symbol id="ic-personal" viewBox="0 0 40 40">
+    <g fill="#2f7d52">
+      <rect x="2" y="15" width="7" height="10" rx="2"/>
+      <rect x="31" y="15" width="7" height="10" rx="2"/>
+      <rect x="9" y="18" width="22" height="4" rx="2"/>
+    </g>
+  </symbol>
+  <symbol id="ic-salao" viewBox="0 0 40 40">
+    <g fill="none" stroke="#b8792b" stroke-width="3" stroke-linecap="round">
+      <circle cx="10" cy="30" r="5"/>
+      <circle cx="30" cy="30" r="5"/>
+      <line x1="10" y1="30" x2="32" y2="8"/>
+      <line x1="30" y1="30" x2="8" y2="8"/>
+    </g>
+  </symbol>
+  <symbol id="ic-fisio" viewBox="0 0 40 40">
+    <g fill="#1f7a8c">
+      <rect x="16" y="5" width="8" height="30" rx="3"/>
+      <rect x="5" y="16" width="30" height="8" rx="3"/>
+    </g>
+  </symbol>
+  <symbol id="ic-odonto" viewBox="0 0 40 40">
+    <path d="M20,5 C27,5 31,10.5 31,15.5 C31,22 28,33.5 25,33.5 C22.3,33.5 22,27 20,27 C18,27 17.7,33.5 15,33.5 C12,33.5 9,22 9,15.5 C9,10.5 13,5 20,5 Z" fill="#2e6fdb"/>
+  </symbol>
+  <symbol id="ic-restaurante" viewBox="0 0 40 40">
+    <path d="M8,20 C8,28 13,33 20,33 C27,33 32,28 32,20" fill="none" stroke="#c2410c" stroke-width="3" stroke-linecap="round"/>
+    <path d="M14,20 L14,8 M20,20 L20,6 M26,20 L26,8" stroke="#c2410c" stroke-width="3" stroke-linecap="round"/>
+  </symbol>
+</svg>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="brand"><img class="brand-mark" src="img/blue-rose-logo.jpg" alt="BLUE ROSE">BLUE ROSE</div>
+    <nav><a href="exemplos.html" class="lang">PT-BR</a><a href="clinicas-en.html">← Back</a></nav>
+  </div>
+</div>
+
+<div class="head">
+  <div class="wrap">
+    <div class="eyebrow">Full examples</div>
+    <h1>Simple websites, genuinely complete</h1>
+    <p>Each example below is a full, real website — not just a cropped snippet. The first ones show the Website + Automation package (multi-page, budget calculator, booking); the last row shows the Simple Website package (1 page only). Names, logos and prices are fictional; the structure is the same one you get for your business, with your own brand and real data.</p>
+    <div class="note-lang">Heads up: the demo pages themselves are written in Portuguese (my main market) — but the layout, photos, colors and interactive features (calculator, booking, gallery) work exactly the same and speak for themselves.</div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="cat-label">Full sites · multi-page</div>
+  <div class="grid">
+    <a class="card" href="demo-estetica-index.html" style="--accent:#c81d4b;">
+      <div class="card-preview"><div class="mono-badge"><svg viewBox="0 0 40 40"><use href="#ic-estetica"/></svg></div></div>
+      <div class="card-body">
+        <div class="name">Clínica Bella Face</div>
+        <div class="tag">Facial &amp; body aesthetics clinic</div>
+        <div class="cta">See full site →</div>
+      </div>
+    </a>
+    <a class="card" href="demo-personal-index.html" style="--accent:#2f7d52;">
+      <div class="card-preview"><div class="mono-badge"><svg viewBox="0 0 40 40"><use href="#ic-personal"/></svg></div></div>
+      <div class="card-body">
+        <div class="name">Studio Fit Pro</div>
+        <div class="tag">Personal trainer</div>
+        <div class="cta">See full site →</div>
+      </div>
+    </a>
+    <a class="card" href="demo-salao-index.html" style="--accent:#b8792b;">
+      <div class="card-preview"><div class="mono-badge"><svg viewBox="0 0 40 40"><use href="#ic-salao"/></svg></div></div>
+      <div class="card-body">
+        <div class="name">Espaço Bela</div>
+        <div class="tag">Salon &amp; barbershop</div>
+        <div class="cta">See full site →</div>
+      </div>
+    </a>
+    <a class="card" href="demo-fisio-index.html" style="--accent:#1f7a8c;">
+      <div class="card-preview"><div class="mono-badge"><svg viewBox="0 0 40 40"><use href="#ic-fisio"/></svg></div></div>
+      <div class="card-body">
+        <div class="name">Consultório Vitta</div>
+        <div class="tag">Physical therapy &amp; health</div>
+        <div class="cta">See full site →</div>
+      </div>
+    </a>
+    <a class="card" href="demo-odonto-index.html" style="--accent:#2e6fdb;">
+      <div class="card-preview"><div class="mono-badge"><svg viewBox="0 0 40 40"><use href="#ic-odonto"/></svg></div></div>
+      <div class="card-body">
+        <div class="name">Prisma Odontologia</div>
+        <div class="tag">Dental clinic · multi-page site with budget calculator and booking</div>
+        <div class="cta">See full site →</div>
+      </div>
+    </a>
+  </div>
+
+  <div class="cat-label sep">Simple website · 1 page</div>
+  <div class="grid">
+    <a class="card" href="demo-estetica.html" style="--accent:#c81d4b;">
+      <div class="card-preview"><div class="mono-badge"><svg viewBox="0 0 40 40"><use href="#ic-estetica"/></svg></div></div>
+      <div class="card-body">
+        <div class="name">Clínica Bella Face — simple version</div>
+        <div class="tag">Same business as the example above, on the Simple Website package: 1 page, straight to the point</div>
+        <div class="cta">See full site →</div>
+      </div>
+    </a>
+    <a class="card" href="demo-personal.html" style="--accent:#2f7d52;">
+      <div class="card-preview"><div class="mono-badge"><svg viewBox="0 0 40 40"><use href="#ic-personal"/></svg></div></div>
+      <div class="card-body">
+        <div class="name">Studio Fit Pro — simple version</div>
+        <div class="tag">Same business as the full Fit Pro example, on the Simple Website package: 1 page only</div>
+        <div class="cta">See full site →</div>
+      </div>
+    </a>
+    <a class="card" href="demo-salao.html" style="--accent:#b8792b;">
+      <div class="card-preview"><div class="mono-badge"><svg viewBox="0 0 40 40"><use href="#ic-salao"/></svg></div></div>
+      <div class="card-body">
+        <div class="name">Espaço Bela — simple version</div>
+        <div class="tag">Same business as the full Espaço Bela example, on the Simple Website package: 1 page only</div>
+        <div class="cta">See full site →</div>
+      </div>
+    </a>
+    <a class="card" href="demo-fisio.html" style="--accent:#1f7a8c;">
+      <div class="card-preview"><div class="mono-badge"><svg viewBox="0 0 40 40"><use href="#ic-fisio"/></svg></div></div>
+      <div class="card-body">
+        <div class="name">Consultório Vitta — simple version</div>
+        <div class="tag">Same business as the full Vitta example, on the Simple Website package: 1 page only</div>
+        <div class="cta">See full site →</div>
+      </div>
+    </a>
+    <a class="card" href="demo-restaurante.html" style="--accent:#c2410c;">
+      <div class="card-preview"><div class="mono-badge"><svg viewBox="0 0 40 40"><use href="#ic-restaurante"/></svg></div></div>
+      <div class="card-body">
+        <div class="name">Cozinha da Vila</div>
+        <div class="tag">Restaurant &amp; meal prep — showing the format works for pretty much any local business, not just clinics or salons</div>
+        <div class="cta">See full site →</div>
+      </div>
+    </a>
+  </div>
+  <div class="note">None of the businesses above are real — they're examples built to show the format and quality of delivery.</div>
+</div>
+
+<div class="contact">
+  <div class="wrap">
+    <h2>Didn't find your niche in the list?</h2>
+    <p>Tell me what kind of business you run and I'll adapt the structure — the same logic works for pretty much any local service.</p>
+    <a class="btn" href="mailto:cauac4etano@gmail.com?subject=Quote%20request%20-%20Blue%20Rose">Send me an email</a>
+    <a class="btn btn-ghost" href="https://wa.me/5516991203700?text=Hi%2C%20I%20saw%20the%20Blue%20Rose%20examples%20and%20I%27d%20like%20to%20know%20more." target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+</div>
+
+</body>
+</html>
