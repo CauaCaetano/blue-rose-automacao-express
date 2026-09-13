@@ -5,8 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BLUE ROSE — websites & WhatsApp automation for local businesses</title>
 <meta name="description" content="Simple websites + WhatsApp booking automation for clinics, studios and small local businesses. Remote freelance work, English-speaking client.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BLUE ROSE">
+<meta property="og:title" content="BLUE ROSE — websites & WhatsApp automation for local businesses">
+<meta property="og:description" content="Simple or full website + WhatsApp automation, ready in a few days. No recurring fee, price agreed before I start.">
+<meta property="og:image" content="https://cauacaetano.github.io/blue-rose-automacao-express/img/og-banner.png">
+<meta property="og:url" content="https://cauacaetano.github.io/blue-rose-automacao-express/clinicas-en.html">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="color-scheme" content="light dark">
-<link rel="icon" href="data:,">
+<link rel="icon" type="image/jpeg" href="img/blue-rose-logo.jpg">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,680;1,9..144,560&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
@@ -548,6 +555,41 @@
     color:var(--ink-soft);
   }
 
+  /* ---------- proof (real screenshots) ---------- */
+  .proof{ padding:12px 0 52px; }
+  .proof > .wrap > .eyebrow{ margin-bottom:8px; }
+  .proof h2{ font-size:26px; max-width:32ch; margin-bottom:30px; }
+  .proof-grid{ display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+  @media (max-width:680px){ .proof-grid{ grid-template-columns:1fr; } }
+  .proof-card{ background:var(--card); border:1px solid var(--line); border-radius:8px; overflow:hidden; box-shadow:var(--shadow); }
+  .proof-card img{ width:100%; display:block; border-bottom:1px solid var(--line); }
+  .proof-cap{ padding:16px 18px; font-size:13.5px; color:var(--ink-soft); }
+  .proof-cap strong{ color:var(--ink); }
+  .proof-note{ margin-top:18px; font-size:12.5px; color:var(--ink-soft); }
+  .proof-note a{ text-decoration:underline; color:var(--ink-soft); }
+
+  /* ---------- package comparison ---------- */
+  .compare{ margin-top:40px; }
+  .compare-title{ font-size:15px; font-weight:600; margin-bottom:14px; }
+  .cmp-scroll{ overflow-x:auto; border:1px solid var(--line); border-radius:6px; }
+  .cmp-table{ width:100%; border-collapse:collapse; font-size:12.5px; min-width:560px; }
+  .cmp-table th, .cmp-table td{ padding:11px 10px; text-align:center; border-bottom:1px solid var(--line); }
+  .cmp-table tr:last-child td{ border-bottom:none; }
+  .cmp-table th{ font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-soft); font-weight:600; background:var(--card-tint); }
+  .cmp-table td:first-child, .cmp-table th:first-child{ text-align:left; font-weight:500; color:var(--ink); }
+  .cmp-table .yes{ color:var(--rose-deep); font-weight:700; }
+  .cmp-table .no{ color:var(--line); }
+
+  /* ---------- faq ---------- */
+  .faq{ padding:12px 0 56px; }
+  .faq > .wrap > .eyebrow{ text-align:center; }
+  .faq h2{ font-size:26px; text-align:center; margin:8px auto 30px; }
+  .faq-list{ max-width:720px; margin:0 auto; }
+  .faq-item{ padding:20px 0; border-top:1px solid var(--line); }
+  .faq-item:last-child{ border-bottom:1px solid var(--line); }
+  .faq-item h3{ font-family:'Archivo',sans-serif; font-weight:600; font-size:15px; }
+  .faq-item p{ margin-top:8px; font-size:13.5px; color:var(--ink-soft); }
+
   /* ---------- footer / contact ---------- */
   .contact{
     background:var(--ink);
@@ -805,6 +847,24 @@
   </div>
 </div>
 
+<div class="proof">
+  <div class="wrap">
+    <div class="eyebrow">See it working</div>
+    <h2>Not just good-looking — it actually works</h2>
+    <div class="proof-grid">
+      <div class="proof-card">
+        <img src="img/screenshot-calculadora.png" alt="Budget calculator adding checked services in real time, total R$270">
+        <div class="proof-cap"><strong>Budget calculator</strong> — the customer checks what they want and sees the total instantly, no need to ask you the price.</div>
+      </div>
+      <div class="proof-card">
+        <img src="img/screenshot-agendador.png" alt="Scheduler showing real upcoming business days and a selected time slot">
+        <div class="proof-cap"><strong>Real-date booking</strong> — shows the real next business days and sends everything ready to your WhatsApp.</div>
+      </div>
+    </div>
+    <div class="proof-note">Real screenshots from the Prisma Odontologia example — <a href="demo-odonto-index.html">see it live →</a></div>
+  </div>
+</div>
+
 <div class="process">
   <div class="wrap">
     <div class="eyebrow">How it works</div>
@@ -846,6 +906,92 @@
       </div>
     </div>
     <div class="pricing-note">No recurring fee. These are starting estimates in USD — final price depends on the number of services/pages and is agreed with you (in your currency) before I start.</div>
+
+    <div class="compare">
+      <div class="compare-title">Which package is yours?</div>
+      <div class="cmp-scroll">
+        <table class="cmp-table">
+          <tr>
+            <th>Feature</th>
+            <th>Simple<br>website</th>
+            <th>Automation<br>only</th>
+            <th>Simple +<br>Automation</th>
+            <th>Multi-page<br>+ Automation</th>
+          </tr>
+          <tr>
+            <td>Website with your hours and services</td>
+            <td class="yes">✓ 1 page</td>
+            <td class="no">–</td>
+            <td class="yes">✓ 1 page</td>
+            <td class="yes">✓ multiple pages</td>
+          </tr>
+          <tr>
+            <td>Direct WhatsApp button</td>
+            <td class="yes">✓</td>
+            <td class="no">–</td>
+            <td class="yes">✓</td>
+            <td class="yes">✓</td>
+          </tr>
+          <tr>
+            <td>Automatic WhatsApp replies</td>
+            <td class="no">–</td>
+            <td class="yes">✓</td>
+            <td class="yes">✓</td>
+            <td class="yes">✓</td>
+          </tr>
+          <tr>
+            <td>Budget calculator</td>
+            <td class="no">–</td>
+            <td class="no">–</td>
+            <td class="no">–</td>
+            <td class="yes">✓</td>
+          </tr>
+          <tr>
+            <td>Real-date booking</td>
+            <td class="no">–</td>
+            <td class="no">–</td>
+            <td class="no">–</td>
+            <td class="yes">✓</td>
+          </tr>
+          <tr>
+            <td>Filterable photo gallery</td>
+            <td class="no">–</td>
+            <td class="no">–</td>
+            <td class="no">–</td>
+            <td class="yes">✓</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="faq">
+  <div class="wrap">
+    <div class="eyebrow">Frequently asked questions</div>
+    <h2>Before you reach out</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <h3>Do I need to understand tech to maintain the site?</h3>
+        <p>No. Once it's live, if you want to change a price, hour or service, just message me — you never have to touch any code or dashboard yourself.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Is the site in my name?</h3>
+        <p>Yes, the content and structure are yours. If you'd like your own domain instead of the default link, that can be arranged separately.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Do I need to switch WhatsApp numbers?</h3>
+        <p>No. The automation works with the number you already use for your business today — no new line, no disrupting what already works.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can I request changes after delivery?</h3>
+        <p>One light round of adjustments is already included in the price, right after delivery. Bigger changes after that have a separate cost, always agreed before I touch anything.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How does payment work?</h3>
+        <p>Half up front, half on delivery. No recurring fee — you pay once and the site is yours.</p>
+      </div>
+    </div>
   </div>
 </div>
 

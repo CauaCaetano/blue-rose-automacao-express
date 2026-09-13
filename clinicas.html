@@ -5,8 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BLUE ROSE — sites e automação pra clínicas e negócios locais</title>
 <meta name="description" content="Site simples + automação de agendamento via WhatsApp pra clínicas, estúdios e consultórios sem site.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BLUE ROSE">
+<meta property="og:title" content="BLUE ROSE — sites e automação pra negócios locais">
+<meta property="og:description" content="Site simples ou completo + automação de WhatsApp, pronto em poucos dias. Sem mensalidade, valor combinado antes de começar.">
+<meta property="og:image" content="https://cauacaetano.github.io/blue-rose-automacao-express/img/og-banner.png">
+<meta property="og:url" content="https://cauacaetano.github.io/blue-rose-automacao-express/clinicas.html">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="color-scheme" content="light dark">
-<link rel="icon" href="data:,">
+<link rel="icon" type="image/jpeg" href="img/blue-rose-logo.jpg">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,680;1,9..144,560&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
@@ -547,6 +554,18 @@
     color:var(--ink-soft);
   }
 
+  /* ---------- comparativo de pacotes ---------- */
+  .compare{ margin-top:40px; }
+  .compare-title{ font-size:15px; font-weight:600; margin-bottom:14px; }
+  .cmp-scroll{ overflow-x:auto; border:1px solid var(--line); border-radius:6px; }
+  .cmp-table{ width:100%; border-collapse:collapse; font-size:12.5px; min-width:560px; }
+  .cmp-table th, .cmp-table td{ padding:11px 10px; text-align:center; border-bottom:1px solid var(--line); }
+  .cmp-table tr:last-child td{ border-bottom:none; }
+  .cmp-table th{ font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-soft); font-weight:600; background:var(--card-tint); }
+  .cmp-table td:first-child, .cmp-table th:first-child{ text-align:left; font-weight:500; color:var(--ink); }
+  .cmp-table .yes{ color:var(--rose-deep); font-weight:700; }
+  .cmp-table .no{ color:var(--line); }
+
   /* ---------- proof (screenshots reais) ---------- */
   .proof{ padding:12px 0 52px; }
   .proof > .wrap > .eyebrow{ margin-bottom:8px; }
@@ -886,6 +905,63 @@
       </div>
     </div>
     <div class="pricing-note">Sem mensalidade fixa. Faixa final depende do número de serviços/páginas — fechado com você antes de começar.</div>
+
+    <div class="compare">
+      <div class="compare-title">Qual pacote é o seu?</div>
+      <div class="cmp-scroll">
+        <table class="cmp-table">
+          <tr>
+            <th>Recurso</th>
+            <th>Site<br>simples</th>
+            <th>Automação<br>avulsa</th>
+            <th>Simples +<br>Automação</th>
+            <th>Multipágina<br>+ Automação</th>
+          </tr>
+          <tr>
+            <td>Site com seus horários e serviços</td>
+            <td class="yes">✓ 1 página</td>
+            <td class="no">–</td>
+            <td class="yes">✓ 1 página</td>
+            <td class="yes">✓ várias páginas</td>
+          </tr>
+          <tr>
+            <td>Botão direto pro WhatsApp</td>
+            <td class="yes">✓</td>
+            <td class="no">–</td>
+            <td class="yes">✓</td>
+            <td class="yes">✓</td>
+          </tr>
+          <tr>
+            <td>Respostas automáticas no WhatsApp</td>
+            <td class="no">–</td>
+            <td class="yes">✓</td>
+            <td class="yes">✓</td>
+            <td class="yes">✓</td>
+          </tr>
+          <tr>
+            <td>Calculadora de orçamento</td>
+            <td class="no">–</td>
+            <td class="no">–</td>
+            <td class="no">–</td>
+            <td class="yes">✓</td>
+          </tr>
+          <tr>
+            <td>Agendamento com data real</td>
+            <td class="no">–</td>
+            <td class="no">–</td>
+            <td class="no">–</td>
+            <td class="yes">✓</td>
+          </tr>
+          <tr>
+            <td>Galeria de fotos com filtro</td>
+            <td class="no">–</td>
+            <td class="no">–</td>
+            <td class="no">–</td>
+            <td class="yes">✓</td>
+          </tr>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
 
