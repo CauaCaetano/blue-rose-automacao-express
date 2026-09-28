@@ -124,12 +124,15 @@
     text-transform:uppercase;
   }
   .topnav a{
+    display:inline-block;
     text-decoration:none;
     color:var(--ink-soft);
-    padding-bottom:2px;
+    padding:12px 2px 2px;
+    margin:-12px 0 0;
     border-bottom:1px solid transparent;
     transition:color .15s ease, border-color .15s ease;
   }
+  @media (prefers-reduced-motion: reduce){ .topnav a{ transition:none; } }
   .topnav a:hover{ color:var(--ink); border-color:var(--rose); }
   .topnav .lang{
     padding:4px 9px;
@@ -614,6 +617,24 @@
     color:var(--paper);
     opacity:0.85;
   }
+  .skip-link{
+    position:absolute;
+    left:12px; top:-48px;
+    background:var(--ink);
+    color:var(--paper);
+    padding:10px 16px;
+    border-radius:4px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    text-decoration:none;
+    z-index:100;
+    transition:top .15s ease;
+  }
+  .skip-link:focus{ top:12px; }
+  @media (prefers-reduced-motion: reduce){
+    .ex-card, .dcard{ transition:none; }
+    .ex-card:hover{ transform:none; }
+  }
   .foot-line{
     margin-top:34px;
     padding-top:18px;
@@ -621,7 +642,7 @@
     font-family:'IBM Plex Mono',monospace;
     font-size:11.5px;
     color:var(--paper);
-    opacity:0.6;
+    opacity:0.72;
     display:flex;
     justify-content:space-between;
     flex-wrap:wrap;
@@ -630,6 +651,8 @@
 </style>
 </head>
 <body>
+
+<a class="skip-link" href="#main">Pular para o conteúdo</a>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="rose-mark" viewBox="0 0 44 44">
@@ -679,7 +702,7 @@
 
 <div class="topbar">
   <div class="wrap">
-    <div class="brand"><img class="brand-mark" src="img/blue-rose-logo.jpg" alt="BLUE ROSE">BLUE ROSE</div>
+    <div class="brand"><img class="brand-mark" src="img/blue-rose-logo.jpg" alt="BLUE ROSE" width="30" height="30">BLUE ROSE</div>
     <nav class="topnav">
       <a href="#exemplos">Exemplos</a>
       <a href="#precos">Preços</a>
@@ -689,6 +712,7 @@
   </div>
 </div>
 
+<main id="main">
 <div class="hero">
   <svg class="hero-flourish" viewBox="0 0 44 44" aria-hidden="true"><use href="#rose-mark"/></svg>
   <div class="wrap hero-grid">
@@ -726,7 +750,7 @@
 <div class="about">
   <div class="wrap">
     <div class="about-row">
-      <div class="about-photo"><img src="img/blue-rose-logo.jpg" alt="BLUE ROSE"></div>
+      <div class="about-photo"><img src="img/blue-rose-logo.jpg" alt="BLUE ROSE" width="46" height="46"></div>
       <div class="about-text"><strong>Quem monta:</strong> Cauã, desenvolvedor freelancer — cuido do site e da automação do início ao fim, sem agência no meio.</div>
     </div>
   </div>
@@ -797,7 +821,7 @@
     <div class="pain-list">
       <div class="pain-item">
         <div class="mk">01</div>
-        <div><h3>Cliente pesquisa, não te acha, agenda com o concorrente</h3><p>Quem procura "clínica de estética" ou "personal" na sua cidade decide antes mesmo de chamar no WhatsApp — só que decide olhando quem aparece.</p></div>
+        <div><h3>Cliente pesquisa, não te acha, agenda com o concorrente</h3><p>Quem procura “clínica de estética” ou “personal” na sua cidade decide antes mesmo de chamar no WhatsApp — só que decide olhando quem aparece.</p></div>
       </div>
       <div class="pain-item">
         <div class="mk">02</div>
@@ -852,11 +876,11 @@
     <h2>Não é só bonito — funciona de verdade</h2>
     <div class="proof-grid">
       <div class="proof-card">
-        <img src="img/screenshot-calculadora.png" alt="Calculadora de orçamento somando serviços marcados em tempo real, total R$270">
+        <img src="img/screenshot-calculadora.png" alt="Calculadora de orçamento somando serviços marcados em tempo real, total R$270" width="1072" height="318" loading="lazy">
         <div class="proof-cap"><strong>Calculadora de orçamento</strong> — o cliente marca o que quer e já vê o total na hora, sem precisar te perguntar o preço.</div>
       </div>
       <div class="proof-card">
-        <img src="img/screenshot-agendador.png" alt="Agendador mostrando os próximos dias úteis reais e um horário selecionado">
+        <img src="img/screenshot-agendador.png" alt="Agendador mostrando os próximos dias úteis reais e um horário selecionado" width="548" height="513" loading="lazy">
         <div class="proof-cap"><strong>Agendamento com data real</strong> — mostra os próximos dias úteis de verdade e já manda tudo pronto pro seu WhatsApp.</div>
       </div>
     </div>
@@ -994,7 +1018,9 @@
   </div>
 </div>
 
-<div class="contact" id="fale">
+</main>
+
+<footer class="contact" id="fale">
   <div class="wrap">
     <h2>Me conta seus horários e serviços — eu volto com um orçamento certo.</h2>
     <p>Sem compromisso: você decide depois de ver o valor fechado.</p>
@@ -1007,7 +1033,7 @@
       <span>EMAIL</span>
     </div>
   </div>
-</div>
+</footer>
 
 </body>
 </html>
