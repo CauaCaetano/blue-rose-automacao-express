@@ -13,7 +13,7 @@
 <meta property="og:url" content="https://cauacaetano.github.io/blue-rose-automacao-express/clinicas.html">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="color-scheme" content="light dark">
-<link rel="icon" type="image/jpeg" href="img/blue-rose-logo.jpg">
+<link rel="icon" type="image/png" href="img/blue-rose-favicon.png">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,680;1,9..144,560&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
@@ -103,12 +103,10 @@
     letter-spacing:0.01em;
   }
   .brand-mark{
-    width:30px;height:30px;
+    width:auto;height:34px;
     flex:none;
     display:block;
-    border-radius:50%;
-    object-fit:cover;
-    background:#fff;
+    object-fit:contain;
   }
   .topbar .tag{
     font-size:13px;
@@ -200,39 +198,32 @@
   @media (max-width:860px){ .hero-grid{grid-template-columns:1fr;} .hero .wrap{max-width:760px;} }
   .hero-mark{
     position:relative;
-    width:184px; height:184px;
-    margin:0 auto 26px;
+    width:220px; height:220px;
+    margin:0 auto 8px;
   }
-  @media (min-width:861px){ .hero-mark{ margin:0 0 26px; } }
+  @media (min-width:861px){ .hero-mark{ margin:-8px 0 8px -12px; } }
   .hero-mark::before{
     content:'';
-    position:absolute; inset:-30px;
+    position:absolute; inset:8%;
     border-radius:50%;
-    background:radial-gradient(circle, rgba(0,212,255,0.45) 0%, rgba(0,212,255,0) 70%);
+    background:radial-gradient(circle, rgba(0,212,255,0.5) 0%, rgba(0,212,255,0) 68%);
     animation:markPulse 3.4s ease-in-out infinite;
   }
   @keyframes markPulse{
-    0%,100%{ opacity:.55; transform:scale(1); }
-    50%{ opacity:1; transform:scale(1.12); }
+    0%,100%{ opacity:.5; transform:scale(1); }
+    50%{ opacity:1; transform:scale(1.15); }
   }
   @media (prefers-reduced-motion: reduce){ .hero-mark::before{ animation:none; } }
-  .hero-mark .ring{
-    position:absolute; inset:0;
-    border-radius:50%;
-    background:radial-gradient(circle at 32% 28%, #16305e 0%, #081328 62%, #050b18 100%);
-    box-shadow:0 18px 46px -12px rgba(0,0,0,0.6), inset 0 0 0 1px rgba(127,227,255,0.25);
-  }
   .hero-mark img{
     position:absolute; inset:0;
     width:100%; height:100%;
     object-fit:contain;
-    padding:20px;
-    filter:drop-shadow(0 0 18px rgba(0,212,255,0.65));
+    filter:drop-shadow(0 0 22px rgba(0,212,255,0.75)) drop-shadow(0 0 46px rgba(124,58,237,0.35));
     animation:markFloat 5s ease-in-out infinite;
   }
   @keyframes markFloat{
-    0%,100%{ transform:translateY(0); }
-    50%{ transform:translateY(-7px); }
+    0%,100%{ transform:translateY(0) rotate(0deg); }
+    50%{ transform:translateY(-9px) rotate(-2deg); }
   }
   @media (prefers-reduced-motion: reduce){ .hero-mark img{ animation:none; } }
   .hero .eyebrow{ color:#7fe3ff; text-align:center; }
@@ -262,9 +253,13 @@
   .hero .cta-row{ justify-content:center; }
   @media (min-width:861px){ .hero .cta-row{ justify-content:flex-start; } }
   .hero .btn-primary{
-    box-shadow:0 0 0 1px rgba(255,255,255,0.08), 0 10px 30px -8px rgba(200,29,75,0.65);
+    background:linear-gradient(100deg, var(--rose) 0%, #8b3fd9 100%);
+    box-shadow:0 0 0 1px rgba(255,255,255,0.08), 0 10px 30px -8px rgba(139,63,217,0.55);
   }
-  .hero .btn-primary:hover{ box-shadow:0 0 0 1px rgba(255,255,255,0.12), 0 14px 38px -6px rgba(200,29,75,0.85); }
+  .hero .btn-primary:hover{
+    background:linear-gradient(100deg, var(--rose-deep) 0%, #7530b8 100%);
+    box-shadow:0 0 0 1px rgba(255,255,255,0.12), 0 14px 38px -6px rgba(139,63,217,0.75);
+  }
   .hero .btn-ghost{
     border-color:rgba(238,242,255,0.35);
     color:#eef2ff;
@@ -272,6 +267,51 @@
   .hero .btn-ghost:hover{ border-color:#7fe3ff; color:#7fe3ff; }
   .hero .phone-caption{ color:#8b98c4; }
   .hero .phone{ box-shadow:0 24px 60px -14px rgba(0,0,0,0.55); }
+  .flow-strip{
+    margin-top:34px;
+    display:inline-flex;
+    align-items:center;
+    gap:0;
+    padding:14px 20px;
+    border-radius:14px;
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(148,178,255,0.16);
+    backdrop-filter:blur(6px);
+  }
+  .flow-node{ display:flex; flex-direction:column; align-items:center; gap:8px; }
+  .flow-node .dot{
+    width:40px; height:40px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background:radial-gradient(circle at 30% 25%, #16305e 0%, #081328 70%);
+    color:#7fe3ff;
+    box-shadow:0 0 0 1px rgba(127,227,255,0.3), 0 0 16px rgba(0,212,255,0.35);
+  }
+  .flow-node .dot svg{ width:18px; height:18px; }
+  .flow-node .dot img{ width:24px; height:24px; object-fit:contain; }
+  .flow-node span{ font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:#9fb0dd; white-space:nowrap; }
+  .flow-line{
+    width:34px; height:2px;
+    margin:0 6px 22px;
+    background:repeating-linear-gradient(90deg, #4d6ab8 0 5px, transparent 5px 10px);
+    position:relative;
+    overflow:hidden;
+  }
+  .flow-line::after{
+    content:'';
+    position:absolute; top:-3px; left:-8px;
+    width:8px; height:8px; border-radius:50%;
+    background:#7fe3ff;
+    box-shadow:0 0 8px 2px rgba(127,227,255,0.9);
+    animation:flowPulse 2.6s linear infinite;
+  }
+  @keyframes flowPulse{
+    0%{ left:-8px; opacity:0; }
+    12%{ opacity:1; }
+    88%{ opacity:1; }
+    100%{ left:100%; opacity:0; }
+  }
+  @media (prefers-reduced-motion: reduce){ .flow-line::after{ animation:none; display:none; } }
+  @media (max-width:520px){ .flow-strip{ padding:12px 14px; } .flow-line{ width:20px; margin:0 3px 22px; } .flow-node span{ font-size:9px; } }
   .cta-row{
     display:flex;
     gap:12px;
@@ -318,14 +358,12 @@
     background:var(--card);
   }
   .about-photo{
-    width:46px;height:46px;border-radius:50%;
+    width:46px;height:46px;
     flex:none;
-    background:var(--card-tint);
-    border:1px solid var(--line);
     display:flex;align-items:center;justify-content:center;
   }
   .about-photo svg{ width:24px;height:24px; }
-  .about-photo img{ width:100%;height:100%;object-fit:cover;border-radius:50%; }
+  .about-photo img{ width:100%;height:100%;object-fit:contain; }
   .about-text{ font-size:13.5px; color:var(--ink-soft); }
   .about-text strong{ color:var(--ink); font-weight:600; }
   .about-text a{ color:var(--rose); text-decoration:underline; text-underline-offset:2px; }
@@ -800,11 +838,21 @@
       <rect x="5" y="16" width="30" height="8" rx="3"/>
     </g>
   </symbol>
+  <symbol id="ic-search" viewBox="0 0 24 24">
+    <circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/>
+    <line x1="15.5" y1="15.5" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="ic-chat" viewBox="0 0 24 24">
+    <path d="M21 11.5a8.5 8.5 0 0 1-11.8 7.8L4 21l1.8-5A8.5 8.5 0 1 1 21 11.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="ic-check" viewBox="0 0 24 24">
+    <path d="M5 12.5 10 17.5 19 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
 </svg>
 
 <div class="topbar">
   <div class="wrap">
-    <div class="brand"><img class="brand-mark" src="img/blue-rose-logo.jpg" alt="BLUE ROSE" width="30" height="30">BLUE ROSE</div>
+    <div class="brand"><img class="brand-mark" src="img/blue-rose-mark.webp" alt="BLUE ROSE" width="35" height="34">BLUE ROSE</div>
     <nav class="topnav">
       <a href="#exemplos">Exemplos</a>
       <a href="#precos">Preços</a>
@@ -829,8 +877,7 @@
   <div class="wrap hero-grid">
     <div>
       <div class="hero-mark">
-        <div class="ring"></div>
-        <img src="img/blue-rose-emblem-glow.webp" alt="Emblema BLUE ROSE" width="184" height="184">
+        <img src="img/blue-rose-mark.webp" alt="Emblema BLUE ROSE" width="220" height="213">
       </div>
       <div class="eyebrow">Pra clínicas, estúdios e consultórios sem site</div>
       <h1>Quem te procura no Google não te acha — e <span class="accent-text">não espera resposta no WhatsApp</span>.</h1>
@@ -838,6 +885,15 @@
       <div class="cta-row">
         <a class="btn btn-primary" href="https://wa.me/WHATSAPP?text=Oi%2C%20Caua!%20Vi%20a%20p%C3%A1gina%20da%20Blue%20Rose%20e%20quero%20entender%20melhor." target="_blank" rel="noopener">Chamar no WhatsApp</a>
         <a class="btn btn-ghost" href="#precos">Ver preços</a>
+      </div>
+      <div class="flow-strip">
+        <div class="flow-node"><div class="dot"><svg><use href="#ic-search"/></svg></div><span>GOOGLE</span></div>
+        <div class="flow-line"></div>
+        <div class="flow-node"><div class="dot"><img src="img/blue-rose-mark.webp" alt=""></div><span>SEU SITE</span></div>
+        <div class="flow-line"></div>
+        <div class="flow-node"><div class="dot"><svg><use href="#ic-chat"/></svg></div><span>WHATSAPP</span></div>
+        <div class="flow-line"></div>
+        <div class="flow-node"><div class="dot"><svg><use href="#ic-check"/></svg></div><span>AGENDADO</span></div>
       </div>
     </div>
     <div>
@@ -865,7 +921,7 @@
 <div class="about">
   <div class="wrap">
     <div class="about-row">
-      <div class="about-photo"><img src="img/blue-rose-logo.jpg" alt="BLUE ROSE" width="46" height="46"></div>
+      <div class="about-photo"><img src="img/blue-rose-mark.webp" alt="BLUE ROSE" width="46" height="46"></div>
       <div class="about-text"><strong>Quem monta:</strong> Cauã, desenvolvedor freelancer — cuido do site e da automação do início ao fim, sem agência no meio.</div>
     </div>
   </div>
