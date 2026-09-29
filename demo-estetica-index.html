@@ -5,82 +5,92 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Clínica Bella Face — exemplo de site</title>
 <meta name="robots" content="noindex">
-<meta name="color-scheme" content="light dark">
+<meta name="color-scheme" content="light">
 <link rel="icon" type="image/jpeg" href="img/blue-rose-logo.jpg">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,680;1,9..144,560&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
   :root{
-    --ink:#2a2320; --ink-soft:#7a6d63; --paper:#faf6f2; --card:#ffffff;
+    --ink:#2a2320; --ink-soft:#7a6d63; --ink-dim:#a3968b; --bg:#faf6f2; --card:#ffffff;
     --card-tint:#f3ece6; --line:#e6ddd4; --accent:#c81d4b; --accent-deep:#8f1338;
     --accent-tint:#fbe7ed; --accent-2:#f2b6c6; --focus:#8f1338; --wa:#25d366;
-    --gold:#c9973f; --shadow:0 1px 0 rgba(42,35,32,.04);
-  }
-  @media (prefers-color-scheme: dark){
-    :root{ --ink:#f1e9e3; --ink-soft:#c3b3a6; --paper:#1c1613; --card:#26201c;
-      --card-tint:#302722; --line:#3d332c; --accent:#ff6f93; --accent-deep:#ff96ae; --accent-tint:#3a1c24; --accent-2:#6b2c3c; --focus:#ff6f93; --gold:#e0b567; }
+    --gold:#c9973f; --ease:cubic-bezier(.2,.7,.2,1);
   }
   *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{ margin:0; background:var(--paper); color:var(--ink); font-family:'Archivo',ui-sans-serif,system-ui,sans-serif; line-height:1.55; }
+  html{scroll-behavior:smooth; overflow-anchor:none;}
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
+  body{ margin:0; background:var(--bg); color:var(--ink); font-family:'Archivo',ui-sans-serif,system-ui,sans-serif; line-height:1.55; }
   h1,h2,h3{ font-family:'Fraunces',ui-serif,Georgia,serif; font-weight:660; line-height:1.1; text-wrap:balance; margin:0; color:var(--ink); }
   a{ color:inherit; }
-  .mono{ font-family:'IBM Plex Mono',ui-monospace,monospace; font-variant-numeric:tabular-nums; }
   .wrap{ max-width:1120px; margin:0 auto; padding:0 24px; }
-  .demo-bar{ background:var(--ink); color:var(--paper); font-family:'IBM Plex Mono',monospace; font-size:12px; padding:10px 24px; text-align:center; }
-  .demo-bar a{ color:var(--accent-2); text-decoration:underline; }
+  .reveal{ opacity:0; transform:translateY(18px); transition:opacity .6s var(--ease), transform .6s var(--ease); }
+  .reveal.revealed{ opacity:1; transform:translateY(0); }
+  @media (prefers-reduced-motion: reduce){ .reveal{ opacity:1; transform:none; transition:none; } }
 
-  .site-header{ padding:18px 0; border-bottom:1px solid var(--line); position:sticky; top:0; background:var(--paper); z-index:30; }
+  .demo-bar{ background:var(--ink); color:var(--bg); font-family:'IBM Plex Mono',monospace; font-size:11.5px; padding:9px 24px; text-align:center; }
+  .demo-bar a{ color:var(--accent-2); text-decoration:underline; }
+  .site-header{ padding:16px 0; border-bottom:1px solid var(--line); position:sticky; top:0; background:rgba(250,246,242,0.82); backdrop-filter:blur(10px); z-index:30; }
   .site-header .wrap{ display:flex; align-items:center; justify-content:space-between; gap:16px; }
-  .brand{ display:flex; align-items:center; gap:11px; }
-  .brand-icon{ width:36px; height:36px; flex:none; }
+  .brand{ display:flex; align-items:center; gap:11px; text-decoration:none; }
+  .brand-icon{ width:34px; height:34px; flex:none; }
   .brand-text{ display:flex; flex-direction:column; line-height:1.15; }
-  .brand-name{ font-family:'Fraunces',serif; font-weight:680; font-size:18px; }
+  .brand-name{ font-family:'Fraunces',serif; font-weight:680; font-size:18px; color:var(--ink); }
   .brand-tag{ font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.1em; color:var(--ink-soft); text-transform:uppercase; }
   nav.pagenav{ display:flex; gap:26px; font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:.05em; text-transform:uppercase; }
   nav.pagenav a{ text-decoration:none; color:var(--ink-soft); padding-bottom:3px; border-bottom:2px solid transparent; transition:.15s; }
   nav.pagenav a:hover, nav.pagenav a.active{ color:var(--ink); border-color:var(--accent); }
   @media (max-width:640px){ nav.pagenav{ display:none; } }
-  .btn{ display:inline-flex; align-items:center; gap:8px; padding:12px 22px; border-radius:999px; font-weight:600; font-size:14px; text-decoration:none; background:var(--accent); color:#fff; border:none; cursor:pointer; transition:background .15s; }
-  .btn:hover{ background:var(--accent-deep); }
+  .btn{ display:inline-flex; align-items:center; gap:8px; padding:12px 22px; border-radius:999px; font-weight:600; font-size:14px; text-decoration:none; background:var(--accent); color:#fff; border:none; cursor:pointer; transition:background .15s ease, transform .12s ease, box-shadow .15s ease; }
+  .btn:hover{ background:var(--accent-deep); transform:translateY(-1px); box-shadow:0 10px 22px -10px rgba(143,19,56,.45); }
+  @media (prefers-reduced-motion: reduce){ .btn:hover{ transform:none; } }
+  .btn:focus-visible{ outline:2px solid var(--focus); outline-offset:2px; }
   .btn-ghost{ background:transparent; border:1.5px solid var(--line); color:var(--ink); }
-  .btn-ghost:hover{ border-color:var(--accent); color:var(--accent-deep); }
+  .btn-ghost:hover{ border-color:var(--accent); color:var(--accent-deep); background:transparent; box-shadow:none; }
   .btn-sm{ padding:9px 16px; font-size:12.5px; }
 
-  .hero{ padding:60px 0 70px; position:relative; overflow:hidden;
-    background: radial-gradient(480px 380px at 92% 8%, var(--accent-tint) 0%, transparent 70%), var(--paper); }
-  .hero-grid{ display:grid; grid-template-columns:1.05fr .95fr; gap:48px; align-items:center; }
+  .hero{ padding:56px 0 64px; position:relative; overflow:hidden; background:radial-gradient(480px 380px at 92% 8%, var(--accent-tint) 0%, transparent 70%), var(--bg); }
+  .hero-grid{ position:relative; z-index:1; display:grid; grid-template-columns:1.05fr .95fr; gap:48px; align-items:center; }
   @media (max-width:820px){ .hero-grid{ grid-template-columns:1fr; } }
   .eyebrow{ font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.09em; text-transform:uppercase; color:var(--accent-deep); }
   .hero h1{ font-size:clamp(30px,4.4vw,46px); margin-top:14px; }
   .hero p.lede{ margin-top:16px; font-size:16.5px; color:var(--ink-soft); max-width:46ch; }
-  .rating-chip{ display:inline-flex; align-items:center; gap:8px; margin-top:20px; padding:8px 14px; border-radius:999px; background:var(--card); border:1px solid var(--line); font-size:13px; box-shadow:var(--shadow); }
+  .chip-row{ display:flex; gap:10px; flex-wrap:wrap; margin-top:20px; }
+  .rating-chip{ display:inline-flex; align-items:center; gap:8px; padding:8px 14px; border-radius:999px; background:var(--card); border:1px solid var(--line); font-size:13px; box-shadow:0 1px 0 rgba(42,35,32,.04); }
   .rating-chip .stars{ color:var(--gold); letter-spacing:1px; }
+  .slot-chip{ display:inline-flex; align-items:center; gap:8px; padding:8px 14px; border-radius:999px; background:var(--card); border:1px solid var(--line); font-size:12.5px; color:var(--ink-soft); box-shadow:0 1px 0 rgba(42,35,32,.04); }
+  .slot-chip .dot{ width:7px; height:7px; border-radius:50%; background:#2fbf71; box-shadow:0 0 0 3px rgba(47,191,113,.18); flex:none; animation:dotPulse 2.2s ease-in-out infinite; }
+  @keyframes dotPulse{ 0%,100%{ opacity:.6; } 50%{ opacity:1; } }
+  @media (prefers-reduced-motion: reduce){ .slot-chip .dot{ animation:none; } }
   .btn-row{ margin-top:26px; display:flex; gap:12px; flex-wrap:wrap; }
-  .hero-photo{ position:relative; border-radius:20px; overflow:hidden; aspect-ratio:4/5; box-shadow:0 30px 60px -20px rgba(42,35,32,.35); }
+  .hero-photo{ position:relative; border-radius:22px; overflow:hidden; aspect-ratio:4/5; box-shadow:0 34px 64px -22px rgba(42,35,32,.32); }
   .hero-photo img{ width:100%; height:100%; object-fit:cover; display:block; }
-  .hero-badge{ position:absolute; left:18px; bottom:18px; background:var(--card); border-radius:12px; padding:12px 16px; display:flex; align-items:center; gap:10px; box-shadow:0 12px 24px -8px rgba(0,0,0,.25); }
+  .hero-badge{ position:absolute; left:18px; bottom:18px; background:var(--card); border-radius:12px; padding:12px 16px; display:flex; align-items:center; gap:10px; box-shadow:0 14px 28px -10px rgba(0,0,0,.22); }
   .hero-badge svg{ width:26px; height:26px; flex:none; }
   .hero-badge .num{ font-family:'Fraunces',serif; font-weight:680; font-size:17px; }
   .hero-badge .lbl{ font-size:10.5px; color:var(--ink-soft); }
 
-  .trust{ padding:8px 0 54px; }
-  .trust-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
-  @media (max-width:820px){ .trust-grid{ grid-template-columns:1fr 1fr; } }
-  .trust-item{ text-align:center; padding:20px 14px; border:1px solid var(--line); border-radius:12px; background:var(--card); }
-  .trust-item svg{ width:34px; height:34px; margin-bottom:10px; }
+  .trust{ padding:8px 0 56px; }
+  .trust-strip{ display:flex; border:1px solid var(--line); border-radius:16px; background:var(--card); box-shadow:0 1px 0 rgba(42,35,32,.04); overflow:hidden; }
+  @media (max-width:820px){ .trust-strip{ flex-direction:column; } }
+  .trust-item{ flex:1; text-align:left; padding:22px 24px; display:flex; align-items:flex-start; gap:14px; border-left:1px solid var(--line); }
+  .trust-item:first-child{ border-left:none; }
+  @media (max-width:820px){ .trust-item{ border-left:none; border-top:1px solid var(--line); } .trust-item:first-child{ border-top:none; } }
+  .trust-item svg{ width:30px; height:30px; flex:none; margin-top:2px; }
   .trust-item h3{ font-size:14px; font-family:'Archivo',sans-serif; font-weight:600; }
-  .trust-item p{ font-size:12px; color:var(--ink-soft); margin:6px 0 0; }
+  .trust-item p{ font-size:12px; color:var(--ink-soft); margin:5px 0 0; }
 
   section{ padding:12px 0 60px; }
   .section-head{ text-align:center; margin-bottom:36px; }
   .section-head h2{ font-size:clamp(24px,3.2vw,32px); margin-top:8px; }
   .section-head .sub{ font-size:14.5px; color:var(--ink-soft); max-width:56ch; margin:12px auto 0; }
 
-  .cat-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
+  .cat-grid{ display:grid; grid-template-columns:1.3fr 1fr 1fr 1fr; gap:18px; }
   @media (max-width:900px){ .cat-grid{ grid-template-columns:1fr 1fr; } }
   @media (max-width:520px){ .cat-grid{ grid-template-columns:1fr; } }
-  .cat-card{ background:var(--card); border:1px solid var(--line); border-radius:14px; padding:24px 20px; text-decoration:none; transition:transform .15s, border-color .15s; display:block; }
-  .cat-card:hover{ transform:translateY(-4px); border-color:var(--accent); }
+  .cat-card{ background:var(--card); border:1px solid var(--line); border-radius:14px; padding:24px 20px; text-decoration:none; transition:transform .15s var(--ease), border-color .15s ease, box-shadow .15s ease; display:block; position:relative; }
+  .cat-card:hover{ transform:translateY(-4px); border-color:var(--accent); box-shadow:0 20px 40px -24px rgba(42,35,32,.25); }
+  @media (prefers-reduced-motion: reduce){ .cat-card{ transition:none; } .cat-card:hover{ transform:none; } }
+  .cat-card.lead{ background:linear-gradient(165deg, var(--accent-tint) 0%, var(--card) 62%); }
+  .cat-card .badge{ position:absolute; top:16px; right:16px; font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.05em; text-transform:uppercase; color:var(--accent-deep); background:var(--accent-tint); padding:4px 8px; border-radius:999px; }
   .cat-card svg{ width:36px; height:36px; }
   .cat-card h3{ font-size:15.5px; margin-top:14px; }
   .cat-card p{ font-size:12.5px; color:var(--ink-soft); margin:6px 0 0; }
@@ -89,7 +99,7 @@
   .about{ background:var(--card-tint); }
   .about-grid{ display:grid; grid-template-columns:.9fr 1.1fr; gap:44px; align-items:center; }
   @media (max-width:820px){ .about-grid{ grid-template-columns:1fr; } }
-  .about-photo{ border-radius:18px; overflow:hidden; aspect-ratio:4/5; box-shadow:var(--shadow); }
+  .about-photo{ border-radius:18px; overflow:hidden; aspect-ratio:4/5; box-shadow:0 1px 0 rgba(42,35,32,.04); }
   .about-photo img{ width:100%; height:100%; object-fit:cover; display:block; }
   .about-text .eyebrow{ margin-bottom:8px; }
   .about-text h2{ font-size:clamp(22px,3vw,28px); }
@@ -100,17 +110,20 @@
 
   .reviews-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
   @media (max-width:820px){ .reviews-grid{ grid-template-columns:1fr; } }
-  .review-card{ background:var(--card); border:1px solid var(--line); border-radius:14px; padding:22px; }
+  .review-card{ background:var(--card); border:1px solid var(--line); border-radius:14px; padding:24px; position:relative; }
+  .review-card::before{ content:'“'; position:absolute; top:6px; right:18px; font-family:'Fraunces',serif; font-size:52px; color:var(--accent-tint); line-height:1; }
   .review-card .stars{ color:var(--gold); font-size:13px; letter-spacing:1px; }
-  .review-card p{ font-size:14px; color:var(--ink-soft); margin:12px 0 0; line-height:1.6; }
+  .review-card p{ font-size:14px; color:var(--ink-soft); margin:12px 0 0; line-height:1.6; position:relative; }
   .review-card .who{ margin-top:14px; font-size:12.5px; font-weight:600; }
   .review-card .who span{ font-weight:400; color:var(--ink-soft); }
 
-  .cta-band{ background:var(--accent-deep); color:#fff; border-radius:24px; padding:48px 40px; text-align:center; }
+  .cta-band{ background:linear-gradient(155deg, var(--accent-deep) 0%, #5c0d26 100%); color:#fff; border-radius:24px; padding:48px 40px; text-align:center; }
   .cta-band h2{ color:#fff; font-size:clamp(22px,3vw,30px); }
   .cta-band p{ color:rgba(255,255,255,.82); margin-top:10px; font-size:14.5px; }
   .cta-band .btn-row{ justify-content:center; margin-top:22px; }
   .cta-band .btn-ghost{ border-color:rgba(255,255,255,.5); color:#fff; }
+  .cta-band .btn-primary-inv{ background:#fff; color:var(--accent-deep); }
+  .cta-band .btn-primary-inv:hover{ background:#fff0f4; }
 
   footer.site-footer{ border-top:1px solid var(--line); padding:44px 0 30px; margin-top:20px; }
   .foot-grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:30px; }
@@ -121,6 +134,9 @@
   .foot-bottom a{ text-decoration:underline; }
 
   .wa-float{ position:fixed; right:20px; bottom:20px; width:54px; height:54px; border-radius:50%; background:var(--wa); display:flex; align-items:center; justify-content:center; box-shadow:0 6px 18px rgba(0,0,0,.22); z-index:40; }
+  .wa-float::before{ content:''; position:absolute; inset:0; border-radius:50%; background:var(--wa); opacity:.5; animation:waPulse 2.6s ease-out infinite; z-index:-1; }
+  @keyframes waPulse{ 0%{ transform:scale(1); opacity:.45; } 100%{ transform:scale(1.7); opacity:0; } }
+  @media (prefers-reduced-motion: reduce){ .wa-float::before{ animation:none; display:none; } }
   .wa-float svg{ width:26px; height:26px; }
 </style>
 </head>
@@ -158,13 +174,13 @@
 
 <header class="site-header">
   <div class="wrap">
-    <div class="brand">
+    <a class="brand" href="demo-estetica-index.html">
       <svg class="brand-icon" viewBox="0 0 40 40"><use href="#ic-mark"/></svg>
       <div class="brand-text">
         <span class="brand-name">Bella Face</span>
         <span class="brand-tag">Estética Avançada</span>
       </div>
-    </div>
+    </a>
     <nav class="pagenav">
       <a href="demo-estetica-index.html" class="active">Início</a>
       <a href="demo-estetica-servicos.html">Serviços</a>
@@ -181,7 +197,10 @@
       <div class="eyebrow">Estética facial &amp; corporal</div>
       <h1>Cuidado de verdade pra sua pele, do jeito certo.</h1>
       <p class="lede">Protocolos personalizados de estética facial e corporal, num ambiente reservado e climatizado — pensados pra realçar o que já é seu, com agendamento simples pelo WhatsApp.</p>
-      <div class="rating-chip"><span class="stars">★★★★★</span> 4.9 de 128 avaliações</div>
+      <div class="chip-row">
+        <div class="rating-chip"><span class="stars">★★★★★</span> 4.9 de 128 avaliações</div>
+        <div class="slot-chip"><span class="dot"></span> Próxima vaga: hoje às 17h</div>
+      </div>
       <div class="btn-row">
         <a class="btn" href="demo-estetica-contato.html">Agendar avaliação</a>
         <a class="btn btn-ghost" href="demo-estetica-servicos.html">Ver procedimentos e preços</a>
@@ -198,23 +217,26 @@
 </div>
 
 <div class="trust">
-  <div class="wrap trust-grid">
-    <div class="trust-item"><svg viewBox="0 0 40 40"><use href="#ic-check"/></svg><h3>Avaliação individualizada</h3><p>Nada de protocolo padrão — o plano é pensado pro seu tipo de pele.</p></div>
-    <div class="trust-item"><svg viewBox="0 0 40 40"><use href="#ic-brow"/></svg><h3>Ambiente reservado</h3><p>Espaço climatizado, pensado pra você relaxar durante o atendimento.</p></div>
-    <div class="trust-item"><svg viewBox="0 0 40 40"><use href="#ic-face"/></svg><h3>Produtos testados</h3><p>Linha com procedência e testagem dermatológica.</p></div>
-    <div class="trust-item"><svg viewBox="0 0 40 40"><use href="#ic-advanced"/></svg><h3>Parcelamos o tratamento</h3><p>Pacotes e planos com parcelamento facilitado.</p></div>
+  <div class="wrap reveal">
+    <div class="trust-strip">
+      <div class="trust-item"><svg viewBox="0 0 40 40"><use href="#ic-check"/></svg><div><h3>Avaliação individualizada</h3><p>Nada de protocolo padrão — o plano é pensado pro seu tipo de pele.</p></div></div>
+      <div class="trust-item"><svg viewBox="0 0 40 40"><use href="#ic-brow"/></svg><div><h3>Ambiente reservado</h3><p>Espaço climatizado, pensado pra você relaxar durante o atendimento.</p></div></div>
+      <div class="trust-item"><svg viewBox="0 0 40 40"><use href="#ic-face"/></svg><div><h3>Produtos testados</h3><p>Linha com procedência e testagem dermatológica.</p></div></div>
+      <div class="trust-item"><svg viewBox="0 0 40 40"><use href="#ic-advanced"/></svg><div><h3>Parcelamos o tratamento</h3><p>Pacotes e planos com parcelamento facilitado.</p></div></div>
+    </div>
   </div>
 </div>
 
 <section id="servicos">
-  <div class="wrap">
+  <div class="wrap reveal">
     <div class="section-head">
       <div class="eyebrow">O que cuidamos por aqui</div>
       <h2>Cuidado completo, por categoria</h2>
       <div class="sub">Veja a lista completa de procedimentos e preços na página de Serviços — inclui uma calculadora pra você montar seu próprio orçamento.</div>
     </div>
     <div class="cat-grid">
-      <a class="cat-card" href="demo-estetica-servicos.html#facial">
+      <a class="cat-card lead" href="demo-estetica-servicos.html#facial">
+        <span class="badge">Mais procurado</span>
         <svg viewBox="0 0 40 40"><use href="#ic-face"/></svg>
         <h3>Facial</h3>
         <p>Limpeza de pele, peeling e microagulhamento.</p>
@@ -243,7 +265,7 @@
 </section>
 
 <section class="about">
-  <div class="wrap about-grid">
+  <div class="wrap about-grid reveal">
     <div class="about-photo"><img src="img/estetica-2.jpg" alt="Procedimento facial em andamento"></div>
     <div class="about-text">
       <div class="eyebrow">Por que a Bella Face</div>
@@ -259,7 +281,7 @@
 </section>
 
 <section id="avaliacoes">
-  <div class="wrap">
+  <div class="wrap reveal">
     <div class="section-head">
       <div class="eyebrow">Avaliações</div>
       <h2>O que dizem as clientes</h2>
@@ -274,12 +296,12 @@
 </section>
 
 <section>
-  <div class="wrap">
+  <div class="wrap reveal">
     <div class="cta-band">
       <h2>Agende sua avaliação gratuita</h2>
       <p>Conta pra gente o que você procura — a gente indica o procedimento certo pra você, sem compromisso.</p>
       <div class="btn-row">
-        <a class="btn" style="background:#fff;color:var(--accent-deep);" href="demo-estetica-contato.html">Agendar avaliação</a>
+        <a class="btn btn-primary-inv" href="demo-estetica-contato.html">Agendar avaliação</a>
         <a class="btn btn-ghost" href="demo-estetica-servicos.html">Ver preços</a>
       </div>
     </div>
@@ -303,6 +325,21 @@
 <a class="wa-float" href="https://wa.me/WHATSAPP" target="_blank" rel="noopener" aria-label="WhatsApp">
   <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-11.8 7.8L4 21l1.8-5A8.5 8.5 0 1 1 21 11.5Z"/><path d="M8.5 9.5c.3 2.7 2.3 4.7 5 5"/></svg>
 </a>
+
+<script>
+(function(){
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var revealEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window && !reduceMotion){
+    var ro = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('revealed'); ro.unobserve(e.target); } });
+    }, {threshold:0.12});
+    revealEls.forEach(function(el){ ro.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('revealed'); });
+  }
+})();
+</script>
 
 </body>
 </html>

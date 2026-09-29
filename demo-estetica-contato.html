@@ -5,44 +5,46 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Contato &amp; agendamento — Clínica Bella Face</title>
 <meta name="robots" content="noindex">
-<meta name="color-scheme" content="light dark">
+<meta name="color-scheme" content="light">
 <link rel="icon" type="image/jpeg" href="img/blue-rose-logo.jpg">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,680;1,9..144,560&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
   :root{
-    --ink:#2a2320; --ink-soft:#7a6d63; --paper:#faf6f2; --card:#ffffff;
+    --ink:#2a2320; --ink-soft:#7a6d63; --ink-dim:#a3968b; --bg:#faf6f2; --card:#ffffff;
     --card-tint:#f3ece6; --line:#e6ddd4; --accent:#c81d4b; --accent-deep:#8f1338;
-    --accent-tint:#fbe7ed; --accent-2:#f2b6c6; --focus:#8f1338; --wa:#25d366; --gold:#c9973f;
-  }
-  @media (prefers-color-scheme: dark){
-    :root{ --ink:#f1e9e3; --ink-soft:#c3b3a6; --paper:#1c1613; --card:#26201c;
-      --card-tint:#302722; --line:#3d332c; --accent:#ff6f93; --accent-deep:#ff96ae; --accent-tint:#3a1c24; --accent-2:#6b2c3c; --focus:#ff6f93; --gold:#e0b567; }
+    --accent-tint:#fbe7ed; --wa:#25d366; --ease:cubic-bezier(.2,.7,.2,1);
   }
   *{box-sizing:border-box;}
-  body{ margin:0; background:var(--paper); color:var(--ink); font-family:'Archivo',ui-sans-serif,system-ui,sans-serif; line-height:1.55; }
+  html{overflow-anchor:none;}
+  body{ margin:0; background:var(--bg); color:var(--ink); font-family:'Archivo',ui-sans-serif,system-ui,sans-serif; line-height:1.55; }
   h1,h2,h3{ font-family:'Fraunces',ui-serif,Georgia,serif; font-weight:660; line-height:1.1; text-wrap:balance; margin:0; color:var(--ink); }
   a{ color:inherit; }
   .mono{ font-family:'IBM Plex Mono',ui-monospace,monospace; font-variant-numeric:tabular-nums; }
   .wrap{ max-width:1120px; margin:0 auto; padding:0 24px; }
-  .demo-bar{ background:var(--ink); color:var(--paper); font-family:'IBM Plex Mono',monospace; font-size:12px; padding:10px 24px; text-align:center; }
-  .demo-bar a{ color:var(--accent-2); text-decoration:underline; }
-  .site-header{ padding:18px 0; border-bottom:1px solid var(--line); position:sticky; top:0; background:var(--paper); z-index:30; }
+  .reveal{ opacity:0; transform:translateY(18px); transition:opacity .6s var(--ease), transform .6s var(--ease); }
+  .reveal.revealed{ opacity:1; transform:translateY(0); }
+  @media (prefers-reduced-motion: reduce){ .reveal{ opacity:1; transform:none; transition:none; } }
+
+  .demo-bar{ background:var(--ink); color:var(--bg); font-family:'IBM Plex Mono',monospace; font-size:11.5px; padding:9px 24px; text-align:center; }
+  .demo-bar a{ color:#f2b6c6; text-decoration:underline; }
+  .site-header{ padding:16px 0; border-bottom:1px solid var(--line); position:sticky; top:0; background:rgba(250,246,242,0.82); backdrop-filter:blur(10px); z-index:30; }
   .site-header .wrap{ display:flex; align-items:center; justify-content:space-between; gap:16px; }
-  .brand{ display:flex; align-items:center; gap:11px; }
-  .brand-icon{ width:36px; height:36px; flex:none; }
+  .brand{ display:flex; align-items:center; gap:11px; text-decoration:none; }
+  .brand-icon{ width:34px; height:34px; flex:none; }
   .brand-text{ display:flex; flex-direction:column; line-height:1.15; }
-  .brand-name{ font-family:'Fraunces',serif; font-weight:680; font-size:18px; }
+  .brand-name{ font-family:'Fraunces',serif; font-weight:680; font-size:18px; color:var(--ink); }
   .brand-tag{ font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.1em; color:var(--ink-soft); text-transform:uppercase; }
   nav.pagenav{ display:flex; gap:26px; font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:.05em; text-transform:uppercase; }
   nav.pagenav a{ text-decoration:none; color:var(--ink-soft); padding-bottom:3px; border-bottom:2px solid transparent; transition:.15s; }
   nav.pagenav a:hover, nav.pagenav a.active{ color:var(--ink); border-color:var(--accent); }
   @media (max-width:640px){ nav.pagenav{ display:none; } }
-  .btn{ display:inline-flex; align-items:center; gap:8px; padding:12px 22px; border-radius:999px; font-weight:600; font-size:14px; text-decoration:none; background:var(--accent); color:#fff; border:none; cursor:pointer; transition:background .15s, opacity .15s; }
-  .btn:hover{ background:var(--accent-deep); }
-  .btn:disabled{ background:var(--line); color:var(--ink-soft); cursor:not-allowed; }
+  .btn{ display:inline-flex; align-items:center; gap:8px; padding:12px 22px; border-radius:999px; font-weight:600; font-size:14px; text-decoration:none; background:var(--accent); color:#fff; border:none; cursor:pointer; transition:background .15s ease, transform .12s ease, opacity .15s; }
+  .btn:hover{ background:var(--accent-deep); transform:translateY(-1px); }
+  @media (prefers-reduced-motion: reduce){ .btn:hover{ transform:none; } }
+  .btn:disabled{ background:var(--line); color:var(--ink-soft); cursor:not-allowed; transform:none; }
   .btn-sm{ padding:9px 16px; font-size:12.5px; }
 
-  .page-hero{ padding:48px 0 30px; }
+  .page-hero{ padding:44px 0 30px; }
   .eyebrow{ font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.09em; text-transform:uppercase; color:var(--accent-deep); }
   .page-hero h1{ font-size:clamp(28px,4vw,40px); margin-top:12px; }
   .page-hero p{ margin-top:14px; font-size:15.5px; color:var(--ink-soft); max-width:60ch; }
@@ -56,11 +58,12 @@
   .info-row:last-child{ margin-bottom:0; }
   .info-row svg{ width:20px; height:20px; flex:none; margin-top:1px; }
   .info-row .lbl{ color:var(--ink-soft); font-size:11.5px; text-transform:uppercase; letter-spacing:.04em; font-family:'IBM Plex Mono',monospace; }
-  .map-box{ border-radius:16px; overflow:hidden; height:170px; background:
-      repeating-linear-gradient(135deg, var(--card-tint) 0 14px, var(--card) 14px 28px);
-      border:1px solid var(--line); display:flex; align-items:center; justify-content:center; color:var(--ink-soft); font-family:'IBM Plex Mono',monospace; font-size:12px; text-align:center; }
+  .map-box{ border-radius:16px; overflow:hidden; height:170px; background:var(--card-tint); border:1px solid var(--line); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; color:var(--ink-soft); text-align:center; }
+  .map-box svg{ width:26px; height:26px; }
+  .map-box .l1{ font-size:13px; font-weight:600; color:var(--ink); }
+  .map-box .l2{ font-family:'IBM Plex Mono',monospace; font-size:11px; }
 
-  .sched-box{ background:var(--card); border:1px solid var(--line); border-radius:18px; padding:28px; box-shadow:0 24px 48px -30px rgba(42,35,32,.3); }
+  .sched-box{ background:var(--card); border:1px solid var(--line); border-radius:18px; padding:28px; box-shadow:0 24px 48px -28px rgba(42,35,32,.28); }
   .sched-box h2{ font-size:19px; }
   .sched-box .sub{ font-size:13px; color:var(--ink-soft); margin-top:6px; }
   .sched-step{ margin-top:24px; }
@@ -89,6 +92,9 @@
   .foot-bottom{ margin-top:30px; padding-top:20px; border-top:1px solid var(--line); font-size:12px; color:var(--ink-soft); text-align:center; }
   .foot-bottom a{ text-decoration:underline; }
   .wa-float{ position:fixed; right:20px; bottom:20px; width:54px; height:54px; border-radius:50%; background:var(--wa); display:flex; align-items:center; justify-content:center; box-shadow:0 6px 18px rgba(0,0,0,.22); z-index:40; }
+  .wa-float::before{ content:''; position:absolute; inset:0; border-radius:50%; background:var(--wa); opacity:.5; animation:waPulse 2.6s ease-out infinite; z-index:-1; }
+  @keyframes waPulse{ 0%{ transform:scale(1); opacity:.45; } 100%{ transform:scale(1.7); opacity:0; } }
+  @media (prefers-reduced-motion: reduce){ .wa-float::before{ animation:none; display:none; } }
   .wa-float svg{ width:26px; height:26px; }
 </style>
 </head>
@@ -112,10 +118,10 @@
 
 <header class="site-header">
   <div class="wrap">
-    <div class="brand">
+    <a class="brand" href="demo-estetica-index.html">
       <svg class="brand-icon" viewBox="0 0 40 40"><use href="#ic-mark"/></svg>
       <div class="brand-text"><span class="brand-name">Bella Face</span><span class="brand-tag">Estética Avançada</span></div>
-    </div>
+    </a>
     <nav class="pagenav">
       <a href="demo-estetica-index.html">Início</a>
       <a href="demo-estetica-servicos.html">Serviços</a>
@@ -127,7 +133,7 @@
 </header>
 
 <div class="page-hero">
-  <div class="wrap">
+  <div class="wrap reveal">
     <div class="eyebrow">Contato &amp; agendamento</div>
     <h1>Escolha o melhor dia e horário pra você</h1>
     <p>Selecione um dia e um horário disponível abaixo. No final, você confirma direto pelo WhatsApp — sem precisar ligar.</p>
@@ -135,17 +141,21 @@
 </div>
 
 <div class="wrap layout">
-  <div>
+  <div class="reveal">
     <div class="info-card">
       <h3>Fale com a gente</h3>
       <div class="info-row"><svg viewBox="0 0 24 24"><use href="#ic-pin"/></svg><div><div class="lbl">Endereço</div>Rua das Flores, 210 — Centro</div></div>
       <div class="info-row"><svg viewBox="0 0 24 24"><use href="#ic-clock"/></svg><div><div class="lbl">Horário</div>Seg–Sex · 9h às 19h</div></div>
       <div class="info-row"><svg viewBox="0 0 24 24"><use href="#ic-phone"/></svg><div><div class="lbl">WhatsApp</div>(16) XXXXX-XXXX</div></div>
     </div>
-    <div class="map-box">[ mapa ilustrativo — endereço de exemplo ]</div>
+    <div class="map-box">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--ink-soft)" stroke-width="1.6"><path d="M12 21s-7-6.3-7-11.5A7 7 0 0 1 19 9.5C19 14.7 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.4"/></svg>
+      <div class="l1">Rua das Flores, 210 — Centro</div>
+      <div class="l2">mapa ilustrativo</div>
+    </div>
   </div>
 
-  <div class="sched-box">
+  <div class="sched-box reveal">
     <h2>Agende sua avaliação</h2>
     <div class="sub">Disponibilidade ilustrativa, atualizada conforme a agenda real da clínica.</div>
 
@@ -184,6 +194,17 @@
 
 <script>
 (function(){
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var revealEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window && !reduceMotion){
+    var ro = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('revealed'); ro.unobserve(e.target); } });
+    }, {threshold:0.1});
+    revealEls.forEach(function(el){ ro.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('revealed'); });
+  }
+
   var DOWS = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
   var MONTHS = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
   var dayRow = document.getElementById('dayRow');
