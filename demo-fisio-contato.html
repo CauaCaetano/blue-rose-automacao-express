@@ -91,6 +91,7 @@
   .wa-float{ position:fixed; right:20px; bottom:20px; width:54px; height:54px; border-radius:50%; background:var(--wa); display:flex; align-items:center; justify-content:center; box-shadow:0 6px 18px rgba(0,0,0,.22); z-index:40; }
   .wa-float svg{ width:26px; height:26px; }
 </style>
+  <script src="js/contato.js"></script>
 </head>
 <body>
 
@@ -138,7 +139,7 @@
       <h3>Fale com a gente</h3>
       <div class="info-row"><svg viewBox="0 0 24 24"><use href="#ic-pin"/></svg><div><div class="lbl">Endereço</div>Rua Bem-Estar, 321 — Bairro Novo</div></div>
       <div class="info-row"><svg viewBox="0 0 24 24"><use href="#ic-clock"/></svg><div><div class="lbl">Horário</div>Seg–Sex · 8h às 18h</div></div>
-      <div class="info-row"><svg viewBox="0 0 24 24"><use href="#ic-phone"/></svg><div><div class="lbl">WhatsApp</div>(16) XXXXX-XXXX</div></div>
+      <div class="info-row"><svg viewBox="0 0 24 24"><use href="#ic-phone"/></svg><div><div class="lbl">WhatsApp</div><span data-contato="whatsapp">WhatsApp</span></div></div>
     </div>
     <div class="map-box">[ mapa ilustrativo — endereço de exemplo ]</div>
   </div>
@@ -170,7 +171,7 @@
         <div class="line" style="color:var(--ink-soft);max-width:34ch;">Exemplo de agendamento interativo — dia e horário calculados a partir da data de hoje.</div>
       </div>
       <div class="foot-col"><div class="lbl">Navegação</div><div class="line"><a href="demo-fisio-index.html">Início</a></div><div class="line"><a href="demo-fisio-servicos.html">Serviços</a></div><div class="line"><a href="demo-fisio-galeria.html">Galeria</a></div></div>
-      <div class="foot-col"><div class="lbl">Atendimento</div><div class="line">Seg–Sex · 8h–18h</div><div class="line">Rua Bem-Estar, 321 — Bairro Novo</div><div class="line">(16) XXXXX-XXXX</div></div>
+      <div class="foot-col"><div class="lbl">Atendimento</div><div class="line">Seg–Sex · 8h–18h</div><div class="line">Rua Bem-Estar, 321 — Bairro Novo</div><div class="line"><span data-contato="whatsapp">WhatsApp</span></div></div>
     </div>
     <div class="foot-bottom">Site de exemplo — <a href="clinicas.html">BLUE ROSE, sites e automação pra negócios locais</a></div>
   </div>
@@ -238,7 +239,7 @@
   function renderSummary(){
     if(selectedDay === null || selectedSlot === null){
       summary.textContent = 'Selecione um dia e um horário pra ver o resumo aqui.';
-      schedBtn.href = 'https://wa.me/WHATSAPP';
+      schedBtn.href = 'https://wa.me/' + BR_WA + '';
       return;
     }
     var day = days[selectedDay];
@@ -246,7 +247,7 @@
     var slotLabel = allSlots[selectedSlot];
     summary.innerHTML = 'Consulta selecionada: <strong>' + dayLabel + ', ' + slotLabel + '</strong>';
     var msg = 'Oi! Quero agendar uma consulta no Vitta para ' + dayLabel + ' às ' + slotLabel + '. Pode confirmar?';
-    schedBtn.href = 'https://wa.me/WHATSAPP?text=' + encodeURIComponent(msg);
+    schedBtn.href = 'https://wa.me/' + BR_WA + '?text=' + encodeURIComponent(msg);
   }
 
   renderDays();

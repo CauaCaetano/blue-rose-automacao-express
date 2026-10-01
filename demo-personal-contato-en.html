@@ -91,6 +91,7 @@
   .wa-float{ position:fixed; right:20px; bottom:20px; width:54px; height:54px; border-radius:50%; background:var(--wa); display:flex; align-items:center; justify-content:center; box-shadow:0 6px 18px rgba(0,0,0,.22); z-index:40; }
   .wa-float svg{ width:26px; height:26px; }
 </style>
+  <script src="js/contato.js"></script>
 </head>
 <body>
 
@@ -139,7 +140,7 @@
       <h3>Get in touch</h3>
       <div class="info-row"><svg viewBox="0 0 24 24"><use href="#ic-pin"/></svg><div><div class="lbl">Address</div>456 Ipe Avenue — Central Garden</div></div>
       <div class="info-row"><svg viewBox="0 0 24 24"><use href="#ic-clock"/></svg><div><div class="lbl">Hours</div>Mon–Sat · 6am to 9pm</div></div>
-      <div class="info-row"><svg viewBox="0 0 24 24"><use href="#ic-phone"/></svg><div><div class="lbl">WhatsApp</div>(16) XXXXX-XXXX</div></div>
+      <div class="info-row"><svg viewBox="0 0 24 24"><use href="#ic-phone"/></svg><div><div class="lbl">WhatsApp</div><span data-contato="whatsapp">WhatsApp</span></div></div>
     </div>
     <div class="map-box">[ illustrative map — example address ]</div>
   </div>
@@ -171,7 +172,7 @@
         <div class="line" style="color:var(--ink-soft);max-width:34ch;">Example interactive booking flow — day and time calculated from today's date.</div>
       </div>
       <div class="foot-col"><div class="lbl">Navigation</div><div class="line"><a href="demo-personal-index-en.html">Home</a></div><div class="line"><a href="demo-personal-servicos-en.html">Plans</a></div><div class="line"><a href="demo-personal-galeria-en.html">Gallery</a></div></div>
-      <div class="foot-col"><div class="lbl">Hours</div><div class="line">Mon–Sat · 6am–9pm</div><div class="line">456 Ipe Avenue — Central Garden</div><div class="line">(16) XXXXX-XXXX</div></div>
+      <div class="foot-col"><div class="lbl">Hours</div><div class="line">Mon–Sat · 6am–9pm</div><div class="line">456 Ipe Avenue — Central Garden</div><div class="line"><span data-contato="whatsapp">WhatsApp</span></div></div>
     </div>
     <div class="foot-bottom">Example site — <a href="clinicas-en.html">BLUE ROSE, websites and automation for local businesses</a></div>
   </div>
@@ -239,7 +240,7 @@
   function renderSummary(){
     if(selectedDay === null || selectedSlot === null){
       summary.textContent = 'Select a day and a time to see the summary here.';
-      schedBtn.href = 'https://wa.me/WHATSAPP';
+      schedBtn.href = 'https://wa.me/' + BR_WA + '';
       return;
     }
     var day = days[selectedDay];
@@ -247,7 +248,7 @@
     var slotLabel = allSlots[selectedSlot];
     summary.innerHTML = 'Selected appointment: <strong>' + dayLabel + ', ' + slotLabel + '</strong>';
     var msg = 'Hi! I\'d like to book an assessment at Fit Pro for ' + dayLabel + ' at ' + slotLabel + '. Can you confirm?';
-    schedBtn.href = 'https://wa.me/WHATSAPP?text=' + encodeURIComponent(msg);
+    schedBtn.href = 'https://wa.me/' + BR_WA + '?text=' + encodeURIComponent(msg);
   }
 
   renderDays();

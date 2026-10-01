@@ -97,6 +97,7 @@
   @media (prefers-reduced-motion: reduce){ .wa-float::before{ animation:none; display:none; } }
   .wa-float svg{ width:26px; height:26px; }
 </style>
+  <script src="js/contato.js"></script>
 </head>
 <body>
 
@@ -146,7 +147,7 @@
       <h3>Get in touch</h3>
       <div class="info-row"><svg viewBox="0 0 24 24"><use href="#ic-pin"/></svg><div><div class="lbl">Address</div>210 Flower Street — Downtown</div></div>
       <div class="info-row"><svg viewBox="0 0 24 24"><use href="#ic-clock"/></svg><div><div class="lbl">Hours</div>Mon–Fri · 9am to 7pm</div></div>
-      <div class="info-row"><svg viewBox="0 0 24 24"><use href="#ic-phone"/></svg><div><div class="lbl">WhatsApp</div>(16) XXXXX-XXXX</div></div>
+      <div class="info-row"><svg viewBox="0 0 24 24"><use href="#ic-phone"/></svg><div><div class="lbl">WhatsApp</div><span data-contato="whatsapp">WhatsApp</span></div></div>
     </div>
     <div class="map-box">
       <svg viewBox="0 0 24 24" fill="none" stroke="var(--ink-soft)" stroke-width="1.6"><path d="M12 21s-7-6.3-7-11.5A7 7 0 0 1 19 9.5C19 14.7 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.4"/></svg>
@@ -182,7 +183,7 @@
         <div class="line" style="color:var(--ink-soft);max-width:34ch;">Example interactive booking flow — day and time calculated from today's date.</div>
       </div>
       <div class="foot-col"><div class="lbl">Navigation</div><div class="line"><a href="demo-estetica-index-en.html">Home</a></div><div class="line"><a href="demo-estetica-servicos-en.html">Services</a></div><div class="line"><a href="demo-estetica-galeria-en.html">Gallery</a></div></div>
-      <div class="foot-col"><div class="lbl">Hours</div><div class="line">Mon–Fri · 9am–7pm</div><div class="line">210 Flower Street — Downtown</div><div class="line">(16) XXXXX-XXXX</div></div>
+      <div class="foot-col"><div class="lbl">Hours</div><div class="line">Mon–Fri · 9am–7pm</div><div class="line">210 Flower Street — Downtown</div><div class="line"><span data-contato="whatsapp">WhatsApp</span></div></div>
     </div>
     <div class="foot-bottom">Example site — <a href="clinicas-en.html">BLUE ROSE, websites and automation for local businesses</a></div>
   </div>
@@ -261,7 +262,7 @@
   function renderSummary(){
     if(selectedDay === null || selectedSlot === null){
       summary.textContent = 'Select a day and a time to see the summary here.';
-      schedBtn.href = 'https://wa.me/WHATSAPP';
+      schedBtn.href = 'https://wa.me/' + BR_WA + '';
       return;
     }
     var day = days[selectedDay];
@@ -269,7 +270,7 @@
     var slotLabel = allSlots[selectedSlot];
     summary.innerHTML = 'Selected appointment: <strong>' + dayLabel + ', ' + slotLabel + '</strong>';
     var msg = 'Hi! I\'d like to book a consultation at Bella Face for ' + dayLabel + ' at ' + slotLabel + '. Can you confirm?';
-    schedBtn.href = 'https://wa.me/WHATSAPP?text=' + encodeURIComponent(msg);
+    schedBtn.href = 'https://wa.me/' + BR_WA + '?text=' + encodeURIComponent(msg);
   }
 
   renderDays();

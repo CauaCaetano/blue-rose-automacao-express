@@ -108,6 +108,7 @@
   .wa-float{ position:fixed; right:20px; bottom:20px; width:54px; height:54px; border-radius:50%; background:var(--wa); display:flex; align-items:center; justify-content:center; box-shadow:0 6px 18px rgba(0,0,0,.22); z-index:40; }
   .wa-float svg{ width:26px; height:26px; }
 </style>
+  <script src="js/contato.js"></script>
 </head>
 <body>
 
@@ -282,7 +283,7 @@
         <div class="line" style="color:var(--ink-soft);max-width:34ch;">Example services page with an interactive budget calculator.</div>
       </div>
       <div class="foot-col"><div class="lbl">Navigation</div><div class="line"><a href="demo-salao-index-en.html">Home</a></div><div class="line"><a href="demo-salao-galeria-en.html">Gallery</a></div><div class="line"><a href="demo-salao-contato-en.html">Contact</a></div></div>
-      <div class="foot-col"><div class="lbl">Hours</div><div class="line">Tue–Sat · 9am–7pm</div><div class="line">789 Aurora Street — New Village</div><div class="line">(16) XXXXX-XXXX</div></div>
+      <div class="foot-col"><div class="lbl">Hours</div><div class="line">Tue–Sat · 9am–7pm</div><div class="line">789 Aurora Street — New Village</div><div class="line"><span data-contato="whatsapp">WhatsApp</span></div></div>
     </div>
     <div class="foot-bottom">Example site — <a href="clinicas-en.html">BLUE ROSE, websites and automation for local businesses</a></div>
   </div>
@@ -306,7 +307,7 @@
     if(selected.length === 0){
       list.innerHTML = '<div class="calc-empty">No items selected yet</div>';
       totalEl.textContent = '$0';
-      waBtn.href = 'https://wa.me/WHATSAPP';
+      waBtn.href = 'https://wa.me/' + BR_WA + '';
       return;
     }
     var total = 0;
@@ -322,7 +323,7 @@
     list.innerHTML = lines.join('');
     totalEl.textContent = fmt(total);
     var msg = 'Hi! I ran a budget estimate on the website:\n' + waLines.join('\n') + '\nEstimated total: ' + fmt(total);
-    waBtn.href = 'https://wa.me/WHATSAPP?text=' + encodeURIComponent(msg);
+    waBtn.href = 'https://wa.me/' + BR_WA + '?text=' + encodeURIComponent(msg);
   }
 
   checks.forEach(function(c){ c.addEventListener('change', render); });
