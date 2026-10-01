@@ -4,7 +4,7 @@ Identidade comercial do projeto SURVIVE400: automação de tarefas repetitivas
 com IA/n8n, copywriting com IA e sites simples para pequenos negocios e
 autonomos.
 
-Pagina de oferta: https://cauacaetano.github.io/blue-rose-automacao-express/clinicas.html
+Pagina de oferta: https://cauacaetano.github.io/blue-rose-automacao-express/
 
 ## O que tem neste repositorio
 
