@@ -28,9 +28,9 @@
     --ink:#eef2ff;
     --ink-soft:#9fb0dd;
     --ink-dim:#657098;
-    --rose:#ff5d86;
-    --rose-deep:#ff87a5;
-    --rose-tint:rgba(255,93,134,0.12);
+    --rose:#4f7dff;
+    --rose-deep:#7aa0ff;
+    --rose-tint:rgba(79,125,255,0.12);
     --cyan:#4fd6ff;
     --purple:#a78bfa;
     --focus:#4fd6ff;
@@ -76,7 +76,7 @@
   .mono{ font-family:'IBM Plex Mono',ui-monospace,monospace; font-variant-numeric:tabular-nums; }
   .wrap{ max-width:760px; margin:0 auto; padding:0 24px; }
   .wrap-wide{ max-width:1080px; margin:0 auto; padding:0 24px; }
-  .eyebrow{ font-family:'Fraunces',serif; font-style:italic; font-weight:500; font-size:15px; color:var(--rose); }
+  .eyebrow{ font-family:'Fraunces',serif; font-style:italic; font-weight:500; font-size:15px; color:#8fb0ff; }
   section{ position:relative; }
 
   /* ---------- reveal-on-scroll ---------- */
@@ -91,7 +91,7 @@
   .topbar .wrap-wide{ display:flex; align-items:center; justify-content:space-between; gap:12px; }
   .brand{ display:flex; align-items:center; gap:10px; font-family:'Fraunces',serif; font-weight:680; font-size:19px; letter-spacing:0.01em; text-decoration:none; }
   .brand-mark{ width:auto;height:32px; flex:none; display:block; object-fit:contain; }
-  .topnav{ display:flex; align-items:center; gap:22px; font-family:'IBM Plex Mono',monospace; font-size:12.5px; letter-spacing:0.04em; text-transform:uppercase; }
+  .topnav{ display:flex; align-items:center; gap:22px; font-family:'Archivo',sans-serif; font-weight:500; font-size:14px; }
   .topnav a{ display:inline-block; text-decoration:none; color:var(--ink-soft); padding:12px 2px 2px; margin:-12px 0 0; border-bottom:1px solid transparent; transition:color .15s ease, border-color .15s ease; }
   @media (prefers-reduced-motion: reduce){ .topnav a{ transition:none; } }
   .topnav a:hover{ color:var(--ink); border-color:var(--rose); }
@@ -150,7 +150,7 @@
   .flow-node .dot{ width:38px; height:38px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:radial-gradient(circle at 30% 25%, #16305e 0%, #081328 70%); color:#7fe3ff; box-shadow:0 0 0 1px rgba(127,227,255,0.3), 0 0 16px rgba(0,212,255,0.35); }
   .flow-node .dot svg{ width:17px; height:17px; }
   .flow-node .dot img{ width:22px; height:22px; object-fit:contain; }
-  .flow-node span{ font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:#9fb0dd; white-space:nowrap; }
+  .flow-node span{ font-family:'Archivo',sans-serif; font-weight:500; font-size:12px; color:#9fb0dd; white-space:nowrap; }
   .flow-line{ width:32px; height:2px; margin:0 6px 22px; background:repeating-linear-gradient(90deg, #4d6ab8 0 5px, transparent 5px 10px); position:relative; overflow:hidden; }
   .flow-line::after{ content:''; position:absolute; top:-3px; left:-8px; width:8px; height:8px; border-radius:50%; background:#7fe3ff; box-shadow:0 0 8px 2px rgba(127,227,255,0.9); animation:flowPulse 2.6s linear infinite; }
   @keyframes flowPulse{ 0%{ left:-8px; opacity:0; } 12%{ opacity:1; } 88%{ opacity:1; } 100%{ left:100%; opacity:0; } }
@@ -169,6 +169,8 @@
 
   /* ---------- device stage (hero right column) ---------- */
   .device-stage{ position:relative; max-width:300px; margin:0 auto; padding:34px 18px 54px; }
+  .hero-rose{ position:absolute; z-index:0; width:150%; max-width:none; left:50%; top:46%; translate:-50% -50%; opacity:.30; filter:blur(1px) drop-shadow(0 0 60px rgba(79,125,255,0.55)); pointer-events:none; }
+  @media (max-width:900px){ .hero-rose{ width:120%; opacity:.22; } }
   .phone{ border:1px solid rgba(148,178,255,0.22); border-radius:26px; padding:10px; background:var(--phone-bg); box-shadow:0 30px 70px -20px rgba(0,0,0,0.7), 0 0 0 1px rgba(148,178,255,0.12); max-width:280px; margin:0 auto; position:relative; z-index:1; }
   .phone-screen{ border-radius:16px; background:var(--phone-tint); overflow:hidden; border:1px solid var(--phone-line); }
   .site-nav{ display:flex; justify-content:space-between; padding:12px 14px; font-size:11px; letter-spacing:0.04em; text-transform:uppercase; color:var(--phone-ink-soft); border-bottom:1px solid var(--phone-line); font-family:'IBM Plex Mono',monospace; }
@@ -186,7 +188,7 @@
   .bubble.them{ align-self:flex-start; background:var(--phone-bg); border:1px solid var(--phone-line); color:var(--phone-ink); border-bottom-left-radius:3px; }
   .bubble.us{ align-self:flex-end; background:linear-gradient(100deg, var(--rose) 0%, #8b3fd9 100%); color:#fff; border-bottom-right-radius:3px; }
 
-  .float-badge{ position:absolute; display:flex; align-items:center; gap:7px; padding:9px 13px; border-radius:999px; background:var(--surface); border:1px solid var(--line-strong); box-shadow:var(--glow-shadow); font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--ink-soft); z-index:2; animation:floatBob 4.5s ease-in-out infinite; white-space:nowrap; }
+  .float-badge{ position:absolute; display:flex; align-items:center; gap:7px; padding:9px 13px; border-radius:999px; background:var(--surface); border:1px solid var(--line-strong); box-shadow:var(--glow-shadow); font-family:'Archivo',sans-serif; font-weight:500; font-size:12px; color:var(--ink-soft); z-index:2; animation:floatBob 4.5s ease-in-out infinite; white-space:nowrap; }
   .float-badge .pulse{ width:7px; height:7px; border-radius:50%; background:var(--cyan); box-shadow:0 0 8px 2px rgba(79,214,255,0.7); flex:none; animation:pulseDot 1.8s ease-in-out infinite; }
   .float-badge.b1{ top:6px; right:-4px; animation-delay:.2s; }
   .float-badge.b2{ bottom:70px; left:-14px; animation-delay:1.4s; }
@@ -211,7 +213,7 @@
   /* ---------- intro / o que é ---------- */
   .intro{ padding:56px 0 44px; text-align:center; }
   .intro .eyebrow{ display:block; }
-  .intro h2{ font-size:clamp(22px,3vw,30px); max-width:34ch; margin:10px auto 0; }
+  .intro h2{ font-size:clamp(24px,3.2vw,34px); max-width:30ch; margin:0 auto; }
   .ticker{ margin-top:38px; overflow:hidden; -webkit-mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
   .ticker-track{ display:flex; width:max-content; gap:14px; animation:tickerScroll 26s linear infinite; }
   .ticker:hover .ticker-track{ animation-play-state:paused; }
@@ -229,6 +231,12 @@
   .howworks{ padding:20px 0 60px; }
   .howworks h2{ font-size:26px; max-width:24ch; margin-bottom:44px; }
   .timeline{ position:relative; display:flex; flex-direction:column; }
+  @media (min-width:901px){
+    .timeline{ display:grid; grid-template-columns:repeat(4,1fr); gap:28px; }
+    .timeline::before{ left:20px; right:20px; top:19px; bottom:auto; width:auto; height:2px; }
+    .tl-step{ grid-template-columns:1fr; gap:14px; padding:0; }
+    .tl-step h3{ padding-top:0; }
+  }
   .timeline::before{ content:''; position:absolute; left:19px; top:8px; bottom:8px; width:2px; background:var(--line); }
   .tl-step{ position:relative; display:grid; grid-template-columns:40px 1fr; gap:20px; padding:0 0 40px; }
   .tl-step:last-child{ padding-bottom:0; }
@@ -276,7 +284,7 @@
   @media (max-width:860px){ .ba-grid{ grid-template-columns:1fr; } }
   .ba-col{ border-radius:16px; padding:26px 24px; }
   .ba-before{ background:var(--surface-dim); border:1px solid var(--line); }
-  .ba-label{ font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.06em; text-transform:uppercase; margin-bottom:18px; }
+  .ba-label{ font-family:'Fraunces',serif; font-weight:600; font-size:17px; margin-bottom:18px; }
   .ba-before .ba-label{ color:var(--ink-dim); }
   .ba-item{ display:grid; grid-template-columns:20px 1fr; gap:12px; padding:13px 0; border-top:1px solid var(--line); }
   .ba-before .ba-item:first-of-type{ border-top:none; }
@@ -306,6 +314,11 @@
   .examples h2{ font-size:26px; max-width:26ch; margin-bottom:8px; }
   .examples .sub-lede{ font-size:14.5px; color:var(--ink-soft); max-width:56ch; margin-bottom:28px; }
   .ex-tabs{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:22px; }
+  @media (min-width:901px){
+    .ex-layout{ display:grid; grid-template-columns:0.9fr 1.1fr; column-gap:48px; align-items:start; }
+    .ex-layout > h2, .ex-layout > .sub-lede, .ex-layout > .ex-tabs, .ex-layout > .cta-row, .ex-layout > .examples-note{ grid-column:1; }
+    .ex-layout > .ex-panel{ grid-column:2; grid-row:1 / span 5; align-self:center; }
+  }
   .ex-tab{ display:flex; align-items:center; gap:8px; padding:10px 16px; border-radius:999px; border:1px solid var(--line); background:transparent; color:var(--ink-soft); font-family:'Archivo',sans-serif; font-size:13px; font-weight:600; cursor:pointer; transition:border-color .15s ease, color .15s ease, background-color .15s ease; }
   .ex-tab svg{ width:16px; height:16px; }
   .ex-tab:hover{ border-color:var(--line-strong); color:var(--ink); }
@@ -339,7 +352,7 @@
   .pricing h2{ font-size:26px; margin-bottom:24px; }
   .ptable{ border:1px solid var(--line); border-radius:14px; overflow:hidden; background:var(--surface); box-shadow:var(--glow-shadow); }
   .prow{ display:grid; grid-template-columns:1.3fr 1fr 0.8fr; gap:10px; padding:16px 18px; border-top:1px solid var(--line); align-items:center; }
-  .prow.head{ border-top:none; background:var(--surface-tint); font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink-soft); }
+  .prow.head{ border-top:none; background:var(--surface-tint); font-family:'Archivo',sans-serif; font-weight:600; font-size:12.5px; color:var(--ink-soft); }
   .prow .name{ font-weight:600; font-size:14.5px; }
   .prow .desc{ font-size:12.5px; color:var(--ink-soft); margin-top:3px; }
   .prow .value{ font-family:'IBM Plex Mono',monospace; font-size:14px; text-align:right; color:var(--ink); }
@@ -352,7 +365,7 @@
   .cmp-table{ width:100%; border-collapse:collapse; font-size:12.5px; min-width:560px; }
   .cmp-table th, .cmp-table td{ padding:11px 10px; text-align:center; border-bottom:1px solid var(--line); }
   .cmp-table tr:last-child td{ border-bottom:none; }
-  .cmp-table th{ font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-soft); font-weight:600; background:var(--surface-tint); }
+  .cmp-table th{ font-family:'Archivo',sans-serif; font-size:12px; color:var(--ink-soft); font-weight:600; background:var(--surface-tint); }
   .cmp-table td:first-child, .cmp-table th:first-child{ text-align:left; font-weight:500; color:var(--ink); }
   .cmp-table .yes{ color:var(--cyan); font-weight:700; }
   .cmp-table .no{ color:var(--ink-dim); }
@@ -471,17 +484,18 @@
         <a class="btn btn-ghost" href="#precos">Ver preços</a>
       </div>
       <div class="flow-strip">
-        <div class="flow-node"><div class="dot"><svg><use href="#ic-search"/></svg></div><span>GOOGLE</span></div>
+        <div class="flow-node"><div class="dot"><svg><use href="#ic-search"/></svg></div><span>Google</span></div>
         <div class="flow-line"></div>
-        <div class="flow-node"><div class="dot"><img src="img/blue-rose-mark.webp" alt=""></div><span>SEU SITE</span></div>
+        <div class="flow-node"><div class="dot"><img src="img/blue-rose-mark.webp" alt=""></div><span>Seu site</span></div>
         <div class="flow-line"></div>
-        <div class="flow-node"><div class="dot"><svg><use href="#ic-chat"/></svg></div><span>WHATSAPP</span></div>
+        <div class="flow-node"><div class="dot"><svg><use href="#ic-chat"/></svg></div><span>WhatsApp</span></div>
         <div class="flow-line"></div>
-        <div class="flow-node"><div class="dot"><svg><use href="#ic-check"/></svg></div><span>AGENDADO</span></div>
+        <div class="flow-node"><div class="dot"><svg><use href="#ic-check"/></svg></div><span>Agendado</span></div>
       </div>
     </div>
     <div>
       <div class="device-stage">
+        <img class="hero-rose" src="img/blue-rose-mark.webp" alt="" aria-hidden="true" width="640" height="620">
         <div class="float-badge b1"><span class="pulse"></span>Sem mensalidade fixa</div>
         <div class="phone">
           <div class="phone-screen">
@@ -511,8 +525,7 @@
 
 <div class="intro reveal">
   <div class="wrap">
-    <div class="eyebrow">O que é</div>
-    <h2>Duas peças simples: um site que te acha no Google, e uma automação que não deixa ninguém sem resposta.</h2>
+        <h2>Duas peças simples: um site que te acha no Google, e uma automação que não deixa ninguém sem resposta.</h2>
     <div class="ticker" aria-hidden="true">
       <div class="ticker-track">
         <span class="ticker-pill">Clínicas de estética</span>
@@ -532,9 +545,8 @@
 </div>
 
 <div class="howworks">
-  <div class="wrap reveal">
-    <div class="eyebrow">Como funciona</div>
-    <h2 style="margin-top:8px;">Do primeiro contato ao ar, em poucos dias</h2>
+  <div class="wrap-wide reveal">
+        <h2 style="margin-top:8px;">Do primeiro contato ao ar, em poucos dias</h2>
     <div class="timeline">
       <div class="tl-step"><div class="n">1</div><div><h3>Conversa rápida</h3><p>Você me conta os horários, serviços e como funciona seu atendimento hoje.</p></div></div>
       <div class="tl-step"><div class="n">2</div><div><h3>Orçamento fechado</h3><p>Valor combinado antes de começar — sem cobrança por hora, sem surpresa depois.</p></div></div>
@@ -546,8 +558,7 @@
 
 <div class="showcase" id="demo">
   <div class="wrap-wide reveal">
-    <div class="eyebrow">Demonstração</div>
-    <h2 style="margin-top:8px;">Veja cada peça funcionando, uma de cada vez</h2>
+        <h2 style="margin-top:8px;">Veja cada peça funcionando, uma de cada vez</h2>
     <div class="carousel" data-carousel>
       <div class="car-viewport" tabindex="0" aria-roledescription="carrossel" aria-label="Demonstração das peças da BLUE ROSE">
         <ul class="car-track">
@@ -565,7 +576,7 @@
                 </div>
               </div>
             </div>
-            <div class="car-caption"><span class="car-num">01</span><span class="car-title">Seu site</span><div class="car-desc">Uma página com seus horários, serviços e um botão direto pro WhatsApp — pra quem te encontra no Google já poder marcar.</div></div>
+            <div class="car-caption"><span class="car-title">Seu site</span><div class="car-desc">Uma página com seus horários, serviços e um botão direto pro WhatsApp — pra quem te encontra no Google já poder marcar.</div></div>
           </li>
           <li class="car-slide">
             <div class="car-visual">
@@ -576,15 +587,15 @@
                 <div class="bubble us">Show, segue o link pra escolher o melhor horário. Qualquer dúvida é só chamar!</div>
               </div>
             </div>
-            <div class="car-caption"><span class="car-num">02</span><span class="car-title">Automação no WhatsApp</span><div class="car-desc">Responde as dúvidas mais comuns na hora e já direciona pra marcar — mesmo fora do expediente.</div></div>
+            <div class="car-caption"><span class="car-title">Automação no WhatsApp</span><div class="car-desc">Responde as dúvidas mais comuns na hora e já direciona pra marcar — mesmo fora do expediente.</div></div>
           </li>
           <li class="car-slide">
             <div class="car-visual"><img src="img/screenshot-calculadora.png" alt="Calculadora de orçamento somando serviços marcados em tempo real, total R$270" width="1072" height="318" loading="lazy"></div>
-            <div class="car-caption"><span class="car-num">03</span><span class="car-title">Calculadora de orçamento</span><div class="car-desc">O cliente marca o que quer e já vê o total na hora, sem precisar te perguntar o preço.</div></div>
+            <div class="car-caption"><span class="car-title">Calculadora de orçamento</span><div class="car-desc">O cliente marca o que quer e já vê o total na hora, sem precisar te perguntar o preço.</div></div>
           </li>
           <li class="car-slide">
             <div class="car-visual"><img src="img/screenshot-agendador.png" alt="Agendador mostrando os próximos dias úteis reais e um horário selecionado" width="548" height="513" loading="lazy"></div>
-            <div class="car-caption"><span class="car-num">04</span><span class="car-title">Agendamento com data real</span><div class="car-desc">Mostra os próximos dias úteis de verdade e já manda tudo pronto pro seu WhatsApp.</div></div>
+            <div class="car-caption"><span class="car-title">Agendamento com data real</span><div class="car-desc">Mostra os próximos dias úteis de verdade e já manda tudo pronto pro seu WhatsApp.</div></div>
           </li>
         </ul>
       </div>
@@ -602,8 +613,7 @@
 
 <div class="benefits">
   <div class="wrap-wide reveal">
-    <div class="eyebrow">Por que separar isso resolve</div>
-    <h2 style="margin-top:8px;">O que muda quando essas duas peças existem</h2>
+        <h2 style="margin-top:8px;">O que muda quando essas duas peças existem</h2>
     <div class="ba-grid">
       <div class="ba-col ba-before">
         <div class="ba-label">Sem site e automação</div>
@@ -632,9 +642,8 @@
 </div>
 
 <div class="examples" id="exemplos">
-  <div class="wrap reveal">
-    <div class="eyebrow">Exemplos</div>
-    <h2 style="margin-top:8px;">Algumas ideias de como fica pro seu nicho</h2>
+  <div class="wrap-wide reveal ex-layout">
+        <h2 style="margin-top:8px;">Algumas ideias de como fica pro seu nicho</h2>
     <div class="sub-lede">Nomes, logos e preços fictícios — só pra mostrar formato e tom visual. O seu vem com sua marca, seus serviços e seus preços reais.</div>
 
     <div class="ex-tabs" role="tablist" aria-label="Escolher exemplo de nicho">
@@ -691,8 +700,7 @@
 
 <div class="pricing" id="precos">
   <div class="wrap reveal">
-    <div class="eyebrow">Investimento</div>
-    <h2>Preço justo pra quem tá começando</h2>
+        <h2>Preço justo pra quem tá começando</h2>
     <div class="ptable">
       <div class="prow head"><div>Pacote</div><div>Prazo</div><div style="text-align:right;">Valor</div></div>
       <div class="prow">
@@ -779,8 +787,7 @@
 
 <div class="faq">
   <div class="wrap reveal">
-    <div class="eyebrow">Perguntas frequentes</div>
-    <h2>Antes de você chamar no WhatsApp</h2>
+        <h2>Antes de você chamar no WhatsApp</h2>
     <div class="faq-list">
       <details class="faq-item">
         <summary>Preciso entender de tecnologia pra manter o site?<span class="chev">⌄</span></summary>
