@@ -17,6 +17,6 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python }}
-      - name: Rodar os testes (sem chave de IA: usa o texto local)
+      - name: 'Rodar os testes (sem chave de IA, usa o texto local)'
         working-directory: portfolio
         run: python -m unittest -v test_portfolio
