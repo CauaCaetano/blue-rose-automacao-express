@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Projects | BLUE ROSE</title>
-<meta name="description" content="BLUE ROSE projects you can use in your browser: a live inventory system, WhatsApp automations, websites by niche and Python scripts. Problem, solution, technology and tests for each.">
+<meta name="description" content="BLUE ROSE projects you can use in your browser: an operations ERP for small distributors, WhatsApp automations, niche websites and Python scripts.">
 <link rel="canonical" href="https://cauacaetano.github.io/blue-rose-automacao-express/projects-en.html">
 <link rel="alternate" hreflang="pt-BR" href="https://cauacaetano.github.io/blue-rose-automacao-express/projetos.html">
 <link rel="alternate" hreflang="en" href="https://cauacaetano.github.io/blue-rose-automacao-express/projects-en.html">
@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="BLUE ROSE">
 <meta property="og:locale" content="en_US">
 <meta property="og:title" content="BLUE ROSE projects: shown, explained and ready to try">
-<meta property="og:description" content="A live inventory system, WhatsApp automations, websites by niche and Python scripts that run in the browser.">
+<meta property="og:description" content="Nexo Management, an ERP for small distributors, WhatsApp automations, niche websites and Python scripts that run in the browser.">
 <meta property="og:url" content="https://cauacaetano.github.io/blue-rose-automacao-express/projects-en.html">
 <meta property="og:image" content="https://cauacaetano.github.io/blue-rose-automacao-express/img/og-blue-rose-en.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -53,7 +53,7 @@
       <h1 class="reveal">Projects to see, understand and use.</h1>
       <p class="sub reveal">Every case shows the problem, the solution, how it works and what was fixed to make it ready. And every one has a demo you can use right here.</p>
       <nav class="indice reveal" aria-label="Cases">
-        <a href="#stockmaster">StockMaster</a>
+        <a href="#stockmaster">Nexo Management</a>
         <a href="#whatsapp">WhatsApp automations</a>
         <a href="#websites">Websites for local businesses</a>
         <a href="#lab">Lab</a>
@@ -65,53 +65,51 @@
     <div class="wrap">
       <div class="case-topo reveal">
         <div>
-          <h2 id="c1">StockMaster</h2>
-          <p class="linha">Inventory control for small shops, without a spreadsheet: products, stock in and out with a reason, and a dashboard that warns what is running out.</p>
-          <div class="case-meta"><span>Internal system</span><span>API + web dashboard</span><span class="ok">4 unit and 19 end-to-end tests passing</span></div>
+          <h2 id="c1">Nexo Management</h2>
+          <p class="linha">An operations ERP for small distributors, connecting suppliers, purchasing, warehouses, customers, sales and inventory movements.</p>
+          <div class="case-meta"><span>Operations ERP</span><span>Purchasing + stock + sales</span><span class="ok">Interactive demo</span></div>
         </div>
       </div>
       <div class="case-corpo reveal">
-        <div><h3>Problem</h3><p>In a small shop, inventory lives in the owner's head or an outdated spreadsheet. A product runs out and nobody notices until a customer asks for it.</p></div>
-        <div><h3>Solution</h3><p>A FastAPI and MongoDB API with a React dashboard. Every movement stores its reason and previous balance; taking out more than the stock is refused.</p></div>
-        <div><h3>Result</h3><p>A complete, tested system. During the audit, the low-stock alert, the main feature of the dashboard, never fired: the filter compared against a string. It was fixed and now has a test that keeps the bug from coming back.</p></div>
+        <div><h3>Problem</h3><p>In a distribution business, orders, goods and warehouses easily become disconnected. It gets hard to tell what arrived, where it is and what still needs picking for each customer.</p></div>
+        <div><h3>Solution</h3><p>A connected flow: purchase order, warehouse receiving, stock by location, customer order and dispatch. The API uses FastAPI and MongoDB, and the interface uses React.</p></div>
+        <div><h3>Result</h3><p>Purchases and sales update stock at the right step, transfers move quantities between warehouses, and movements stay linked to their order and counterparty. The dashboard flags low-stock items.</p></div>
       </div>
       <div class="demo-viva reveal">
-        <div class="barra"><span>Try it: sell more than you have in stock (interface in Portuguese)</span><a class="link" href="demos/stockmaster/">Open full screen <svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-arrow-up-right"/></svg></a></div>
-        <iframe src="demos/stockmaster/" title="StockMaster live demo" loading="lazy"></iframe>
+        <div class="barra"><span>Try the flow: receive a purchase, transfer stock and dispatch an order</span><a class="link" href="demos/stockmaster/">Open full screen <svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-arrow-up-right"/></svg></a></div>
+        <iframe src="demos/stockmaster/" title="Nexo Management, interactive distributor ERP demo" loading="lazy"></iframe>
       </div>
-      <p class="vitrine-nota">It is the same React app from the repository. Here the API runs inside the browser with the same rules as the FastAPI backend, and the data stays in your browser.</p>
+      <p class="vitrine-nota">This is the React app from the App-Controle-de-Estoque repository. In this demo, the API runs in the browser and records stay in this device's local storage.</p>
       <div class="fluxo reveal">
         <h3>How it works</h3>
         <ol>
-          <li><b>Purchase or sale</b>recorded in the dashboard</li>
-          <li><b>API</b>checks the balance and the reason</li>
-          <li><b>Database</b>stores the movement and the new balance</li>
-          <li><b>Dashboard</b>recalculates empty and low items</li>
-          <li class="humano"><b>You</b>see what to restock before it runs out</li>
+          <li><b>Supplier</b>starts a purchase</li>
+          <li><b>Receiving</b>updates the selected warehouse</li>
+          <li><b>Inventory</b>is tracked by warehouse</li>
+          <li><b>Customer order</b>checks availability at dispatch</li>
+          <li class="humano"><b>You</b>track the shipment and what needs restocking</li>
         </ol>
       </div>
       <div class="recursos reveal">
         <div>
-          <h3>What was done to make it ready</h3>
+          <h3>What you can try</h3>
           <ul class="lista">
-            <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-check"/></svg><b>Low-stock alert fixed</b> with <code>$expr</code> and covered by a test.</li>
-            <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-check"/></svg><b>Demo mode</b>: the same frontend with the API in the browser, published here.</li>
-            <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-check"/></svg><b>In-memory database</b> to run and test without installing MongoDB.</li>
-            <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-check"/></svg><b>Third-party tracker removed</b> from the HTML, along with the badge of the tool that generated the base.</li>
-            <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-check"/></svg><b>Clearer dashboard</b>: product name on each movement and prices in Brazilian format.</li>
-            <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-check"/></svg><b>Dependencies cut</b> from 25 to the 10 the code uses, plus a step-by-step README.</li>
+            <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-check"/></svg><b>Purchasing and receiving</b>linked to a supplier and destination warehouse.</li>
+            <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-check"/></svg><b>Sales and dispatch</b>linked to a customer, with a stock availability check.</li>
+            <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-check"/></svg><b>Stock by warehouse</b>and transfers that preserve the global balance.</li>
+            <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-check"/></svg><b>Operations dashboard</b>with inventory value, alerts and recent movements.</li>
+            <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-check"/></svg><b>No-server demo:</b> records stay in this browser's local storage.</li>
           </ul>
         </div>
         <div>
           <h3>Technologies</h3>
           <ul class="stack"><li>Python</li><li>FastAPI</li><li>Pydantic</li><li>MongoDB (Motor)</li><li>React</li><li>Tailwind CSS</li><li>pytest</li></ul>
-<pre class="terminal" style="margin-top:20px" aria-label="Real test output"><span class="c">$ pytest -q</span>
-....                    [100%]
-<span class="g">4 passed</span> in 0.61s
+<pre class="terminal" style="margin-top:20px" aria-label="Current ERP scope"><span class="c">Goods flow</span>
+Supplier → Purchase → Receiving
+Warehouse → Customer order → Dispatch
 
-<span class="c">$ python backend_test.py</span>
-Total de testes: 19
-Taxa de sucesso: <span class="g">100.0%</span></pre>
+<span class="g">API: FastAPI · Database: MongoDB</span>
+<span class="g">Demo: React · browser-local data</span></pre>
         </div>
       </div>
       <div class="acoes reveal">
