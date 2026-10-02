@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BLUE ROSE — websites &amp; WhatsApp automation for local businesses</title>
 <meta name="description" content="Simple websites + WhatsApp booking automation for clinics, studios and small local businesses. Remote freelance work, English-speaking client.">
+<link rel="canonical" href="https://cauacaetano.github.io/blue-rose-automacao-express/clinicas-en.html">
+<link rel="alternate" hreflang="pt-BR" href="https://cauacaetano.github.io/blue-rose-automacao-express/">
+<link rel="alternate" hreflang="en" href="https://cauacaetano.github.io/blue-rose-automacao-express/clinicas-en.html">
+<link rel="alternate" hreflang="x-default" href="https://cauacaetano.github.io/blue-rose-automacao-express/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BLUE ROSE">
 <meta property="og:title" content="BLUE ROSE — websites &amp; WhatsApp automation for local businesses">
@@ -84,10 +88,10 @@
   section{ position:relative; }
 
   /* ---------- reveal-on-scroll ---------- */
-  .reveal{ opacity:0; transform:translateY(22px); transition:opacity .6s var(--ease), transform .6s var(--ease); }
+  .js .reveal{ opacity:0; transform:translateY(22px); transition:opacity .6s var(--ease), transform .6s var(--ease); }
   .reveal.revealed{ opacity:1; transform:translateY(0); }
   @media (prefers-reduced-motion: reduce){
-    .reveal{ opacity:1; transform:none; transition:none; }
+    .js .reveal{ opacity:1; transform:none; transition:none; }
   }
 
   /* ---------- top bar ---------- */
@@ -293,13 +297,13 @@
   .ba-item{ display:grid; grid-template-columns:20px 1fr; gap:12px; padding:13px 0; border-top:1px solid var(--line); }
   .ba-before .ba-item:first-of-type{ border-top:none; }
   .ba-item .x{ color:var(--ink-dim); font-size:15px; line-height:1.5; }
-  .ba-item h4{ margin:0; font-family:'Archivo',sans-serif; font-weight:600; font-size:14px; color:var(--ink-soft); }
+  .ba-item h3{ margin:0; font-family:'Archivo',sans-serif; font-weight:600; font-size:14px; color:var(--ink-soft); }
   .ba-item p{ margin:4px 0 0; font-size:12.5px; color:var(--ink-dim); max-width:42ch; }
 
   .ba-after{ background:linear-gradient(165deg, var(--surface) 0%, var(--surface-tint) 100%); border:1px solid var(--line-strong); box-shadow:var(--glow-shadow); display:flex; flex-direction:column; gap:18px; }
   .ba-after .ba-label{ color:var(--cyan); }
   .ba-hero-feat{ border:1px solid var(--phone-line); background:var(--surface-tint); border-radius:12px; padding:18px; display:grid; grid-template-columns:1fr; gap:14px; box-shadow:inset 2px 0 0 var(--rose); }
-  .ba-hero-feat h4{ font-family:'Fraunces',serif; font-weight:640; font-size:17px; margin:0; }
+  .ba-hero-feat h3{ font-family:'Fraunces',serif; font-weight:640; font-size:17px; margin:0; }
   .ba-hero-feat p{ font-size:13px; color:var(--ink-soft); margin:6px 0 0; max-width:42ch; }
   .mini-chat{ background:var(--phone-tint); border:1px solid var(--phone-line); border-radius:10px; padding:10px; display:flex; flex-direction:column; gap:6px; margin-top:4px; }
   .mini-chat .bubble{ max-width:88%; padding:7px 10px; border-radius:10px; font-size:11.5px; line-height:1.35; }
@@ -310,7 +314,7 @@
   .ba-small{ border:1px solid var(--line); border-radius:10px; padding:14px; background:rgba(255,255,255,0.02); }
   .ba-small .chk{ width:20px; height:20px; border-radius:50%; background:rgba(79,214,255,0.14); color:var(--cyan); display:flex; align-items:center; justify-content:center; margin-bottom:8px; }
   .ba-small .chk svg{ width:11px; height:11px; }
-  .ba-small h4{ margin:0; font-family:'Archivo',sans-serif; font-weight:600; font-size:13px; }
+  .ba-small h3{ margin:0; font-family:'Archivo',sans-serif; font-weight:600; font-size:13px; }
   .ba-small p{ margin:4px 0 0; font-size:11.5px; color:var(--ink-soft); }
 
   /* ---------- examples switcher ---------- */
@@ -403,8 +407,27 @@
   .skip-link{ position:absolute; left:12px; top:-48px; background:var(--surface); color:var(--ink); border:1px solid var(--line-strong); padding:10px 16px; border-radius:8px; font-family:'IBM Plex Mono',monospace; font-size:12.5px; text-decoration:none; z-index:100; transition:top .15s ease; }
   .skip-link:focus{ top:12px; }
   .foot-line{ margin-top:18px; padding:18px 0 40px; font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--ink-dim); display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+
+  /* ---------- v3: correções da auditoria (Lighthouse + DevTools) ---------- */
+  html, body{ overflow-x:clip; }
+  .hero, .showcase, .pricing, .contact{ position:relative; isolation:isolate; }
+  .contact::before{ z-index:0; pointer-events:none; }
+  .contact > *{ position:relative; z-index:1; }
+  :root{ --rose-solid:#3d6bf0; }
+  .btn-primary, .topnav .cta-mini, .site-hero .mini-btn{ background:var(--rose-solid); }
+  .hero-rose{ height:auto; aspect-ratio:640/620; }
+  .site-hero .mock-h{ display:block; font-family:'Fraunces',serif; font-weight:600; font-size:16px; margin:0 0 6px; color:var(--phone-ink); }
+  .prow .mono{ font-size:12.5px; color:var(--ink-soft); }
+  .prow .value{ font-family:'Fraunces',serif; font-weight:640; font-size:18px; font-variant-numeric:tabular-nums lining-nums; letter-spacing:-.01em; }
+  .prow.combo .value{ color:#fff; }
+  .faq-item .chev{ width:26px; height:26px; }
+  .faq-item .chev svg{ width:13px; height:13px; display:block; }
+  .cmp-hint{ display:none; font-size:12px; color:var(--ink-dim); margin:-6px 0 10px; }
+  @media (max-width:600px){ .cmp-hint{ display:block; } }
 </style>
-  <script src="js/contato.js"></script>
+  <script>document.documentElement.classList.add('js')</script>
+  <script src="js/contato.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "ProfessionalService", "@id": "https://cauacaetano.github.io/blue-rose-automacao-express/#blue-rose", "name": "BLUE ROSE", "url": "https://cauacaetano.github.io/blue-rose-automacao-express/clinicas-en.html", "image": "https://cauacaetano.github.io/blue-rose-automacao-express/img/og-banner.png", "logo": "https://cauacaetano.github.io/blue-rose-automacao-express/img/blue-rose-favicon.png", "description": "Simple websites and WhatsApp automation for clinics, studios and local businesses.", "areaServed": "Worldwide", "inLanguage": "en"}, {"@type": "FAQPage", "inLanguage": "en", "mainEntity": [{"@type": "Question", "name": "Do I need to be tech-savvy to maintain the website?", "acceptedAnswer": {"@type": "Answer", "text": "No. Once it’s ready, if you want to change a price, your hours or a service, just message me — you never have to touch code or any dashboard yourself."}}, {"@type": "Question", "name": "Is the website in my name?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, the content and structure are yours. If you want your own domain (yourbusiness.com) instead of the default link, we can arrange it separately."}}, {"@type": "Question", "name": "Do I need a new WhatsApp number?", "acceptedAnswer": {"@type": "Answer", "text": "No. The automation works with the number your business already uses — no new line, and nothing that already works gets touched."}}, {"@type": "Question", "name": "Can I ask for changes after it’s done?", "acceptedAnswer": {"@type": "Answer", "text": "One light round of tweaks is included in the price, right after delivery. After that, bigger changes are quoted separately, always agreed before I touch anything."}}, {"@type": "Question", "name": "How does payment work?", "acceptedAnswer": {"@type": "Answer", "text": "Half to start, half on delivery. No monthly fee — you pay once and the website is yours."}}]}]}</script>
 </head>
 <body>
 
@@ -506,7 +529,7 @@
             <div class="site-nav"><span>Home</span><span>Services</span><span>Book</span></div>
             <div class="site-hero">
               <div class="ph-photo" style="background-image:url('img/clinicas-hero-space.jpg');"></div>
-              <h4>Sample Clinic</h4>
+              <p class="mock-h">Sample Clinic</p>
               <p>Facial &amp; body aesthetics · Mon–Fri, 9am–7pm</p>
               <span class="mini-btn">Book a time</span>
             </div>
@@ -573,7 +596,7 @@
                   <div class="site-nav"><span>Home</span><span>Services</span><span>Book</span></div>
                   <div class="site-hero">
                     <div class="ph-photo" style="height:56px; background-image:url('img/clinicas-hero-space.jpg');"></div>
-                    <h4 style="font-size:14px;">Your business here</h4>
+                    <p class="mock-h" style="font-size:14px;">Your business here</p>
                     <p>Address · hours · contact</p>
                     <span class="mini-btn">Chat on WhatsApp</span>
                   </div>
@@ -621,24 +644,24 @@
     <div class="ba-grid">
       <div class="ba-col ba-before">
         <div class="ba-label">Without a website and automation</div>
-        <div class="ba-item"><span class="x">✕</span><div><h4>Customers search, can’t find you, and book with a competitor</h4><p>People searching for "aesthetic clinic" or "personal trainer" in your city decide based on who shows up on Google.</p></div></div>
-        <div class="ba-item"><span class="x">✕</span><div><h4>The same question, every day, on your number</h4><p>Hours, price, whether there’s an opening today — answered by hand, one by one.</p></div></div>
-        <div class="ba-item"><span class="x">✕</span><div><h4>Manual booking = double-booked slots</h4><p>Without automatic confirmation, it’s easy to book two clients at the same time.</p></div></div>
+        <div class="ba-item"><span class="x">✕</span><div><h3>Customers search, can’t find you, and book with a competitor</h3><p>People searching for "aesthetic clinic" or "personal trainer" in your city decide based on who shows up on Google.</p></div></div>
+        <div class="ba-item"><span class="x">✕</span><div><h3>The same question, every day, on your number</h3><p>Hours, price, whether there’s an opening today — answered by hand, one by one.</p></div></div>
+        <div class="ba-item"><span class="x">✕</span><div><h3>Manual booking = double-booked slots</h3><p>Without automatic confirmation, it’s easy to book two clients at the same time.</p></div></div>
       </div>
       <div class="ba-col ba-after">
         <div class="ba-label">With a BLUE ROSE website + automation</div>
         <div class="ba-hero-feat">
-          <div><h4>WhatsApp automation</h4><p>Replies instantly, guides people to book, and works on your usual number — even after hours.</p></div>
+          <div><p class="mock-h">WhatsApp automation</p><p>Replies instantly, guides people to book, and works on your usual number — even after hours.</p></div>
           <div class="mini-chat" aria-hidden="true">
             <div class="bubble them">Any openings tomorrow morning?</div>
             <div class="bubble us">Yes! 9:00 or 10:30 — which works for you?</div>
           </div>
         </div>
         <div class="ba-small-grid">
-          <div class="ba-small"><div class="chk"><svg viewBox="0 0 24 24"><use href="#ic-check"/></svg></div><h4>Simple website</h4><p>Hours, services and a WhatsApp button — for people who find you on Google.</p></div>
-          <div class="ba-small"><div class="chk"><svg viewBox="0 0 24 24"><use href="#ic-check"/></svg></div><h4>Fixed quote</h4><p>Price agreed before I start, no hourly billing.</p></div>
-          <div class="ba-small"><div class="chk"><svg viewBox="0 0 24 24"><use href="#ic-check"/></svg></div><h4>No monthly fee</h4><p>You pay once and the website is yours — no subscription.</p></div>
-          <div class="ba-small"><div class="chk"><svg viewBox="0 0 24 24"><use href="#ic-check"/></svg></div><h4>Tweaks included</h4><p>One light round of changes is included in the price, right after delivery.</p></div>
+          <div class="ba-small"><div class="chk"><svg viewBox="0 0 24 24"><use href="#ic-check"/></svg></div><h3>Simple website</h3><p>Hours, services and a WhatsApp button — for people who find you on Google.</p></div>
+          <div class="ba-small"><div class="chk"><svg viewBox="0 0 24 24"><use href="#ic-check"/></svg></div><h3>Fixed quote</h3><p>Price agreed before I start, no hourly billing.</p></div>
+          <div class="ba-small"><div class="chk"><svg viewBox="0 0 24 24"><use href="#ic-check"/></svg></div><h3>No monthly fee</h3><p>You pay once and the website is yours — no subscription.</p></div>
+          <div class="ba-small"><div class="chk"><svg viewBox="0 0 24 24"><use href="#ic-check"/></svg></div><h3>Tweaks included</h3><p>One light round of changes is included in the price, right after delivery.</p></div>
         </div>
       </div>
     </div>
@@ -725,13 +748,14 @@
       <div class="prow combo">
         <div><div class="name">Multi-page website + automation</div><div class="desc">multiple pages, budget calculator, gallery and booking — like the full examples</div></div>
         <div class="mono">custom timeline</div>
-        <div class="value">$140 – custom quote</div>
+        <div class="value">from $140</div>
       </div>
     </div>
     <div class="pricing-note">No recurring fee. These are starting estimates in USD — the final price depends on the number of services/pages and is agreed with you (in your currency) before I start.</div>
 
     <div class="compare">
       <div class="compare-title">Which package fits you?</div>
+      <div class="cmp-hint" aria-hidden="true">Swipe the table sideways →</div>
       <div class="cmp-scroll">
         <table class="cmp-table">
           <tr>
@@ -794,23 +818,23 @@
         <h2>Before you reach out on WhatsApp</h2>
     <div class="faq-list">
       <details class="faq-item">
-        <summary>Do I need to be tech-savvy to maintain the website?<span class="chev">⌄</span></summary>
+        <summary>Do I need to be tech-savvy to maintain the website?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
         <p>No. Once it’s ready, if you want to change a price, your hours or a service, just message me — you never have to touch code or any dashboard yourself.</p>
       </details>
       <details class="faq-item">
-        <summary>Is the website in my name?<span class="chev">⌄</span></summary>
+        <summary>Is the website in my name?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
         <p>Yes, the content and structure are yours. If you want your own domain (yourbusiness.com) instead of the default link, we can arrange it separately.</p>
       </details>
       <details class="faq-item">
-        <summary>Do I need a new WhatsApp number?<span class="chev">⌄</span></summary>
+        <summary>Do I need a new WhatsApp number?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
         <p>No. The automation works with the number your business already uses — no new line, and nothing that already works gets touched.</p>
       </details>
       <details class="faq-item">
-        <summary>Can I ask for changes after it’s done?<span class="chev">⌄</span></summary>
+        <summary>Can I ask for changes after it’s done?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
         <p>One light round of tweaks is included in the price, right after delivery. After that, bigger changes are quoted separately, always agreed before I touch anything.</p>
       </details>
       <details class="faq-item">
-        <summary>How does payment work?<span class="chev">⌄</span></summary>
+        <summary>How does payment work?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
         <p>Half to start, half on delivery. No monthly fee — you pay once and the website is yours.</p>
       </details>
     </div>

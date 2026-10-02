@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BLUE ROSE — sites e automação pra clínicas e negócios locais</title>
 <meta name="description" content="Site simples + automação de agendamento via WhatsApp pra clínicas, estúdios e consultórios sem site.">
+<link rel="canonical" href="https://cauacaetano.github.io/blue-rose-automacao-express/">
+<link rel="alternate" hreflang="pt-BR" href="https://cauacaetano.github.io/blue-rose-automacao-express/">
+<link rel="alternate" hreflang="en" href="https://cauacaetano.github.io/blue-rose-automacao-express/clinicas-en.html">
+<link rel="alternate" hreflang="x-default" href="https://cauacaetano.github.io/blue-rose-automacao-express/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BLUE ROSE">
 <meta property="og:title" content="BLUE ROSE — sites e automação pra negócios locais">
@@ -83,10 +87,10 @@
   section{ position:relative; }
 
   /* ---------- reveal-on-scroll ---------- */
-  .reveal{ opacity:0; transform:translateY(22px); transition:opacity .6s var(--ease), transform .6s var(--ease); }
+  .js .reveal{ opacity:0; transform:translateY(22px); transition:opacity .6s var(--ease), transform .6s var(--ease); }
   .reveal.revealed{ opacity:1; transform:translateY(0); }
   @media (prefers-reduced-motion: reduce){
-    .reveal{ opacity:1; transform:none; transition:none; }
+    .js .reveal{ opacity:1; transform:none; transition:none; }
   }
 
   /* ---------- top bar ---------- */
@@ -292,13 +296,13 @@
   .ba-item{ display:grid; grid-template-columns:20px 1fr; gap:12px; padding:13px 0; border-top:1px solid var(--line); }
   .ba-before .ba-item:first-of-type{ border-top:none; }
   .ba-item .x{ color:var(--ink-dim); font-size:15px; line-height:1.5; }
-  .ba-item h4{ margin:0; font-family:'Archivo',sans-serif; font-weight:600; font-size:14px; color:var(--ink-soft); }
+  .ba-item h3{ margin:0; font-family:'Archivo',sans-serif; font-weight:600; font-size:14px; color:var(--ink-soft); }
   .ba-item p{ margin:4px 0 0; font-size:12.5px; color:var(--ink-dim); max-width:42ch; }
 
   .ba-after{ background:linear-gradient(165deg, var(--surface) 0%, var(--surface-tint) 100%); border:1px solid var(--line-strong); box-shadow:var(--glow-shadow); display:flex; flex-direction:column; gap:18px; }
   .ba-after .ba-label{ color:var(--cyan); }
   .ba-hero-feat{ border:1px solid var(--phone-line); background:var(--surface-tint); border-radius:12px; padding:18px; display:grid; grid-template-columns:1fr; gap:14px; box-shadow:inset 2px 0 0 var(--rose); }
-  .ba-hero-feat h4{ font-family:'Fraunces',serif; font-weight:640; font-size:17px; margin:0; }
+  .ba-hero-feat h3{ font-family:'Fraunces',serif; font-weight:640; font-size:17px; margin:0; }
   .ba-hero-feat p{ font-size:13px; color:var(--ink-soft); margin:6px 0 0; max-width:42ch; }
   .mini-chat{ background:var(--phone-tint); border:1px solid var(--phone-line); border-radius:10px; padding:10px; display:flex; flex-direction:column; gap:6px; margin-top:4px; }
   .mini-chat .bubble{ max-width:88%; padding:7px 10px; border-radius:10px; font-size:11.5px; line-height:1.35; }
@@ -309,7 +313,7 @@
   .ba-small{ border:1px solid var(--line); border-radius:10px; padding:14px; background:rgba(255,255,255,0.02); }
   .ba-small .chk{ width:20px; height:20px; border-radius:50%; background:rgba(79,214,255,0.14); color:var(--cyan); display:flex; align-items:center; justify-content:center; margin-bottom:8px; }
   .ba-small .chk svg{ width:11px; height:11px; }
-  .ba-small h4{ margin:0; font-family:'Archivo',sans-serif; font-weight:600; font-size:13px; }
+  .ba-small h3{ margin:0; font-family:'Archivo',sans-serif; font-weight:600; font-size:13px; }
   .ba-small p{ margin:4px 0 0; font-size:11.5px; color:var(--ink-soft); }
 
   /* ---------- examples switcher ---------- */
@@ -402,8 +406,27 @@
   .skip-link{ position:absolute; left:12px; top:-48px; background:var(--surface); color:var(--ink); border:1px solid var(--line-strong); padding:10px 16px; border-radius:8px; font-family:'IBM Plex Mono',monospace; font-size:12.5px; text-decoration:none; z-index:100; transition:top .15s ease; }
   .skip-link:focus{ top:12px; }
   .foot-line{ margin-top:18px; padding:18px 0 40px; font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--ink-dim); display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+
+  /* ---------- v3: correções da auditoria (Lighthouse + DevTools) ---------- */
+  html, body{ overflow-x:clip; }
+  .hero, .showcase, .pricing, .contact{ position:relative; isolation:isolate; }
+  .contact::before{ z-index:0; pointer-events:none; }
+  .contact > *{ position:relative; z-index:1; }
+  :root{ --rose-solid:#3d6bf0; }
+  .btn-primary, .topnav .cta-mini, .site-hero .mini-btn{ background:var(--rose-solid); }
+  .hero-rose{ height:auto; aspect-ratio:640/620; }
+  .site-hero .mock-h{ display:block; font-family:'Fraunces',serif; font-weight:600; font-size:16px; margin:0 0 6px; color:var(--phone-ink); }
+  .prow .mono{ font-size:12.5px; color:var(--ink-soft); }
+  .prow .value{ font-family:'Fraunces',serif; font-weight:640; font-size:18px; font-variant-numeric:tabular-nums lining-nums; letter-spacing:-.01em; }
+  .prow.combo .value{ color:#fff; }
+  .faq-item .chev{ width:26px; height:26px; }
+  .faq-item .chev svg{ width:13px; height:13px; display:block; }
+  .cmp-hint{ display:none; font-size:12px; color:var(--ink-dim); margin:-6px 0 10px; }
+  @media (max-width:600px){ .cmp-hint{ display:block; } }
 </style>
-  <script src="js/contato.js"></script>
+  <script>document.documentElement.classList.add('js')</script>
+  <script src="js/contato.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "ProfessionalService", "@id": "https://cauacaetano.github.io/blue-rose-automacao-express/#blue-rose", "name": "BLUE ROSE", "url": "https://cauacaetano.github.io/blue-rose-automacao-express/", "image": "https://cauacaetano.github.io/blue-rose-automacao-express/img/og-banner.png", "logo": "https://cauacaetano.github.io/blue-rose-automacao-express/img/blue-rose-favicon.png", "description": "Sites simples e automação de WhatsApp para clínicas, estúdios e negócios locais.", "areaServed": "BR", "inLanguage": "pt-BR", "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Pacotes", "itemListElement": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Site simples"}, "priceSpecification": {"@type": "PriceSpecification", "priceCurrency": "BRL", "minPrice": 450, "maxPrice": 650}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Automação de WhatsApp"}, "priceSpecification": {"@type": "PriceSpecification", "priceCurrency": "BRL", "minPrice": 300, "maxPrice": 450}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Site simples + Automação"}, "priceSpecification": {"@type": "PriceSpecification", "priceCurrency": "BRL", "minPrice": 500, "maxPrice": 700}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Site multipágina + Automação"}, "priceSpecification": {"@type": "PriceSpecification", "priceCurrency": "BRL", "minPrice": 700}}]}}, {"@type": "FAQPage", "inLanguage": "pt-BR", "mainEntity": [{"@type": "Question", "name": "Preciso entender de tecnologia pra manter o site?", "acceptedAnswer": {"@type": "Answer", "text": "Não. Depois de pronto, se quiser trocar preço, horário ou serviço, é só me chamar — você não precisa mexer em código nem em nenhum painel sozinho."}}, {"@type": "Question", "name": "O site fica no meu nome?", "acceptedAnswer": {"@type": "Answer", "text": "Sim, o conteúdo e a estrutura são seus. Se quiser um domínio próprio (seunegocio.com.br) no lugar do link padrão, dá pra combinar à parte."}}, {"@type": "Question", "name": "Preciso trocar de número de WhatsApp?", "acceptedAnswer": {"@type": "Answer", "text": "Não. A automação funciona com o número que você já usa no negócio hoje — não precisa criar linha nova nem mexer no que já está funcionando."}}, {"@type": "Question", "name": "Posso pedir alterações depois de pronto?", "acceptedAnswer": {"@type": "Answer", "text": "Uma rodada de ajustes leve já está incluída no preço, logo após a entrega. Depois disso, mudanças maiores têm um valor à parte, sempre combinado antes de eu mexer em qualquer coisa."}}, {"@type": "Question", "name": "Como funciona o pagamento?", "acceptedAnswer": {"@type": "Answer", "text": "Metade pra começar, metade na entrega. Sem mensalidade — você paga uma vez e o site é seu."}}]}]}</script>
 </head>
 <body>
 
@@ -505,7 +528,7 @@
             <div class="site-nav"><span>Início</span><span>Serviços</span><span>Agendar</span></div>
             <div class="site-hero">
               <div class="ph-photo" style="background-image:url('img/clinicas-hero-space.jpg');"></div>
-              <h4>Clínica Exemplo</h4>
+              <p class="mock-h">Clínica Exemplo</p>
               <p>Estética facial &amp; corporal · Seg–Sex, 9h–19h</p>
               <span class="mini-btn">Agendar horário</span>
             </div>
@@ -572,7 +595,7 @@
                   <div class="site-nav"><span>Início</span><span>Serviços</span><span>Agendar</span></div>
                   <div class="site-hero">
                     <div class="ph-photo" style="height:56px; background-image:url('img/clinicas-hero-space.jpg');"></div>
-                    <h4 style="font-size:14px;">Seu negócio aqui</h4>
+                    <p class="mock-h" style="font-size:14px;">Seu negócio aqui</p>
                     <p>Endereço · horário · contato</p>
                     <span class="mini-btn">Falar no WhatsApp</span>
                   </div>
@@ -620,24 +643,24 @@
     <div class="ba-grid">
       <div class="ba-col ba-before">
         <div class="ba-label">Sem site e automação</div>
-        <div class="ba-item"><span class="x">✕</span><div><h4>Cliente pesquisa, não te acha, agenda com o concorrente</h4><p>Quem procura "clínica de estética" ou "personal" na sua cidade decide olhando quem aparece no Google.</p></div></div>
-        <div class="ba-item"><span class="x">✕</span><div><h4>A mesma pergunta, todo dia, no seu número</h4><p>Horário, valor, se tem vaga hoje — respondidas manualmente, uma a uma.</p></div></div>
-        <div class="ba-item"><span class="x">✕</span><div><h4>Agenda manual = choque de horário</h4><p>Sem confirmação automática, é fácil marcar dois clientes no mesmo horário.</p></div></div>
+        <div class="ba-item"><span class="x">✕</span><div><h3>Cliente pesquisa, não te acha, agenda com o concorrente</h3><p>Quem procura "clínica de estética" ou "personal" na sua cidade decide olhando quem aparece no Google.</p></div></div>
+        <div class="ba-item"><span class="x">✕</span><div><h3>A mesma pergunta, todo dia, no seu número</h3><p>Horário, valor, se tem vaga hoje — respondidas manualmente, uma a uma.</p></div></div>
+        <div class="ba-item"><span class="x">✕</span><div><h3>Agenda manual = choque de horário</h3><p>Sem confirmação automática, é fácil marcar dois clientes no mesmo horário.</p></div></div>
       </div>
       <div class="ba-col ba-after">
         <div class="ba-label">Com site + automação BLUE ROSE</div>
         <div class="ba-hero-feat">
-          <div><h4>Automação de WhatsApp</h4><p>Responde na hora, direciona pra marcar, funciona no seu número de sempre — mesmo fora do expediente.</p></div>
+          <div><p class="mock-h">Automação de WhatsApp</p><p>Responde na hora, direciona pra marcar, funciona no seu número de sempre — mesmo fora do expediente.</p></div>
           <div class="mini-chat" aria-hidden="true">
             <div class="bubble them">Tem vaga amanhã de manhã?</div>
             <div class="bubble us">Tenho sim! 9h ou 10h30 — qual prefere?</div>
           </div>
         </div>
         <div class="ba-small-grid">
-          <div class="ba-small"><div class="chk"><svg viewBox="0 0 24 24"><use href="#ic-check"/></svg></div><h4>Site simples</h4><p>Horários, serviços e botão de WhatsApp — pra quem te acha no Google.</p></div>
-          <div class="ba-small"><div class="chk"><svg viewBox="0 0 24 24"><use href="#ic-check"/></svg></div><h4>Orçamento fechado</h4><p>Valor combinado antes de começar, sem cobrança por hora.</p></div>
-          <div class="ba-small"><div class="chk"><svg viewBox="0 0 24 24"><use href="#ic-check"/></svg></div><h4>Sem mensalidade fixa</h4><p>Você paga uma vez e o site é seu — sem assinatura mensal.</p></div>
-          <div class="ba-small"><div class="chk"><svg viewBox="0 0 24 24"><use href="#ic-check"/></svg></div><h4>Ajuste incluso</h4><p>Uma rodada leve de mudanças já entra no preço, logo após a entrega.</p></div>
+          <div class="ba-small"><div class="chk"><svg viewBox="0 0 24 24"><use href="#ic-check"/></svg></div><h3>Site simples</h3><p>Horários, serviços e botão de WhatsApp — pra quem te acha no Google.</p></div>
+          <div class="ba-small"><div class="chk"><svg viewBox="0 0 24 24"><use href="#ic-check"/></svg></div><h3>Orçamento fechado</h3><p>Valor combinado antes de começar, sem cobrança por hora.</p></div>
+          <div class="ba-small"><div class="chk"><svg viewBox="0 0 24 24"><use href="#ic-check"/></svg></div><h3>Sem mensalidade fixa</h3><p>Você paga uma vez e o site é seu — sem assinatura mensal.</p></div>
+          <div class="ba-small"><div class="chk"><svg viewBox="0 0 24 24"><use href="#ic-check"/></svg></div><h3>Ajuste incluso</h3><p>Uma rodada leve de mudanças já entra no preço, logo após a entrega.</p></div>
         </div>
       </div>
     </div>
@@ -723,14 +746,15 @@
       </div>
       <div class="prow combo">
         <div><div class="name">Site multipágina + Automação</div><div class="desc">várias páginas, calculadora de orçamento, galeria e agendamento — como os exemplos completos</div></div>
-        <div class="mono">a combinar</div>
-        <div class="value">R$700 – a combinar</div>
+        <div class="mono">sob medida</div>
+        <div class="value">a partir de R$700</div>
       </div>
     </div>
     <div class="pricing-note">Sem mensalidade fixa. Faixa final depende do número de serviços/páginas — fechado com você antes de começar.</div>
 
     <div class="compare">
       <div class="compare-title">Qual pacote é o seu?</div>
+      <div class="cmp-hint" aria-hidden="true">Arraste a tabela para o lado →</div>
       <div class="cmp-scroll">
         <table class="cmp-table">
           <tr>
@@ -793,23 +817,23 @@
         <h2>Antes de você chamar no WhatsApp</h2>
     <div class="faq-list">
       <details class="faq-item">
-        <summary>Preciso entender de tecnologia pra manter o site?<span class="chev">⌄</span></summary>
+        <summary>Preciso entender de tecnologia pra manter o site?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
         <p>Não. Depois de pronto, se quiser trocar preço, horário ou serviço, é só me chamar — você não precisa mexer em código nem em nenhum painel sozinho.</p>
       </details>
       <details class="faq-item">
-        <summary>O site fica no meu nome?<span class="chev">⌄</span></summary>
+        <summary>O site fica no meu nome?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
         <p>Sim, o conteúdo e a estrutura são seus. Se quiser um domínio próprio (seunegocio.com.br) no lugar do link padrão, dá pra combinar à parte.</p>
       </details>
       <details class="faq-item">
-        <summary>Preciso trocar de número de WhatsApp?<span class="chev">⌄</span></summary>
+        <summary>Preciso trocar de número de WhatsApp?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
         <p>Não. A automação funciona com o número que você já usa no negócio hoje — não precisa criar linha nova nem mexer no que já está funcionando.</p>
       </details>
       <details class="faq-item">
-        <summary>Posso pedir alterações depois de pronto?<span class="chev">⌄</span></summary>
+        <summary>Posso pedir alterações depois de pronto?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
         <p>Uma rodada de ajustes leve já está incluída no preço, logo após a entrega. Depois disso, mudanças maiores têm um valor à parte, sempre combinado antes de eu mexer em qualquer coisa.</p>
       </details>
       <details class="faq-item">
-        <summary>Como funciona o pagamento?<span class="chev">⌄</span></summary>
+        <summary>Como funciona o pagamento?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
         <p>Metade pra começar, metade na entrega. Sem mensalidade — você paga uma vez e o site é seu.</p>
       </details>
     </div>
