@@ -257,19 +257,60 @@
     montar();
   }
 
+  /* ---------------- vitrine de sites (nicho e dispositivo) ---------------- */
+  document.querySelectorAll('[data-vitrine]').forEach(function (v) {
+    var frame = v.querySelector('iframe');
+    var palco = v.querySelector('.vitrine-palco');
+    var abrir = v.querySelector('[data-abrir]');
+    var marcar = function (grupo, botao) {
+      v.querySelectorAll('button[data-' + grupo + ']').forEach(function (b) { b.setAttribute('aria-pressed', String(b === botao)); });
+    };
+    v.querySelectorAll('button[data-site]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        frame.src = b.dataset.site;
+        frame.title = b.dataset.titulo || b.textContent.trim();
+        if (abrir) abrir.href = b.dataset.site;
+        marcar('site', b);
+      });
+    });
+    v.querySelectorAll('button[data-dispositivo]').forEach(function (b) {
+      b.addEventListener('click', function () { palco.dataset.dispositivo = b.dataset.dispositivo; marcar('dispositivo', b); });
+    });
+  });
+
+  /* ---------------- origem do link ----------------
+   * Os agentes do Escritório mandam links com ?origem=redator-n12.
+   * Guardamos só esse código (nada pessoal) enquanto a pessoa navega
+   * pelo site, para o pedido chegar dizendo de onde veio. */
+  var origem = '';
+  try {
+    var daUrl = new URLSearchParams(location.search).get('origem') || '';
+    if (/^[a-z0-9-]{1,60}$/i.test(daUrl)) { origem = daUrl.toLowerCase(); sessionStorage.setItem('br-origem', origem); }
+    else origem = sessionStorage.getItem('br-origem') || '';
+  } catch (e) { origem = ''; }
+
   /* ---------------- formulário de contato ---------------- */
   var form = document.querySelector('[data-form-contato]');
   if (form) {
     var M = EN ? {
       nome: 'Tell me your name.', msg: 'Describe in a few words what you want to automate (at least 10 characters).',
+      wa: 'Check the WhatsApp number (with area code).',
       aberto: 'WhatsApp opened with your message ready. Just press send.', semWa: 'WhatsApp did not open? Use the email option below.',
-      ola: 'Hi! I came from the BLUE ROSE website.', nomeL: 'Name', negocioL: 'Business', interesseL: 'Interested in', msgL: 'Message', assunto: 'Project from the BLUE ROSE website',
+      enviando: 'Sending…', recebido: 'Got it! Your request is already with our team. I will reply within 1 business day.',
+      falhou: 'Could not send right now. Opening WhatsApp with your message instead.',
+      ola: 'Hi! I came from the BLUE ROSE website.', nomeL: 'Name', negocioL: 'Business', interesseL: 'Interested in', msgL: 'Message', refL: 'Link code', assunto: 'Project from the BLUE ROSE website',
     } : {
       nome: 'Diga seu nome.', msg: 'Conte em poucas palavras o que você quer automatizar (pelo menos 10 caracteres).',
+      wa: 'Confira o número de WhatsApp (com DDD).',
       aberto: 'Abrimos o WhatsApp com sua mensagem pronta. É só apertar enviar.', semWa: 'O WhatsApp não abriu? Use a opção de e-mail logo abaixo.',
-      ola: 'Oi! Vim pelo site da BLUE ROSE.', nomeL: 'Nome', negocioL: 'Negócio', interesseL: 'Interesse', msgL: 'Mensagem', assunto: 'Projeto pelo site da BLUE ROSE',
+      enviando: 'Enviando…', recebido: 'Recebido! Seu pedido já está com o nosso time. Respondo em até 1 dia útil.',
+      falhou: 'Não consegui enviar agora. Vou abrir o WhatsApp com a sua mensagem.',
+      ola: 'Oi! Vim pelo site da BLUE ROSE.', nomeL: 'Nome', negocioL: 'Negócio', interesseL: 'Interesse', msgL: 'Mensagem', refL: 'Código do link', assunto: 'Projeto pelo site da BLUE ROSE',
     };
     var status = form.querySelector('[data-status]');
+    var botaoEnviar = form.querySelector('button[type="submit"]');
+    var LEADS = window.BR_LEADS && window.BR_LEADS.url && window.BR_LEADS.chave ? window.BR_LEADS : null;
+    var valor = function (nome) { var d = new FormData(form); return String(d.get(nome) || '').trim(); };
     var campoErro = function (nome, texto) {
       var campo = form.querySelector('[data-campo="' + nome + '"]');
       var erro = campo.querySelector('.erro');
@@ -278,23 +319,46 @@
       return !texto;
     };
     var montarTexto = function () {
-      var d = new FormData(form);
-      var interesses = d.getAll('interesse');
+      var interesses = new FormData(form).getAll('interesse');
       return [
         M.ola,
-        M.nomeL + ': ' + String(d.get('nome')).trim(),
-        String(d.get('negocio') || '').trim() ? M.negocioL + ': ' + String(d.get('negocio')).trim() : '',
+        M.nomeL + ': ' + valor('nome'),
+        valor('negocio') ? M.negocioL + ': ' + valor('negocio') : '',
         interesses.length ? M.interesseL + ': ' + interesses.join(', ') : '',
-        M.msgL + ': ' + String(d.get('mensagem')).trim(),
+        M.msgL + ': ' + valor('mensagem'),
+        origem ? '(' + M.refL + ': ' + origem + ')' : '',
       ].filter(Boolean).join('\n');
     };
     var validar = function () {
-      var d = new FormData(form);
-      var ok1 = campoErro('nome', String(d.get('nome') || '').trim().length < 2 ? M.nome : '');
-      var ok2 = campoErro('mensagem', String(d.get('mensagem') || '').trim().length < 10 ? M.msg : '');
-      if (!ok1) form.querySelector('[name="nome"]').focus();
-      else if (!ok2) form.querySelector('[name="mensagem"]').focus();
-      return ok1 && ok2;
+      var digitos = valor('whatsapp').replace(/\D/g, '');
+      var ok1 = campoErro('nome', valor('nome').length < 2 ? M.nome : '');
+      var ok2 = campoErro('whatsapp', digitos && (digitos.length < 10 || digitos.length > 13) ? M.wa : '');
+      var ok3 = campoErro('mensagem', valor('mensagem').length < 10 ? M.msg : '');
+      var primeiro = !ok1 ? 'nome' : !ok2 ? 'whatsapp' : !ok3 ? 'mensagem' : null;
+      if (primeiro) form.querySelector('[name="' + primeiro + '"]').focus();
+      return ok1 && ok2 && ok3;
+    };
+    var abrirWhatsApp = function () {
+      if (!window.BR_WA) { status.textContent = M.semWa; return; }
+      window.open('https://wa.me/' + window.BR_WA + '?text=' + encodeURIComponent(montarTexto()), '_blank', 'noopener');
+      status.textContent = M.aberto;
+    };
+    /* Grava o pedido na fila do Escritório (Supabase). A chave pública só pode inserir. */
+    var enviarParaOTime = function () {
+      return fetch(LEADS.url.replace(/\/$/, '') + '/rest/v1/leads_site', {
+        method: 'POST',
+        headers: { apikey: LEADS.chave, Authorization: 'Bearer ' + LEADS.chave, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
+        body: JSON.stringify({
+          nome: valor('nome').slice(0, 120),
+          negocio: valor('negocio').slice(0, 160) || null,
+          whatsapp: valor('whatsapp').slice(0, 30) || null,
+          interesses: new FormData(form).getAll('interesse').slice(0, 8),
+          mensagem: valor('mensagem').slice(0, 2000),
+          origem: origem || null,
+          pagina: location.pathname.slice(0, 200),
+          idioma: EN ? 'en' : 'pt-BR',
+        }),
+      }).then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); });
     };
     form.querySelectorAll('input, textarea').forEach(function (el) {
       el.addEventListener('input', function () {
@@ -304,11 +368,18 @@
     });
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      if (valor('site_empresa')) return; // armadilha para robôs: campo invisível preenchido
       if (!validar()) return;
-      var numero = window.BR_WA;
-      if (!numero) { status.textContent = M.semWa; return; }
-      window.open('https://wa.me/' + numero + '?text=' + encodeURIComponent(montarTexto()), '_blank', 'noopener');
-      status.textContent = M.aberto;
+      if (!LEADS) { abrirWhatsApp(); return; }
+      botaoEnviar.disabled = true;
+      status.textContent = M.enviando;
+      enviarParaOTime().then(function () {
+        status.textContent = M.recebido;
+        form.reset();
+      }).catch(function () {
+        status.textContent = M.falhou;
+        abrirWhatsApp();
+      }).then(function () { botaoEnviar.disabled = false; });
     });
     var porEmail = document.querySelector('[data-email-form]');
     if (porEmail) {

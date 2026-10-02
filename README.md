@@ -6,20 +6,21 @@ Site: https://cauacaetano.github.io/blue-rose-automacao-express/ (inglês: `clin
 
 | Pasta / arquivo | O que é |
 |---|---|
-| `index.html`, `clinicas-en.html` | Página inicial (PT e EN) com a demonstração ao vivo das automações |
-| `projetos.html`, `projects-en.html` | Cases completos: problema, solução, como funciona, tecnologias e testes |
+| `index.html`, `clinicas-en.html` | Página inicial (PT e EN): hub "Experimente", simulador de automações, cases, preços e contato |
+| `projetos.html`, `projects-en.html` | Cases com problema, solução, fluxo, testes e a demonstração embutida |
+| `laboratorio.html`, `lab-en.html` | Os scripts de `portfolio/` rodando no navegador (Pyodide em um Web Worker) |
+| `demos/stockmaster/` | Build do StockMaster em modo demonstração (React + API no navegador) |
 | `exemplos*.html`, `demo-*.html` | Seis sites de exemplo por nicho (nomes e preços ilustrativos) |
-| `css/site.css`, `js/site.js` | Sistema visual (Geist, um único azul, tema claro/escuro) e comportamento |
-| `js/contato.js` | WhatsApp e e-mail codificados, montados só no navegador |
+| `css/site.css`, `js/site.js`, `js/lab*.js` | Sistema visual e comportamento |
+| `js/contato.js`, `js/leads-config.js` | Contato codificado e destino opcional do formulário (Supabase, só inserção) |
 | `portfolio/` | Automações em Python com testes (`python -m unittest test_portfolio`) |
-| `automacao/` | Utilitários internos (captura de tela, navegador, apps do Windows) |
 
-## Projetos apresentados no site
+## Projetos apresentados
 
-- **Escritório BLUE ROSE**: 14 agentes de IA com aprovação humana ([repositório](https://github.com/CauaCaetano/escritorio-blue-rose)).
-- **StockMaster**: controle de estoque em FastAPI, MongoDB e React ([repositório](https://github.com/CauaCaetano/App-Controle-de-Estoque)).
+- **StockMaster**: controle de estoque em FastAPI, MongoDB e React ([repositório](https://github.com/CauaCaetano/App-Controle-de-Estoque), [demo](https://cauacaetano.github.io/blue-rose-automacao-express/demos/stockmaster/)).
 - **Automações de WhatsApp**: qualificador de leads e recuperação de PIX (`portfolio/`).
-- **Laboratório**: gerador de descrições com IA, relatório de vendas, organizador de arquivos (`portfolio/`).
+- **Sites para negócios locais**: os seis exemplos, navegáveis por nicho e dispositivo.
+- **Laboratório**: gerador de descrições com IA, relatório de vendas, organizador de arquivos.
 
 ## Princípios
 

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Projects | BLUE ROSE</title>
-<meta name="description" content="BLUE ROSE case studies: an office of 14 AI agents, an inventory system, WhatsApp automations and websites for local businesses. Problem, solution, technology and tests for each.">
+<meta name="description" content="BLUE ROSE projects you can use in your browser: a live inventory system, WhatsApp automations, websites by niche and Python scripts. Problem, solution, technology and tests for each.">
 <link rel="canonical" href="https://cauacaetano.github.io/blue-rose-automacao-express/projects-en.html">
 <link rel="alternate" hreflang="pt-BR" href="https://cauacaetano.github.io/blue-rose-automacao-express/projetos.html">
 <link rel="alternate" hreflang="en" href="https://cauacaetano.github.io/blue-rose-automacao-express/projects-en.html">
@@ -13,17 +13,17 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BLUE ROSE">
 <meta property="og:locale" content="en_US">
-<meta property="og:title" content="BLUE ROSE projects">
-<meta property="og:description" content="AI agents, an inventory system, WhatsApp automations and websites. Each case with problem, solution, technology and tests.">
+<meta property="og:title" content="BLUE ROSE projects: shown, explained and ready to try">
+<meta property="og:description" content="A live inventory system, WhatsApp automations, websites by niche and Python scripts that run in the browser.">
 <meta property="og:url" content="https://cauacaetano.github.io/blue-rose-automacao-express/projects-en.html">
 <meta property="og:image" content="https://cauacaetano.github.io/blue-rose-automacao-express/img/og-blue-rose-en.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="img/blue-rose-favicon.png">
 <link rel="preload" href="fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/site.css?v=5">
 <script>document.documentElement.classList.add('js')</script>
-<script src="js/contato.js" defer></script>
-<script src="js/site.js" defer></script>
+<script src="js/contato.js?v=5" defer></script>
+<script src="js/site.js?v=5" defer></script>
 </head>
 <body>
 <a class="skip" href="#content">Skip to content</a>
@@ -38,7 +38,7 @@
     </button>
     <nav class="nav-links" id="menu" aria-label="Main">
       <a href="projects-en.html" aria-current="page">Projects</a>
-      <a href="clinicas-en.html#demo">Live demo</a>
+      <a href="lab-en.html">Lab</a>
       <a href="clinicas-en.html#process">How it works</a>
       <a href="clinicas-en.html#pricing">Pricing</a>
       <a class="lang" href="projetos.html" hreflang="pt-BR" lang="pt-BR">PT</a>
@@ -50,10 +50,9 @@
 <main id="content">
   <div class="p-hero">
     <div class="wrap">
-      <h1 class="reveal">Projects that prove what we build.</h1>
-      <p class="sub reveal">Every case below has open code, automated tests and a note on what was fixed to make it ready. Customer names and numbers in examples are illustrative.</p>
+      <h1 class="reveal">Projects to see, understand and use.</h1>
+      <p class="sub reveal">Every case shows the problem, the solution, how it works and what was fixed to make it ready. And every one has a demo you can use right here.</p>
       <nav class="indice reveal" aria-label="Cases">
-        <a href="#office">BLUE ROSE Office</a>
         <a href="#stockmaster">StockMaster</a>
         <a href="#whatsapp">WhatsApp automations</a>
         <a href="#websites">Websites for local businesses</a>
@@ -62,92 +61,13 @@
     </div>
   </div>
 
-  <article class="case" id="office" aria-labelledby="c1">
+  <article class="case" id="stockmaster" aria-labelledby="c1">
     <div class="wrap">
       <div class="case-topo reveal">
         <div>
-          <h2 id="c1">BLUE ROSE Office</h2>
-          <p class="linha">A virtual office where 14 AI agents, each with a name and a role, prospect local businesses and assemble the sales package. You approve before anything is sent.</p>
-          <div class="case-meta"><span>AI agents</span><span>Windows app and browser</span><span class="ok">9 of 9 tests passing</span></div>
-        </div>
-      </div>
-      <div class="galeria reveal">
-        <figure>
-          <img src="img/cases/escritorio-3d-1600.webp" srcset="img/cases/escritorio-3d-900.webp 900w, img/cases/escritorio-3d-1600.webp 1600w" sizes="(max-width: 900px) 100vw, 800px" width="1600" height="1000" loading="lazy" alt="3D office with Board, Sales, Marketing and Technology departments and the deals panel on the side">
-          <figcaption>3D view: each agent walks to a colleague's desk to hand over the work.</figcaption>
-        </figure>
-        <div class="alta">
-          <figure><img src="img/cases/escritorio-3d-noite-900.webp" width="900" height="563" loading="lazy" alt="The same office in night mode"><figcaption>Night mode.</figcaption></figure>
-          <figure><img src="img/cases/escritorio-2d-900.webp" width="900" height="563" loading="lazy" alt="Top-down pixel art view"><figcaption>2D pixel art view.</figcaption></figure>
-        </div>
-      </div>
-      <div class="case-corpo reveal">
-        <div><h3>Problem</h3><p>Selling a website and automation to a local business means understanding the business, creating an identity, writing a proposal, building a preview, reviewing and preparing replies. By hand, that takes hours per client.</p></div>
-        <div><h3>Solution</h3><p>A team of agents with defined roles (CEO, sales, marketing and technology) works through a queue: each one gets the task, does its part with AI and hands it to the next.</p><p>If the AI fails or there is no key configured, the system logs the error and keeps going in simulated mode.</p></div>
-        <div><h3>Result</h3><p>Each business gets a full package: analysis, visual identity, content, a local ad, proposal, site preview, SEO, automation script and replies. Everything stops at “awaiting approval”: sending is always done by a person.</p></div>
-      </div>
-      <div class="fluxo reveal">
-        <h3>How it works</h3>
-        <ol>
-          <li><b>You</b>register a business in the form</li>
-          <li><b>Sales</b>analyzes its online presence and potential</li>
-          <li><b>Marketing</b>identity, content and a local ad</li>
-          <li><b>Sales</b>writes the proposal and message</li>
-          <li><b>Technology</b>SEO, site preview and automation script</li>
-          <li><b>QA</b>reviews and sends back if needed</li>
-          <li class="humano"><b>You approve</b>and send it yourself</li>
-        </ol>
-      </div>
-      <div class="recursos reveal">
-        <div>
-          <h3>Key features</h3>
-          <ul class="lista">
-            <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-check"/></svg><b>Structured output:</b> the AI answers in JSON validated against a schema, so nothing breaks the flow.</li>
-            <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-check"/></svg><b>Persistent queue:</b> every agent's tasks are stored in the database; if the app closes, it resumes where it stopped.</li>
-            <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-check"/></svg><b>Real time:</b> the panel and the 3D office update over WebSocket.</li>
-            <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-check"/></svg><b>Autopilot (server side, off by default):</b> searches real businesses using public data only, with a daily goal, working hours and one search at a time.</li>
-            <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-check"/></svg><b>Safe export:</b> builds the WhatsApp link with the approved message, but you press send.</li>
-          </ul>
-        </div>
-        <div>
-          <h3>Technologies</h3>
-          <ul class="stack"><li>Node.js</li><li>Express</li><li>WebSocket</li><li>SQLite (node:sqlite)</li><li>Claude API</li><li>Three.js</li><li>Electron</li><li>Supabase</li><li>GitHub Actions</li></ul>
-          <h3 style="margin-top:28px">Validation</h3>
-          <p class="sec-lede" style="font-size:15px;margin-top:0">9 automated tests (the full flow through all 14 agents, autopilot, WhatsApp and the Supabase mirror) running on GitHub Actions. This review fixed a case where the autopilot could start a duplicate search while an agent was walking to hand over a task.</p>
-        </div>
-      </div>
-      <div class="acoes reveal">
-        <a class="btn btn-ghost" href="https://github.com/CauaCaetano/escritorio-blue-rose"><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-github-logo"/></svg>Code on GitHub</a>
-      </div>
-    </div>
-  </article>
-
-  <article class="case" id="stockmaster" aria-labelledby="c2">
-    <div class="wrap">
-      <div class="case-topo reveal">
-        <div>
-          <h2 id="c2">StockMaster</h2>
+          <h2 id="c1">StockMaster</h2>
           <p class="linha">Inventory control for small shops, without a spreadsheet: products, stock in and out with a reason, and a dashboard that warns what is running out.</p>
           <div class="case-meta"><span>Internal system</span><span>API + web dashboard</span><span class="ok">4 unit and 19 end-to-end tests passing</span></div>
-        </div>
-      </div>
-      <div class="galeria reveal">
-        <figure>
-          <img src="img/cases/estoque-dash-1600.webp" srcset="img/cases/estoque-dash-900.webp 900w, img/cases/estoque-dash-1600.webp 1600w" sizes="(max-width: 900px) 100vw, 800px" width="1440" height="900" loading="lazy" alt="StockMaster dashboard with totals, out-of-stock, low-stock and latest movements (interface in Portuguese)">
-          <figcaption>Dashboard: what ran out, what is below the minimum and what just left.</figcaption>
-        </figure>
-        <div class="alta">
-          <figure><img src="img/cases/estoque-prod-900.webp" width="900" height="563" loading="lazy" alt="Product list with search and category filter"><figcaption>Products with search, category and prices.</figcaption></figure>
-<pre class="terminal" aria-label="Real test output"><span class="c">$ pytest -q</span>
-....                    [100%]
-<span class="g">4 passed</span> in 0.61s
-
-<span class="c">$ python backend_test.py</span>
-✅ Movimentação Saída
-✅ Validação Estoque Negativo
-✅ Dashboard - Dados
-Total de testes: 19
-Taxa de sucesso: <span class="g">100.0%</span></pre>
         </div>
       </div>
       <div class="case-corpo reveal">
@@ -155,6 +75,11 @@ Taxa de sucesso: <span class="g">100.0%</span></pre>
         <div><h3>Solution</h3><p>A FastAPI and MongoDB API with a React dashboard. Every movement stores its reason and previous balance; taking out more than the stock is refused.</p></div>
         <div><h3>Result</h3><p>A complete, tested system. During the audit, the low-stock alert, the main feature of the dashboard, never fired: the filter compared against a string. It was fixed and now has a test that keeps the bug from coming back.</p></div>
       </div>
+      <div class="demo-viva reveal">
+        <div class="barra"><span>Try it: sell more than you have in stock (interface in Portuguese)</span><a class="link" href="demos/stockmaster/">Open full screen <svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-arrow-up-right"/></svg></a></div>
+        <iframe src="demos/stockmaster/" title="StockMaster live demo" loading="lazy"></iframe>
+      </div>
+      <p class="vitrine-nota">It is the same React app from the repository. Here the API runs inside the browser with the same rules as the FastAPI backend, and the data stays in your browser.</p>
       <div class="fluxo reveal">
         <h3>How it works</h3>
         <ol>
@@ -170,28 +95,37 @@ Taxa de sucesso: <span class="g">100.0%</span></pre>
           <h3>What was done to make it ready</h3>
           <ul class="lista">
             <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-check"/></svg><b>Low-stock alert fixed</b> with <code>$expr</code> and covered by a test.</li>
-            <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-check"/></svg><b>Demo mode</b> with an in-memory database: runs without installing MongoDB.</li>
+            <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-check"/></svg><b>Demo mode</b>: the same frontend with the API in the browser, published here.</li>
+            <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-check"/></svg><b>In-memory database</b> to run and test without installing MongoDB.</li>
             <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-check"/></svg><b>Third-party tracker removed</b> from the HTML, along with the badge of the tool that generated the base.</li>
-            <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-check"/></svg><b>Clearer dashboard:</b> product name on each movement and prices in Brazilian format.</li>
-            <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-check"/></svg><b>Dependencies cut</b> from 25 to the 10 the code actually uses, plus a step-by-step README.</li>
+            <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-check"/></svg><b>Clearer dashboard</b>: product name on each movement and prices in Brazilian format.</li>
+            <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-check"/></svg><b>Dependencies cut</b> from 25 to the 10 the code uses, plus a step-by-step README.</li>
           </ul>
         </div>
         <div>
           <h3>Technologies</h3>
           <ul class="stack"><li>Python</li><li>FastAPI</li><li>Pydantic</li><li>MongoDB (Motor)</li><li>React</li><li>Tailwind CSS</li><li>pytest</li></ul>
+<pre class="terminal" style="margin-top:20px" aria-label="Real test output"><span class="c">$ pytest -q</span>
+....                    [100%]
+<span class="g">4 passed</span> in 0.61s
+
+<span class="c">$ python backend_test.py</span>
+Total de testes: 19
+Taxa de sucesso: <span class="g">100.0%</span></pre>
         </div>
       </div>
       <div class="acoes reveal">
+        <a class="btn btn-primary" href="demos/stockmaster/"><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-play"/></svg>Use it live</a>
         <a class="btn btn-ghost" href="https://github.com/CauaCaetano/App-Controle-de-Estoque"><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-github-logo"/></svg>Code on GitHub</a>
       </div>
     </div>
   </article>
 
-  <article class="case" id="whatsapp" aria-labelledby="c3">
+  <article class="case" id="whatsapp" aria-labelledby="c2">
     <div class="wrap">
       <div class="case-topo reveal">
         <div>
-          <h2 id="c3">WhatsApp automations</h2>
+          <h2 id="c2">WhatsApp automations</h2>
           <p class="linha">The two flows that weigh most on a local business: qualifying whoever messages on WhatsApp, and reminding whoever generated a PIX payment and did not pay.</p>
           <div class="case-meta"><span>Automation</span><span>Python, no dependencies</span><span class="ok">tests passing</span></div>
         </div>
@@ -201,30 +135,23 @@ Taxa de sucesso: <span class="g">100.0%</span></pre>
         <div><h3>Solution</h3><p>Qualifier: four questions, a scoring rule and a HOT, WARM or COLD summary for the agent. Recovery: after the waiting time it checks the payment and only sends a reminder if it is still pending.</p></div>
         <div><h3>Result</h3><p>Tested logic, ready to plug in. The integration points (official WhatsApp API and payment status) are isolated in one function each, so adapting it for a client touches a single place.</p></div>
       </div>
-      <div class="galeria uma reveal">
-<pre class="terminal" aria-label="Real script output (in Portuguese)"><span class="c">$ python qualificador_leads_whatsapp.py --demo</span>
-[WhatsApp -> +55 11 9xxxx-xxxx]
-Última pergunta: você pretende fechar negócio em quanto tempo?
-[Lead responde] nos próximos 3 meses
-
---- Novo lead qualificado ---
-Classificação: <span class="g">QUENTE</span>
-Tipo de imóvel: apartamento      Região: Zona Sul
-Orçamento: até R$ 350 mil        Prazo: nos próximos 3 meses
-
-<span class="c">$ python recuperador_pix_whatsapp.py --pago-em nunca</span>
-Checando status do pedido 10234: <span class="k">pix_pendente</span>
-[WhatsApp -> +55 11 9xxxx-xxxx (cliente de exemplo)]
-Oi, Ana! Notei que seu pedido #10234 (R$ 189.90) ainda está com o PIX pendente...
-Mensagem de recuperação enviada pro pedido 10234.</pre>
+      <div class="fluxo reveal">
+        <h3>How the payment recovery works</h3>
+        <ol>
+          <li><b>Checkout</b>the customer generates a PIX</li>
+          <li><b>Wait</b>10 minutes (configurable)</li>
+          <li><b>Check</b>the payment status</li>
+          <li><b>Decide</b>pending gets a reminder, paid stays silent</li>
+          <li class="humano"><b>Customer</b>gets the right link at the right time</li>
+        </ol>
       </div>
       <div class="recursos reveal">
         <div>
-          <h3>Validation</h3>
+          <h3>Try it both ways</h3>
           <ul class="lista">
-            <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-check"/></svg><b>Automated tests</b> for the scoring rule, the question flow and both recovery outcomes (paid and pending).</li>
-            <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-check"/></svg><b>Bug fixed:</b> a lead answering “just looking for now” (in Portuguese) was scored HOT. Any variation of “just looking” now counts as a weak signal.</li>
-            <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-check"/></svg><b>Try it in the browser:</b> the <a class="link" href="clinicas-en.html#demo">live demo on the home page</a> runs the same rules.</li>
+            <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-check"/></svg><b>Original script:</b> in the <a class="link" href="lab-en.html">Lab</a>, the published Python runs in your browser and shows the real output.</li>
+            <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-check"/></svg><b>Visual:</b> in the <a class="link" href="clinicas-en.html#demo">home page simulation</a>, each step lights up as the chat happens.</li>
+            <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-check"/></svg><b>Bug fixed:</b> a lead answering “just looking for now” (in Portuguese) was scored HOT. Any variation of “just looking” now counts as a weak signal, with a test for it.</li>
           </ul>
         </div>
         <div>
@@ -234,26 +161,40 @@ Mensagem de recuperação enviada pro pedido 10234.</pre>
         </div>
       </div>
       <div class="acoes reveal">
+        <a class="btn btn-primary" href="lab-en.html"><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-play"/></svg>Run it in the Lab</a>
         <a class="btn btn-ghost" href="https://github.com/CauaCaetano/blue-rose-automacao-express/tree/main/portfolio"><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-github-logo"/></svg>Code on GitHub</a>
       </div>
     </div>
   </article>
 
-  <article class="case" id="websites" aria-labelledby="c4">
+  <article class="case" id="websites" aria-labelledby="c3">
     <div class="wrap">
       <div class="case-topo reveal">
         <div>
-          <h2 id="c4">Websites for local businesses</h2>
-          <p class="linha">Six example websites, one per niche, with the same structure a client receives: beauty, dental, physiotherapy, personal trainer, salon and restaurant.</p>
+          <h2 id="c3">Websites for local businesses</h2>
+          <p class="linha">Six example websites, one per niche, with the same structure a client receives. Browse them here and switch between phone and desktop.</p>
           <div class="case-meta"><span>Websites</span><span>HTML, CSS and JavaScript</span><span>illustrative names and prices</span></div>
         </div>
       </div>
-      <div class="galeria reveal">
-        <figure>
-          <img src="img/cases/demo-odonto-1600.webp" srcset="img/cases/demo-odonto-900.webp 900w, img/cases/demo-odonto-1600.webp 1600w" sizes="(max-width: 900px) 100vw, 800px" width="1440" height="900" loading="lazy" alt="Example dental clinic website with a book appointment button">
-          <figcaption>Dental clinic: booking, quote calculator and gallery.</figcaption>
-        </figure>
-        <figure><img src="img/cases/demo-salao-mobile.webp" width="390" height="844" loading="lazy" alt="Example salon website on a phone" style="object-fit:contain"><figcaption>Beauty salon on a phone.</figcaption></figure>
+      <div class="vitrine reveal" data-vitrine>
+        <div class="vitrine-barra">
+          <div class="grupo-botoes" role="group" aria-label="Niche">
+            <button type="button" aria-pressed="true" data-site="demo-odonto-index-en.html">Dental</button>
+            <button type="button" aria-pressed="false" data-site="demo-estetica-index-en.html">Beauty</button>
+            <button type="button" aria-pressed="false" data-site="demo-fisio-index-en.html">Physio</button>
+            <button type="button" aria-pressed="false" data-site="demo-personal-index-en.html">Personal trainer</button>
+            <button type="button" aria-pressed="false" data-site="demo-salao-index-en.html">Salon</button>
+            <button type="button" aria-pressed="false" data-site="demo-restaurante-en.html">Restaurant</button>
+          </div>
+          <div class="grupo-botoes" role="group" aria-label="Device">
+            <button type="button" aria-pressed="true" data-dispositivo="computador">Desktop</button>
+            <button type="button" aria-pressed="false" data-dispositivo="celular">Phone</button>
+          </div>
+        </div>
+        <div class="vitrine-palco" data-dispositivo="computador">
+          <iframe src="demo-odonto-index-en.html" title="Example dental clinic website" loading="lazy"></iframe>
+        </div>
+        <p class="vitrine-nota">The websites are fully navigable: try the real-date booking and the quote calculator. <a class="link" data-abrir href="demo-odonto-index-en.html">Open this one full screen</a></p>
       </div>
       <div class="case-corpo reveal">
         <div><h3>Problem</h3><p>People searching for a “beauty clinic” or a “personal trainer” in their city choose among whoever shows up on Google. Without a website, the business is not part of that choice.</p></div>
@@ -261,17 +202,18 @@ Mensagem de recuperação enviada pro pedido 10234.</pre>
         <div><h3>Result</h3><p>Examples live in Portuguese and English, used as a starting point: the client's site ships with their brand, services and prices.</p></div>
       </div>
       <div class="acoes reveal">
-        <a class="btn btn-ghost" href="exemplos-en.html"><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-browser"/></svg>Open the examples</a>
+        <a class="btn btn-ghost" href="exemplos-en.html"><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-browser"/></svg>Full list of examples</a>
       </div>
     </div>
   </article>
 
-  <article class="case" id="lab" aria-labelledby="c5">
+  <article class="case" id="lab" aria-labelledby="c4">
     <div class="wrap">
       <div class="case-topo reveal">
         <div>
-          <h2 id="c5">Lab</h2>
-          <p class="linha">Smaller tools, each one solving a repetitive task. All of them tested.</p>
+          <h2 id="c4">Lab</h2>
+          <p class="linha">Smaller tools, each one solving a repetitive task. All of them tested, and all of them run in your browser.</p>
+          <div class="case-meta"><span>Python</span><span>Pyodide (WebAssembly)</span><span class="ok">13 tests passing on GitHub Actions</span></div>
         </div>
       </div>
       <div class="eco" style="grid-template-columns:repeat(3,minmax(0,1fr))">
@@ -290,6 +232,7 @@ Mensagem de recuperação enviada pro pedido 10234.</pre>
         </div>
       </div>
       <div class="acoes reveal">
+        <a class="btn btn-primary" href="lab-en.html"><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-play"/></svg>Open the Lab</a>
         <a class="btn btn-ghost" href="https://github.com/CauaCaetano/blue-rose-automacao-express/tree/main/portfolio"><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-github-logo"/></svg>Code on GitHub</a>
       </div>
     </div>
@@ -308,6 +251,7 @@ Mensagem de recuperação enviada pro pedido 10234.</pre>
     <a class="brand" href="clinicas-en.html"><img src="img/blue-rose-favicon.png" alt="" width="30" height="30" loading="lazy">BLUE ROSE</a>
     <nav aria-label="Footer">
       <a href="clinicas-en.html">Home</a>
+      <a href="lab-en.html">Lab</a>
       <a href="exemplos-en.html">Example websites</a>
       <a href="https://github.com/CauaCaetano">GitHub</a>
       <a href="projetos.html" hreflang="pt-BR" lang="pt-BR">Português</a>
