@@ -1,0 +1,22 @@
+name: Testes do portfólio
+
+on:
+  push:
+    paths: ['portfolio/**', '.github/workflows/portfolio.yml']
+  pull_request:
+    paths: ['portfolio/**']
+
+jobs:
+  testes:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ['3.10', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Rodar os testes (sem chave de IA: usa o texto local)
+        working-directory: portfolio
+        run: python -m unittest -v test_portfolio

@@ -65,7 +65,7 @@ def montar_mensagem_recuperacao(pedido: Pedido) -> str:
 def processar_pedido(pedido: Pedido, numero_whatsapp: str, minutos_acelerados: float = 1.0) -> None:
     """Simula o fluxo: espera o tempo configurado, consulta o status de
     novo e só manda a mensagem se ainda estiver pendente."""
-    print(f"[{datetime.now():%H:%M:%S}] Pedido {pedido.id} criado — PIX gerado, "
+    print(f"[{datetime.now():%H:%M:%S}] Pedido {pedido.id} criado: PIX gerado, "
           f"aguardando pagamento. Regra: cobrar em {TEMPO_ESPERA_MINUTOS} min se continuar pendente.")
 
     # No mundo real isso seria um agendamento (cron/fila), não um sleep —
@@ -76,7 +76,7 @@ def processar_pedido(pedido: Pedido, numero_whatsapp: str, minutos_acelerados: f
     print(f"[{datetime.now():%H:%M:%S}] Checando status do pedido {pedido.id}: {status_atual}")
 
     if status_atual == "pago":
-        print(f"[{datetime.now():%H:%M:%S}] Pagamento já confirmado — "
+        print(f"[{datetime.now():%H:%M:%S}] Pagamento já confirmado: a "
               f"automação NÃO envia mensagem (evita incomodar quem já pagou).")
         return
 

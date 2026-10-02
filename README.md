@@ -1,26 +1,36 @@
-# BLUE ROSE — Automação Express
+# BLUE ROSE: automação, sistemas e sites para negócios locais
 
-Identidade comercial do projeto SURVIVE400: automação de tarefas repetitivas
-com IA/n8n, copywriting com IA e sites simples para pequenos negocios e
-autonomos.
+Site: https://cauacaetano.github.io/blue-rose-automacao-express/ (inglês: `clinicas-en.html`)
 
-Pagina de oferta: https://cauacaetano.github.io/blue-rose-automacao-express/
+## O que tem neste repositório
 
-## O que tem neste repositorio
+| Pasta / arquivo | O que é |
+|---|---|
+| `index.html`, `clinicas-en.html` | Página inicial (PT e EN) com a demonstração ao vivo das automações |
+| `projetos.html`, `projects-en.html` | Cases completos: problema, solução, como funciona, tecnologias e testes |
+| `exemplos*.html`, `demo-*.html` | Seis sites de exemplo por nicho (nomes e preços ilustrativos) |
+| `css/site.css`, `js/site.js` | Sistema visual (Geist, um único azul, tema claro/escuro) e comportamento |
+| `js/contato.js` | WhatsApp e e-mail codificados, montados só no navegador |
+| `portfolio/` | Automações em Python com testes (`python -m unittest test_portfolio`) |
+| `automacao/` | Utilitários internos (captura de tela, navegador, apps do Windows) |
 
-- **`portfolio/`** — projetos demonstrativos reais e testados (organizador de arquivos, gerador de relatorio de vendas, gerador de descricoes com IA, qualificador de leads via WhatsApp, recuperação de venda via PIX/WhatsApp). Sao demos, nao trabalho encomendado por cliente.
-- **`automacao/`** — utilitarios internos de automacao operacional (captura
-de tela, controle de app Windows, navegador via Playwright) usados para
-testar e validar o stack tecnico do projeto.
+## Projetos apresentados no site
 
-## Aviso importante
+- **Escritório BLUE ROSE**: 14 agentes de IA com aprovação humana ([repositório](https://github.com/CauaCaetano/escritorio-blue-rose)).
+- **StockMaster**: controle de estoque em FastAPI, MongoDB e React ([repositório](https://github.com/CauaCaetano/App-Controle-de-Estoque)).
+- **Automações de WhatsApp**: qualificador de leads e recuperação de PIX (`portfolio/`).
+- **Laboratório**: gerador de descrições com IA, relatório de vendas, organizador de arquivos (`portfolio/`).
 
-Nenhum projeto listado aqui e apresentado como trabalho de cliente real,
-avaliacao, depoimento ou resultado financeiro — sao todos projetos
-demonstrativos proprios, construidos e testados de verdade, mas sem cliente
-pagante associado ainda.
+## Princípios
 
-## Servicos
+- Nada é apresentado como trabalho de cliente pagante, depoimento ou resultado financeiro: são projetos próprios, construídos e testados.
+- O site não usa cookies, analytics nem fontes de terceiros (Geist é servida daqui, licença OFL em `fonts/`).
+- A demonstração da página inicial é uma simulação no navegador com as mesmas regras dos scripts de `portfolio/`; nenhuma mensagem é enviada.
 
-Ver `portfolio/README.md` para como cada demo e usado numa conversa de venda,
-e a pagina de oferta (link acima) para pacotes e precos.
+## Rodar localmente
+
+```bash
+python -m http.server 8000
+```
+
+Depois abra http://127.0.0.1:8000.

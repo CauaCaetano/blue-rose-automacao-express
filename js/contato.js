@@ -15,6 +15,7 @@
 
   // Disponível para os scripts das páginas (ex.: calculadora de orçamento)
   window.BR_WA = WA;
+  window.BR_EMAIL = EMAIL;
 
   function formatar(n) {
     var d = n.replace(/^55/, '');

@@ -1,6 +1,6 @@
 # Portfolio — projetos demonstrativos da BLUE ROSE
 
-Três exemplos prontos para mostrar a clientes/leads como demonstração da
+Exemplos prontos para mostrar a clientes/leads como demonstração da
 "Automação Express" (ver `vendas/oferta.md`, `memory/marca_blue_rose.md`).
 Todos rodam com Python puro, sem instalar nada. São projetos demonstrativos
 reais (o código roda de verdade) — não são trabalho encomendado por um
@@ -25,12 +25,14 @@ python relatorio_vendas.py vendas.csv
 ```
 
 ## 3. `gerador_descricoes.py`
-Mostra o pipeline de uma automação com IA (entrada -> prompt -> texto de
-saída), hoje com geração local via template — o ponto exato onde entraria
-uma chamada real de IA está comentado no código.
+Gera descrições de produto com IA. Com `ANTHROPIC_API_KEY` no ambiente, quem
+escreve é o Claude (API oficial, chamada via HTTPS, sem bibliotecas extras).
+Sem chave, ou se a API falhar, gera um texto local só com o que foi informado
+e avisa a origem. Aceita um produto ou um lote via CSV (`nome;caracteristicas;publico`).
 
 ```
 python gerador_descricoes.py --nome "Caneca" --caracteristicas "300ml,ceramica" --publico "presente"
+python gerador_descricoes.py --csv produtos.csv --saida descricoes.csv
 ```
 
 ## 4. `qualificador_leads_whatsapp.py`
@@ -62,3 +64,14 @@ python recuperador_pix_whatsapp.py --pago-em 1
 2. Explique: "isso aqui eu adapto pro seu caso específico em 2-3 dias".
 3. Não prometa nada que ainda não foi testado com os dados reais do cliente —
    valide o formato dos dados dele antes de fechar preço.
+
+## Testes
+
+```
+python -m unittest -v test_portfolio
+```
+
+13 testes cobrem os cinco scripts: categorias e simulação do organizador,
+resumo e validação de colunas do relatório, regra de classificação do
+qualificador (incluindo "só pesquisando por enquanto"), as duas saídas do
+recuperador de PIX e as três origens do gerador (IA, local e falha da API).

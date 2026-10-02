@@ -80,7 +80,9 @@ def classificar_qualidade(lead: Lead) -> str:
     """Regra simples de exemplo — em produção isso pode usar um modelo de
     IA pra interpretar respostas livres em vez de perguntas fechadas."""
     sinais_bons = 0
-    if lead.prazo.lower() not in ("", "só pesquisando", "so pesquisando"):
+    prazo = lead.prazo.strip().lower()
+    # "só pesquisando (por enquanto)", "ainda pesquisando"... não é sinal de compra
+    if prazo and "pesquisando" not in prazo:
         sinais_bons += 1
     if lead.orcamento.strip() != "":
         sinais_bons += 1

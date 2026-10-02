@@ -28,6 +28,10 @@ def carregar_vendas(caminho: Path):
     # no Windows), sem quebrar o nome da primeira coluna.
     with caminho.open(newline="", encoding="utf-8-sig") as f:
         leitor = csv.DictReader(f)
+        faltando = {"data", "categoria", "valor"} - set(leitor.fieldnames or [])
+        if faltando:
+            raise SystemExit(f"CSV sem as colunas obrigatórias: {', '.join(sorted(faltando))}. "
+                             "Cabeçalho esperado: data,produto,categoria,valor")
         return [linha for linha in leitor]
 
 
