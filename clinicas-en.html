@@ -66,11 +66,11 @@
       </div>
       <figure class="shot hero-comp anim" style="--i:3">
         <div class="shot-frame">
-          <div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i><span>stockmaster · live demo</span></div>
-          <img src="img/cases/estoque-dash-1600.webp" srcset="img/cases/estoque-dash-900.webp 900w, img/cases/estoque-dash-1600.webp 1600w" sizes="(max-width: 960px) 100vw, 640px" width="1600" height="1000" alt="StockMaster dashboard: total products, out of stock, low stock and latest movements" fetchpriority="high">
+          <div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i><span>nexo management · live demo</span></div>
+          <img src="img/cases/nexo-dashboard.png" width="1200" height="900" alt="Nexo Management dashboard with stock summary, restock alert and products by category" fetchpriority="high">
         </div>
         <div class="fone"><img src="img/cases/demo-salao-mobile.webp" width="390" height="760" alt="Example beauty salon website on a phone"></div>
-        <figcaption>An inventory system and a salon website you can open and use right now. <a href="demos/stockmaster/">Open StockMaster</a></figcaption>
+        <figcaption>A distributor ERP and a salon website you can open and use right now. <a href="demos/stockmaster/">Open Nexo Management</a></figcaption>
       </figure>
     </div>
   </section>
@@ -92,8 +92,8 @@
       <div class="xp">
         <a class="forte reveal" style="--i:0" href="demos/stockmaster/">
           <svg class="ico ico-cel" aria-hidden="true"><use href="img/icones.svg#i-package"/></svg>
-          <h3>StockMaster, live</h3>
-          <p>Add a product, record sales and watch the dashboard flag what is running out.</p>
+          <h3>Nexo Management, live</h3>
+          <p>Register purchases, suppliers and customers; track inventory and sales orders in one flow.</p>
           <span class="como">React + the FastAPI rules</span>
           <span class="ir">Open the system <svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-arrow-right"/></svg></span>
         </a>
@@ -182,9 +182,9 @@ micro-ondas durante o dia de trabalho. <span class="c">(Claude)</span></pre>
         <article class="cel c-sist reveal" style="--i:0">
           <svg class="ico ico-cel" aria-hidden="true"><use href="img/icones.svg#i-package"/></svg>
           <h3>Internal systems</h3>
-          <p>Inventory, records and dashboards built around your routine, flagging what needs attention.</p>
-          <p class="prova">Built in: <a href="demos/stockmaster/">StockMaster (open it live)</a></p>
-          <img src="img/cases/estoque-prod-900.webp" width="900" height="563" loading="lazy" alt="StockMaster product list with current stock, minimum and prices">
+          <p>Purchases, suppliers, customers, stock by warehouse and order dispatch in a single ERP.</p>
+          <p class="prova">Built in: <a href="demos/stockmaster/">Nexo Management (open it live)</a></p>
+          <img src="img/cases/nexo-products.png" width="1200" height="900" loading="lazy" alt="Nexo Management product catalog with categories, balances and prices">
         </article>
         <article class="cel c-site reveal" style="--i:1">
           <div class="txt">
@@ -216,17 +216,17 @@ Corporal         R$290.00
 
       <article class="destaque reveal">
         <div class="midia">
-          <img src="img/cases/estoque-dash-1600.webp" srcset="img/cases/estoque-dash-900.webp 900w, img/cases/estoque-dash-1600.webp 1600w" sizes="(max-width: 900px) 100vw, 700px" width="1600" height="1000" loading="lazy" alt="StockMaster dashboard with out-of-stock items, low stock and latest movements (interface in Portuguese)">
+          <img src="img/cases/nexo-dashboard.png" width="1200" height="900" loading="lazy" alt="Nexo Management distributor operations dashboard">
         </div>
         <div class="info">
-          <span class="tipo">Internal system · Python and React</span>
-          <h3>StockMaster</h3>
+          <span class="tipo">Distributor ERP · React and FastAPI</span>
+          <h3>Nexo Management</h3>
           <dl class="ps">
-            <div><dt>Problem</dt><dd><p>In a small shop, a product runs out and nobody notices until a customer asks for it.</p></dd></div>
-            <div><dt>Solution</dt><dd><p>Stock in and out with a reason, sales blocked beyond the balance and a dashboard that flags what is below the minimum.</p></dd></div>
-            <div><dt>Result</dt><dd><p>A tested system (4 unit and 19 end-to-end tests). During the audit we fixed the low-stock alert, which never fired.</p></dd></div>
+            <div><dt>Problem</dt><dd><p>Purchases, stock and orders split across spreadsheets make it hard to know what to receive, pick and dispatch.</p></dd></div>
+            <div><dt>Solution</dt><dd><p>One workflow to register suppliers and customers, receive purchases, manage warehouses and track sales through dispatch.</p></dd></div>
+            <div><dt>Result</dt><dd><p>A working ERP with sample data to explore records, purchases, stock movements and orders in the browser.</p></dd></div>
           </dl>
-          <ul class="stack" aria-label="Technologies"><li>FastAPI</li><li>MongoDB</li><li>React</li><li>Tailwind</li><li>pytest</li></ul>
+          <ul class="stack" aria-label="Technologies"><li>FastAPI</li><li>MongoDB</li><li>React</li><li>Purchases</li><li>Sales</li></ul>
           <div class="acoes">
             <a class="btn btn-primary" href="demos/stockmaster/"><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-play"/></svg>Use it live</a>
             <a class="link" href="projects-en.html#stockmaster">Read the case <svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-arrow-right"/></svg></a>
@@ -302,8 +302,8 @@ envia mensagem (evita incomodar quem já pagou).</pre>
         <div class="grupo reveal" style="--i:0">
           <h3>Development</h3>
           <ul>
-            <li><b>Python</b><span>automations and the StockMaster API</span></li>
-            <li><b>React</b><span>StockMaster dashboard</span></li>
+            <li><b>Python</b><span>automations and the Nexo Management API</span></li>
+            <li><b>React</b><span>Nexo Management ERP</span></li>
             <li><b>JavaScript</b><span>websites, simulators and demos</span></li>
             <li><b>WebAssembly (Pyodide)</b><span>Python running in the browser, in the Lab</span></li>
           </ul>
@@ -321,7 +321,7 @@ envia mensagem (evita incomodar quem já pagou).</pre>
           <ul>
             <li><b>WhatsApp</b><span>ready links and integration points for the official API</span></li>
             <li><b>PIX payments</b><span>status check before sending a reminder</span></li>
-            <li><b>REST APIs</b><span>FastAPI in StockMaster</span></li>
+            <li><b>REST APIs</b><span>FastAPI in Nexo Management</span></li>
           </ul>
         </div>
         <div class="grupo reveal" style="--i:3">
@@ -424,7 +424,7 @@ envia mensagem (evita incomodar quem já pagou).</pre>
     <nav aria-label="Footer">
       <a href="projects-en.html">Projects</a>
       <a href="lab-en.html">Lab</a>
-      <a href="demos/stockmaster/">StockMaster live</a>
+      <a href="demos/stockmaster/">Nexo Management live</a>
       <a href="exemplos-en.html">Example websites</a>
       <a href="https://github.com/CauaCaetano">GitHub</a>
       <a href="./" hreflang="pt-BR" lang="pt-BR">Português</a>
